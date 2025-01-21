@@ -1,0 +1,17 @@
+# Sidebar
+
+* [About NetAScore](https://github.com/plus-mobilitylab/netascore/wiki)
+* [Readme](https://github.com/plus-mobilitylab/netascore/tree/main?tab=readme-ov-file)
+* [Quickstart-guide](Quickstart)
+* [The Workflow](The-workflow)
+* [How to run the Project...](How-to-run-the-project)
+  * [...in a Docker environment](How-to-run-the-project-in-a-Docker-environment)
+  * [...directly on your Machine (Python)](Run-NetAScore-manually-with-Python)
+* [Attributes & Indicators](Attributes-and-Indicators)
+  * [Attribute derivation from OSM](Attribute-derivation-from-OSM)
+  * [Attribute derivation from GIP](Attribute-derivation-from-GIP)
+* [Configuration of the Settings-file](Configuration-of-the-settings)
+* [Adapting Mode Profiles](Mode-profiles)
+* [Implementation Details, how to contribute](How-to-contribute)
+* [Requirements and Limitations](Requirements-and-Limitations)
+* [Credits and License](Credits-and-license)

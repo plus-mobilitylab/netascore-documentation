@@ -1,0 +1,39 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: Home
+parts:
+- caption: Running NetAScore
+  chapters:
+    - file: Quickstart
+      title: Quickstart-Guide
+    - file: The-workflow
+      title: The Workflow
+    - file: How-to-run-the-project
+      title: How to run NetAScore
+      sections:
+      - file: How-to-run-the-project-in-a-Docker-environment
+        title: Running NetAScore in Docker
+      - file: Run-NetAScore-manually-with-Python
+        title: Run NetAScore manually with Python
+
+- caption: Further Customisation
+  chapters:
+    - file: Attributes-and-Indicators
+      title: Attributes & Indicators
+      sections:
+      - file: Attribute-derivation-from-OSM
+        title: Attribute derivation from OSM
+      - file: Attribute-derivation-from-GIP
+        title: Attribute derivation from GIP
+    - file: Configuration-of-the-settings
+      title: Settings file
+    - file: Mode-profiles
+      title: Adapting Mode Profiles
+    - file: How-to-contribute
+      title: Implementation Details & how to contribute
+    - file: Requirements-and-Limitations
+      title: Requirements and Limitations
+    - file: Credits-and-license
+      title: Credits and License
