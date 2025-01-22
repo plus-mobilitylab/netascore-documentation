@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Settings file &#8212; NetAScore wiki page</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Configuration-of-the-settings';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Adapting Mode profiles" href="Mode-profiles.html" />
+    <link rel="prev" title="Attribute derivation from GIP" href="Attribute-derivation-from-GIP.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">NetAScore wiki page</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Home.html">
+                    What is NetAScore?
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running NetAScore</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart-Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="The-workflow.html">The Workflow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="How-to-run-the-project.html">How to run NetAScore</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="How-to-run-the-project-in-a-Docker-environment.html">Run NetAScore in Docker</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Run-NetAScore-manually-with-Python.html">Run NetAScore manually with Python</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Further Customisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Settings file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mode-profiles.html">Adapting Mode Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-contribute.html">Implementation Details &amp; how to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requirements-and-Limitations.html">Requirements and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credits-and-license.html">Credits and License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/plus-mobilitylab/netascore" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plus-mobilitylab/netascore/issues/new?title=Issue%20on%20page%20%2FConfiguration-of-the-settings.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Configuration-of-the-settings.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Settings file</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure">Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-global">Section <code class="docutils literal notranslate"><span class="pre">global</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-target-srid">Property <code class="docutils literal notranslate"><span class="pre">target_srid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-case-id">Property <code class="docutils literal notranslate"><span class="pre">case_id</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-database">Section <code class="docutils literal notranslate"><span class="pre">database</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-import">Section <code class="docutils literal notranslate"><span class="pre">import</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-type">Property <code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-filename">Property <code class="docutils literal notranslate"><span class="pre">filename</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-options-for-osm">Additional options for OSM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-on-existing">Property <code class="docutils literal notranslate"><span class="pre">on_existing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-import-section">Example import section</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-optional">Section <code class="docutils literal notranslate"><span class="pre">optional</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-dem">Subsection <code class="docutils literal notranslate"><span class="pre">dem</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-noise">Subsection <code class="docutils literal notranslate"><span class="pre">noise</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-osm">Subsection <code class="docutils literal notranslate"><span class="pre">osm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsections-building-crossing-facility-greeness-water">Subsections <code class="docutils literal notranslate"><span class="pre">building</span></code>, <code class="docutils literal notranslate"><span class="pre">crossing</span></code>, <code class="docutils literal notranslate"><span class="pre">facility</span></code>, <code class="docutils literal notranslate"><span class="pre">greeness</span></code>, <code class="docutils literal notranslate"><span class="pre">water</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-profiles">Section <code class="docutils literal notranslate"><span class="pre">profiles</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-export">Section <code class="docutils literal notranslate"><span class="pre">export</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="settings-file">
+<h1>Settings file<a class="headerlink" href="#settings-file" title="Link to this heading">#</a></h1>
+<p>NetAScore uses a settings file that holds the necessary information to perform all steps for computing <em>bikeability</em> and <em>walkability</em>. It is written in YAML markup language. General information about YAML can be found at https://yaml.org/.</p>
+<p>We provide a set of <strong>example settings files</strong> with NetAScore. You find them inside the subdirectory <code class="docutils literal notranslate"><span class="pre">examples</span></code>. The most common to start from is <code class="docutils literal notranslate"><span class="pre">settings_osm_query.yml</span></code>. This is the file used by default in the Docker image. It is configured for easy use with all components running in Docker and no local input files required. See <a class="reference internal" href="How-to-run-the-project-in-a-Docker-environment.html"><span class="doc std std-doc">docker-guide</span></a> for instructions on executing NetAScore in this example setup.</p>
+<p>Settings files for NetAScore consist of several sections. For <strong>every processing step</strong> that should be executed, a <strong>corresponding settings section</strong> needs to be provided. This means that you can omit sections if you skip all processing steps that require this section. E.g. if you skip the <code class="docutils literal notranslate"><span class="pre">export</span></code> step, then you don’t need to provide an <code class="docutils literal notranslate"><span class="pre">export</span></code> section.</p>
+<p>In this document, we provide an overview on the structure of settings files and details on available settings for each processing step.</p>
+<p>Besides the settings file, you also need to provide a mode profile file for each of the modes you want to compute a suitability index for. For now, please refer to the two mode profiles provided in the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> subdirectory for reference and copy them to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory for usage in your own queries.</p>
+<section id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Link to this heading">#</a></h2>
+<p>The settings file can consist of the following <strong>sections</strong>:</p>
+<ul class="simple">
+<li><p><strong>version</strong>:
+mandatory, single value. For compatibility with NetAScore version 1.1, the settings file <code class="docutils literal notranslate"><span class="pre">version</span></code> entry should be <code class="docutils literal notranslate"><span class="pre">1.2</span></code>.</p></li>
+<li><p><a class="reference internal" href="#section-global"><span class="xref myst"><strong>global</strong></span></a>:
+general settings such as target reference system (SRID) to use</p></li>
+<li><p><a class="reference internal" href="#section-database"><span class="xref myst"><strong>database</strong></span></a>:
+connection parameters for PostgreSQL database</p></li>
+<li><p><a class="reference internal" href="#section-import"><span class="xref myst"><strong>import</strong></span></a>:
+essential information for importing core datasets</p></li>
+<li><p><a class="reference internal" href="#section-optional"><span class="xref myst"><strong>optional</strong></span></a>:
+information on optional datasets to import</p></li>
+<li><p><a class="reference internal" href="#section-profiles"><span class="xref myst"><strong>profiles</strong></span></a>:
+specification of indicator weights and indicator value mappings per mode profile - e.g. for <em>bikeability</em> and <em>walkability</em></p></li>
+<li><p><a class="reference internal" href="#section-export"><span class="xref myst"><strong>export</strong></span></a>:
+information for exporting results</p></li>
+</ul>
+</section>
+<section id="section-global">
+<h2>Section <code class="docutils literal notranslate"><span class="pre">global</span></code><a class="headerlink" href="#section-global" title="Link to this heading">#</a></h2>
+<section id="property-target-srid">
+<h3>Property <code class="docutils literal notranslate"><span class="pre">target_srid</span></code><a class="headerlink" href="#property-target-srid" title="Link to this heading">#</a></h3>
+<p><strong>This parameter is optional if using GIP</strong> (for the whole of Austria) <strong>or OSM Download via place name</strong> - in these cases NetAScore uses the centroid’s UTM zone by default. However, <strong>if working with OSM file import</strong> (e.g. Planet OSM / Geofabrik downloads), you should <strong>provide an appropriate reference system</strong> for your specific area of interest.
+Specify the SRID (spatial reference system as EPSG-code) to use for processing and data output.
+Datasets will be imported and if necessary transformed to this reference system.
+<strong>Please note: currently only metric unit systems are supported such as UTM</strong>.</p>
+<p><strong>Example</strong>:</p>
+<ul class="simple">
+<li><p>for WGS 84 UTM zone 33N use: 32633</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to <em>only</em> use a metric unit system, otherwise the toolbox cannot run successfully.</p>
+</div>
+</section>
+<section id="property-case-id">
+<h3>Property <code class="docutils literal notranslate"><span class="pre">case_id</span></code><a class="headerlink" href="#property-case-id" title="Link to this heading">#</a></h3>
+<p>This parameter allows you to specify a unique identifier for the current task as defined in the settings file. It may be useful if working with different areas of interest, different mode profiles, or when re-executing parts of a workflow. You can include this identifier e.g. in export file names using <code class="docutils literal notranslate"><span class="pre">&lt;case_id&gt;</span></code> as a placeholder.</p>
+<p><strong>Note</strong>: Only alphanumeric characters [A-Z, a-z, 0-9] and ‘_’ are allowed. Other characters will be removed.</p>
+</section>
+</section>
+<section id="section-database">
+<h2>Section <code class="docutils literal notranslate"><span class="pre">database</span></code><a class="headerlink" href="#section-database" title="Link to this heading">#</a></h2>
+<p>Connection details for a PostgreSQL database are required in order to import, transform,  assess and export data. If you don’t provide any information, the program will start up normal, but it will most likely terminate soon after with a connection error.</p>
+<p>Example settings are provided in the <code class="docutils literal notranslate"><span class="pre">examples</span></code> directory and should be a good starting point for customization.</p>
+<p>The <strong>default settings</strong> for using the <strong>Docker</strong> setup (NetAScore and PostgreSQL running in containers) are:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore-db</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+<span class="w">  </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+</pre></div>
+</div>
+<p>If you want to connect to a <strong>local PostgreSQL instance</strong> outside of Docker, but running NetAScore in Docker you can use the following settings:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.docker.internal</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span><span class="w">              </span><span class="c1"># port of existing PostgreSQL server on localhost</span>
+<span class="w">  </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span><span class="w">        </span><span class="c1"># name of target database</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span><span class="w">      </span><span class="c1"># local postgres user</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">  </span><span class="nt">on_existing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abort </span><span class="err">	</span><span class="w">  </span><span class="c1"># skip, delete, abort</span>
+</pre></div>
+</div>
+<p>For using the whole toolset without Docker, just provide connection details for your PostgreSQL database as you do with any other software.</p>
+<p><strong>Note</strong>: For security reasons, you should <strong>provide <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> as environment variables</strong> if you do not work within a test environment. In this case just set <code class="docutils literal notranslate"><span class="pre">DB_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">DB_PASSWORD</span></code> accordingly and remove <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> keys from the settings file.</p>
+</section>
+<section id="section-import">
+<h2>Section <code class="docutils literal notranslate"><span class="pre">import</span></code><a class="headerlink" href="#section-import" title="Link to this heading">#</a></h2>
+<section id="property-type">
+<h3>Property <code class="docutils literal notranslate"><span class="pre">type</span></code><a class="headerlink" href="#property-type" title="Link to this heading">#</a></h3>
+<p>Specify the type of geodata you want to import. At the moment, the following file formats
+are supported:</p>
+<ul class="simple">
+<li><p>value <code class="docutils literal notranslate"><span class="pre">osm</span></code>: OpenStreetMap</p></li>
+<li><p>value <code class="docutils literal notranslate"><span class="pre">gip</span></code>: Austrian authoritative dataset <em>“Graphenintegrations-Plattform GIP”</em> - see also: <a class="reference external" href="http://www.gip.gv.at/en/index.html">http://www.gip.gv.at</a></p></li>
+</ul>
+</section>
+<section id="property-filename">
+<h3>Property <code class="docutils literal notranslate"><span class="pre">filename</span></code><a class="headerlink" href="#property-filename" title="Link to this heading">#</a></h3>
+<p>Refers to the file containing the geodata.</p>
+<ul class="simple">
+<li><p>OSM data can be imported from <code class="docutils literal notranslate"><span class="pre">PBF</span></code> format, which can be downloaded e.g. from https://download.geofabrik.de. For directly downloading a small AOI with NetAScore, use one of the options outlined in the following section “Additional options for OSM”.</p></li>
+<li><p>GIP data for Austria can be imported from the <code class="docutils literal notranslate"><span class="pre">IDF</span></code> export files which can be downloaded from <a class="reference external" href="https://www.data.gv.at/katalog/dataset/3fefc838-791d-4dde-975b-a4131a54e7c5">https://www.data.gv.at</a></p></li>
+</ul>
+</section>
+<section id="additional-options-for-osm">
+<h3>Additional options for OSM<a class="headerlink" href="#additional-options-for-osm" title="Link to this heading">#</a></h3>
+<p>NetAScore allows you to <strong>directly download OpenStreetMap data</strong> via Overpass API. You can simply provide the following properties instead of the <code class="docutils literal notranslate"><span class="pre">filename</span></code> property:</p>
+<ul>
+<li><p>property <strong><code class="docutils literal notranslate"><span class="pre">place_name</span></code></strong>: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. ‘Salzburg’ or ‘City of London’. If the place name given is not unique, you can either opt for an interactive prompt by adding the setting <code class="docutils literal notranslate"><span class="pre">interactive:</span> <span class="pre">True</span></code> or specify additional parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">admin_level</span></code>: filters the given results for OSM ‘admin_level’ property (see <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Item:Q1074">OSM documentation</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zip_code</span></code>: filters the given results for a ZIP code (if available in OSM data)</p></li>
+</ul>
+<p><strong>Please note</strong>: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option <code class="docutils literal notranslate"><span class="pre">target_srid</span></code>), the UTM zone suitable for the centroid of the area of interest is used.</p>
+</li>
+<li><p>property <strong><code class="docutils literal notranslate"><span class="pre">buffer</span></code></strong>: When using the <code class="docutils literal notranslate"><span class="pre">place_name</span></code> query, this option allows you to specify a spatial buffer to enlarge the extent of network data being queried. The unit of the buffer is defined by the target SRID - currently this must be in meters.</p></li>
+<li><p>property <strong><code class="docutils literal notranslate"><span class="pre">bbox</span></code></strong>: Bounding box of your area of interest in WGS 84 (longitude and latitude, geographic coordinates) - e.g. for Salzburg (Austria) use: <code class="docutils literal notranslate"><span class="pre">bbox:</span> <span class="pre">47.7957,13.0117,47.8410,13.0748</span></code>
+<strong>Please note</strong>: when using this option, please specify <strong><code class="docutils literal notranslate"><span class="pre">target_srid</span></code></strong> in the <code class="docutils literal notranslate"><span class="pre">global</span></code> settings section to define an appropriate spatial reference system for your custom area of interest</p></li>
+<li><p>properties <strong><code class="docutils literal notranslate"><span class="pre">include_rail</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">include_aerialway</span></code></strong>: These optional <code class="docutils literal notranslate"><span class="pre">boolean</span></code> tags allow you to include railway and aerialway features into the network dataset. This may be useful for visualization and specific types of analysis. For example, provide <code class="docutils literal notranslate"><span class="pre">include_rail:</span> <span class="pre">True</span></code> if you want railway geometry to be included in the output data set.</p></li>
+<li><p>(advanced) property <code class="docutils literal notranslate"><span class="pre">filename_style</span></code>: For importing OpenStreetMap data into the database, NetAScore uses <a class="reference external" href="https://osm2pgsql.org/">osm2pgsql</a>. Import settings for this commandline utility are provided in a <code class="docutils literal notranslate"><span class="pre">default.style</span></code> file. By default, NetAScore provides this file in the <code class="docutils literal notranslate"><span class="pre">resources</span></code> directory. This setting, however, allows you to specify a custom style file.</p></li>
+</ul>
+</section>
+<section id="property-on-existing">
+<h3>Property <code class="docutils literal notranslate"><span class="pre">on_existing</span></code><a class="headerlink" href="#property-on-existing" title="Link to this heading">#</a></h3>
+<p>This setting defines how to handle file and database table conflicts during any import and processing step (e.g. when trying to re-import a file with the same <code class="docutils literal notranslate"><span class="pre">case_id</span></code>).</p>
+<p>The possible values are:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">skip</span></code></strong> (default): skip the import</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">delete</span></code></strong>: delete existing data and run the import and/or processing again (overwrites existing data)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">abort</span></code></strong>: terminate program execution (will report an error) - in this case, you are responsible to manually resolve conflicts</p></li>
+</ul>
+</section>
+<section id="example-import-section">
+<h3>Example import section<a class="headerlink" href="#example-import-section" title="Link to this heading">#</a></h3>
+<p>This is an example for OpenStreetMap import using a place name query:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">import</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">osm</span>
+<span class="w">  </span><span class="nt">on_existing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete</span>
+<span class="w">  </span><span class="nt">place_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Salzburg</span>
+<span class="w">  </span><span class="nt">interactive</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="nt">buffer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</pre></div>
+</div>
+<p>The following example uses an existing OSM extract for Austria downloaded from <a class="reference external" href="https://download.geofabrik.de">geofabrik.de</a>. It additionally specifies a custom <code class="docutils literal notranslate"><span class="pre">default.style</span></code> for OSM import to the database.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">import</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">osm</span>
+<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">austria-latest.osm.pbf</span>
+<span class="w">  </span><span class="nt">filename_style</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default.style</span>
+<span class="w">  </span><span class="nt">on_existing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="section-optional">
+<h2>Section <code class="docutils literal notranslate"><span class="pre">optional</span></code><a class="headerlink" href="#section-optional" title="Link to this heading">#</a></h2>
+<p>This is the most flexible section and specifies data that can optionally be imported for higher quality results of the resulting index.</p>
+<p>The following optional data is currently supported:</p>
+<ul class="simple">
+<li><p><strong>dem</strong> (GeoTIFF): digital elevation model</p></li>
+<li><p><strong>noise</strong> (GeoPackage: Polygon, MultiPolygon): polygons with noise attribute (e.g. traffic noise)</p></li>
+<li><p><strong>osm</strong> (PBF): only relevant for GIP import, if OpenStreetMap data should be used to infer the layers <code class="docutils literal notranslate"><span class="pre">building</span></code>, <code class="docutils literal notranslate"><span class="pre">crossing</span></code>, <code class="docutils literal notranslate"><span class="pre">facility</span></code>, <code class="docutils literal notranslate"><span class="pre">greenness</span></code> and <code class="docutils literal notranslate"><span class="pre">water</span></code></p></li>
+</ul>
+<p>The following layers can be supplied if OpenStreetMap data is not used or if you wish to use custom datasets:</p>
+<ul class="simple">
+<li><p><strong>building</strong> (GeoPackage: Polygon)</p></li>
+<li><p><strong>crossing</strong> (GeoPackage: Point, LineString)</p></li>
+<li><p><strong>facility</strong> (GeoPackage: Point, Polygon)</p></li>
+<li><p><strong>greenness</strong> (GeoPackage: Polygon)</p></li>
+<li><p><strong>water</strong> (GeoPackage: LineString, Polygon)</p></li>
+</ul>
+<section id="subsection-dem">
+<h3>Subsection <code class="docutils literal notranslate"><span class="pre">dem</span></code><a class="headerlink" href="#subsection-dem" title="Link to this heading">#</a></h3>
+<p>The DEM (digital elevation model) is used to add elevation values to the network nodes and to calculate the gradient of a road segment.</p>
+<ul class="simple">
+<li><p>Property <code class="docutils literal notranslate"><span class="pre">filename</span></code>: name of the file (GeoTIFF) to be imported</p></li>
+<li><p>Property <code class="docutils literal notranslate"><span class="pre">srid</span></code>:  spatial reference system identifier (SRID) of the dataset</p></li>
+</ul>
+<p>For Austria a 10 m x 10 m DEM can be downloaded here: <a class="reference external" href="https://www.data.gv.at/katalog/dataset/b5de6975-417b-4320-afdb-eb2a9e2a1dbf">https://www.data.gv.at</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on your area of application, you can either use a Digital Surface Model or a Digital Elevation Model, as the suitability of the models may differ depending on your specific use case.</p>
+</div>
+</section>
+<section id="subsection-noise">
+<h3>Subsection <code class="docutils literal notranslate"><span class="pre">noise</span></code><a class="headerlink" href="#subsection-noise" title="Link to this heading">#</a></h3>
+<p>The noise dataset contains a mapping of noise levels in decibels, represented as polygons with associated noise attribute.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: name of the file to be imported</p></li>
+</ul>
+<p>For Austrian states the noise datasets can be downloaded here: <a class="reference external" href="https://geometadatensuche.inspire.gv.at/metadatensuche/srv/ger/catalog.search#/metadata/125ec87c-7120-48a7-bd2c-2718cbf878c6">https://www.inspire.gv.at</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Currently, the noise dataset can only be processed if the input geopackage has a column named noise.
+You can do this preprocessing step for your area of interest in a gis-software of your choice and export it as a geopackage.</p>
+</div>
+</section>
+<section id="subsection-osm">
+<h3>Subsection <code class="docutils literal notranslate"><span class="pre">osm</span></code><a class="headerlink" href="#subsection-osm" title="Link to this heading">#</a></h3>
+<p>This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: <code class="docutils literal notranslate"><span class="pre">building</span></code>, <code class="docutils literal notranslate"><span class="pre">crossing</span></code>, <code class="docutils literal notranslate"><span class="pre">facility</span></code>, <code class="docutils literal notranslate"><span class="pre">greeness</span></code>, <code class="docutils literal notranslate"><span class="pre">water</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: name of the OSM file to be imported</p></li>
+</ul>
+</section>
+<section id="subsections-building-crossing-facility-greeness-water">
+<h3>Subsections <code class="docutils literal notranslate"><span class="pre">building</span></code>, <code class="docutils literal notranslate"><span class="pre">crossing</span></code>, <code class="docutils literal notranslate"><span class="pre">facility</span></code>, <code class="docutils literal notranslate"><span class="pre">greeness</span></code>, <code class="docutils literal notranslate"><span class="pre">water</span></code><a class="headerlink" href="#subsections-building-crossing-facility-greeness-water" title="Link to this heading">#</a></h3>
+<p>If these datasets are not directly derived from an OSM dataset, they can be imported from individual data sets. This might be useful e.g. when working with local, authoritative data sets.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: name of the file to be imported</p></li>
+</ul>
+</section>
+</section>
+<section id="section-profiles">
+<h2>Section <code class="docutils literal notranslate"><span class="pre">profiles</span></code><a class="headerlink" href="#section-profiles" title="Link to this heading">#</a></h2>
+<p>NetAScore uses weights to determine the importance of individual indicators for a specific profile such as for cycling or walking. Different use cases may have different weights. Additionally, numeric indicator values are assigned to original attribute values in the mode profiles.</p>
+<p>We include well-tested default mode profiles for cycling as well as walking with NetAScore. For general purpose assessments we recommend to utilize these profiles by copying the respective mode profile files <code class="docutils literal notranslate"><span class="pre">profile_bike.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">profile_walk.yml</span></code> from <code class="docutils literal notranslate"><span class="pre">examples</span></code> to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory and referencing them from the settings file as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">profiles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span>
+<span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bike</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile_bike.yml</span>
+<span class="w">    </span><span class="nt">filter_access_bike</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">  </span><span class="p p-Indicator">-</span>
+<span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">walk</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile_walk.yml</span>
+<span class="w">    </span><span class="nt">filter_access_walk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</pre></div>
+</div>
+<p>You may edit these profiles or create your own custom profiles and add them to this section of the settings file. The <code class="docutils literal notranslate"><span class="pre">profile_name</span></code> value is included in the column name of the resulting index: e.g. <code class="docutils literal notranslate"><span class="pre">index_bike_ft</span></code>.</p>
+<p>Since NetAScore version 1.1.0, index values are only computed for edges with legal access per mode. This filter is indicated by <code class="docutils literal notranslate"><span class="pre">filter_access_&lt;mode&gt;:</span> <span class="pre">True</span></code>. You may include segments accessible to other modes by adding multiple lines of <code class="docutils literal notranslate"><span class="pre">filter_access_&lt;mode&gt;</span></code>.  Possible modes are: <code class="docutils literal notranslate"><span class="pre">bike</span></code>, <code class="docutils literal notranslate"><span class="pre">walk</span></code> and <code class="docutils literal notranslate"><span class="pre">car</span></code>. For example, if you want to compute bikeability for all segments that are accessible by bike but also for those only open to pedestrians you may use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">profiles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span>
+<span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bike</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile_bike.yml</span>
+<span class="w">    </span><span class="nt">filter_access_bike</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">filter_access_walk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+</pre></div>
+</div>
+<p>For details on weight file definition and computation steps involved, please refer to the <a class="reference external" href="https://github.com/plus-mobilitylab/netascore/blob/main/README.md">README</a> and <a class="reference internal" href="Attributes-and-Indicators.html"><span class="doc std std-doc">attributes</span></a> documentation.</p>
+</section>
+<section id="section-export">
+<h2>Section <code class="docutils literal notranslate"><span class="pre">export</span></code><a class="headerlink" href="#section-export" title="Link to this heading">#</a></h2>
+<p>Currently, NetAScore supports exporting the assessed network into a geopackage file. You can define this as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">export</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geopackage</span>
+<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">osm_network.gpkg</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>If you provide a <code class="docutils literal notranslate"><span class="pre">case_id</span></code> in the <code class="docutils literal notranslate"><span class="pre">global</span></code> settings section, you can include it in the export filename by using the placeholder <code class="docutils literal notranslate"><span class="pre">&lt;case_id&gt;</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">export</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geopackage</span>
+<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore_&lt;case_id&gt;.gpkg</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Attribute-derivation-from-GIP.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Attribute derivation from GIP</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Mode-profiles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Adapting Mode profiles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure">Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-global">Section <code class="docutils literal notranslate"><span class="pre">global</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-target-srid">Property <code class="docutils literal notranslate"><span class="pre">target_srid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-case-id">Property <code class="docutils literal notranslate"><span class="pre">case_id</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-database">Section <code class="docutils literal notranslate"><span class="pre">database</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-import">Section <code class="docutils literal notranslate"><span class="pre">import</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-type">Property <code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-filename">Property <code class="docutils literal notranslate"><span class="pre">filename</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-options-for-osm">Additional options for OSM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-on-existing">Property <code class="docutils literal notranslate"><span class="pre">on_existing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-import-section">Example import section</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-optional">Section <code class="docutils literal notranslate"><span class="pre">optional</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-dem">Subsection <code class="docutils literal notranslate"><span class="pre">dem</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-noise">Subsection <code class="docutils literal notranslate"><span class="pre">noise</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsection-osm">Subsection <code class="docutils literal notranslate"><span class="pre">osm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsections-building-crossing-facility-greeness-water">Subsections <code class="docutils literal notranslate"><span class="pre">building</span></code>, <code class="docutils literal notranslate"><span class="pre">crossing</span></code>, <code class="docutils literal notranslate"><span class="pre">facility</span></code>, <code class="docutils literal notranslate"><span class="pre">greeness</span></code>, <code class="docutils literal notranslate"><span class="pre">water</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-profiles">Section <code class="docutils literal notranslate"><span class="pre">profiles</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-export">Section <code class="docutils literal notranslate"><span class="pre">export</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mobility Lab Research Group, Department of Geoinformatics, University of Salzburg
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
