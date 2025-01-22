@@ -24,12 +24,9 @@ The python script can either be executed directly, or run in a Docker container.
 
 **The NetAScore workflow consists of the following steps:**
 
-1. [import_step](#1-import_step)
-2. [optional_step](#2-optional_step)
-3. [network_step](#3-network_step)
-4. [attributes_step](#4-attributes_step)
-5. [index_step](#5-index_step)
-6. [export_step](#6-export_step)
+```{contents}
+:local:
+```
 
 
 In the following subsections, we explain these individual steps.
