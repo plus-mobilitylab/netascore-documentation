@@ -1,10 +1,4 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/plus-mobilitylab/netascore/assets/82904077/762dc210-1ca5-4ead-8aeb-522e974a93fe">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/plus-mobilitylab/netascore/assets/82904077/240d09f8-a728-41ec-b0e7-8bba8fac4d38">
-  <img alt="Shows the NetAScore logo, either with light or dark background depending on the Users settings." src="https://github.com/plus-mobilitylab/netascore/assets/82904077/240d09f8-a728-41ec-b0e7-8bba8fac4d38">
-</picture>
 
-<br/>
 
 # What is NetAScore?
 
