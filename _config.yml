@@ -3,7 +3,7 @@
 
 title: NetAScore wiki page
 author: Mobility Lab Research Group, Department of Geoinformatics, University of Salzburg
-logo: resources/NetAScore_Logo_Light.png
+logo: resources/img/NetAScore_Logo_Light.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -31,7 +31,7 @@ html:
   use_issues_button: true
   use_repository_button: true
   #home_page_in_navbar: false  # Whether to include your home page in the left Navigation Bar
-  favicon: resources/NetAScore_Logo_Light.png
+  favicon: resources/img/NetAScore_Logo_Light.png
   announcement: "The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore"
 
 

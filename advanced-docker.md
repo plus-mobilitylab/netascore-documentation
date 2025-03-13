@@ -135,7 +135,7 @@ If you want to use a different password or username and another port, this can b
 
 ![Database customisation of the docker compose file](resources/img/docker-compose_custom.png)
 
-The `port`-Section specifies the internal mapping between the port in the Docker container and the one of the local DB-Instance and the `environment`-settings spe3cify the credentials for the Docker-DB.
+The `port`-Section specifies the internal mapping between the port in the Docker container and the one of the local DB-Instance and the `environment`-settings specify the credentials for the Docker-DB.
 
 ## Troubleshooting and performance improvement
 
