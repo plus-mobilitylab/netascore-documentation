@@ -105,6 +105,9 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>X.X</a> of NetAScore</div>
+</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -167,9 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart-Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="The-workflow.html">The Workflow</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="How-to-run-the-project.html">How to run NetAScore</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Run NetAScore in Docker</a></li>
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Running NetAScore in Docker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Run-NetAScore-manually-with-Python.html">Run NetAScore manually with Python</a></li>
 </ul>
 </details></li>
@@ -187,6 +188,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Configuration-of-the-settings.html">Settings file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mode-profiles.html">Adapting Mode Profiles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How-to-contribute.html">Implementation Details &amp; how to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-docker.html">Advanced Docker customisation</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="Requirements-and-Limitations.html">Requirements and Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Credits-and-license.html">Credits and License</a></li>
 </ul>
@@ -381,30 +385,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Run NetAScore in Docker</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart">Quickstart</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-netascore-for-your-own-area-of-interest">Run NetAScore for your own area of interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-more-detail">Add more detail</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-use-of-the-docker-image">Manual use of the Docker image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-customisation">Further customisation</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docker-image-from-source">Build the Docker image from source</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-manual-stepwise-approach">The manual, stepwise approach</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration">Advanced configuration</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#only-the-database-runs-in-docker">Only the database runs in docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#only-the-script-runs-in-docker">Only the script runs in docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-and-performance-improvement">Troubleshooting and performance improvement</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-when-running-netascore-in-docker">Performance when running NetAScore in Docker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-issues-with-large-datasets">Memory issues with large datasets</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-default-style-for-osm-import-to-database">Overwrite <code class="docutils literal notranslate"><span class="pre">default.style</span></code> for OSM import to database</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -429,6 +415,7 @@ There are two components involved:</p>
 <li><p><a class="reference internal" href="#run-netascore-for-your-own-area-of-interest" id="id2">Run NetAScore for your own area of interest</a></p></li>
 <li><p><a class="reference internal" href="#add-more-detail" id="id3">Add more detail</a></p></li>
 <li><p><a class="reference internal" href="#manual-use-of-the-docker-image" id="id4">Manual use of the Docker image</a></p></li>
+<li><p><a class="reference internal" href="#further-customisation" id="id5">Further customisation</a></p></li>
 </ul>
 </nav>
 <section id="quickstart">
@@ -490,161 +477,15 @@ There are two components involved:</p>
 </pre></div>
 </div>
 </section>
-</section>
-<section id="build-the-docker-image-from-source">
-<h1>Build the Docker image from source<a class="headerlink" href="#build-the-docker-image-from-source" title="Link to this heading">#</a></h1>
-<p>The easiest way to build and launch NetAScore is by using docker compose. The <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> inside the main code directory is configured accordingly. Therefore, the only command you need to execute should be:</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">build</span></code></p>
-<p>Then, once you are sure that all input datasets, settings and mode profile files are properly placed inside the <code class="docutils literal notranslate"><span class="pre">data</span></code> subdirectory, execute NetAScore:</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">run</span> <span class="pre">netascore</span> <span class="pre">data/&lt;your_settings_file&gt;.yml</span></code></p>
-<section id="the-manual-stepwise-approach">
-<h2>The manual, stepwise approach<a class="headerlink" href="#the-manual-stepwise-approach" title="Link to this heading">#</a></h2>
-<p>You can build the Docker image yourself from source using the following command from within the main code directory:</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">netascore</span> <span class="pre">.</span></code></p>
-<p>This builds a local docker image named <code class="docutils literal notranslate"><span class="pre">netascore</span></code>.</p>
-<p>To manually create a network for communication between NetAScore and the PostgreSQL database running in Docker execute the following (required only once per computer):</p>
-<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">network</span> <span class="pre">create</span> <span class="pre">netascore-net</span></code></p>
-<p>Then, to run the workflow, first start the PostgreSQL database and attach it to the network:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>netascore-db<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:13-3.2
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Map TCP port 5432 in the container to port 5433 on the Docker host:</span>
-docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>netascore-db<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span>-p<span class="w"> </span><span class="m">5433</span>:5432<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:13-3.2
-</pre></div>
-</div>
-<p>Make sure that the database connection in your <code class="docutils literal notranslate"><span class="pre">settings.yml</span></code> is set up to use the Docker network:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore-db</span>
-<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
-<span class="w">    </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-</pre></div>
-</div>
-<p>Make sure that you have all necessary geofiles, settings and mode profile files in the <code class="docutils literal notranslate"><span class="pre">data</span></code> subdirectory, because this directory is mounted into the netascore container:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># linux and mac:</span>
-docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-t<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/data:/usr/src/netascore/data<span class="w"> </span>netascore<span class="w"> </span>data/settings.yml
-</pre></div>
-</div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># windows:</span>
-docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-t<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span>%cd%/data:/usr/src/netascore/data<span class="w"> </span>netascore<span class="w"> </span>data/settings.yml
-</pre></div>
-</div>
-</section>
-</section>
-<section id="advanced-configuration">
-<h1>Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Link to this heading">#</a></h1>
-<section id="only-the-database-runs-in-docker">
-<h2>Only the database runs in docker<a class="headerlink" href="#only-the-database-runs-in-docker" title="Link to this heading">#</a></h2>
-<p>If the database runs in docker, then you have to configure your database to accept connections from the local machine:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>netascore-db<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:13-3.2
-</pre></div>
-</div>
-<p>Your <code class="docutils literal notranslate"><span class="pre">database</span></code> section in the settings file should point to the local port which is mapped to the database on localhost:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
-<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
-<span class="w">  </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-</pre></div>
-</div>
-<p>Now you can use the python script as described in the <a class="reference external" href="https://github.com/plus-mobilitylab/netascore/blob/main/README.md">README.md</a>.</p>
-</section>
-<section id="only-the-script-runs-in-docker">
-<h2>Only the script runs in docker<a class="headerlink" href="#only-the-script-runs-in-docker" title="Link to this heading">#</a></h2>
-<p>If the script runs inside the docker container, it needs access to the database outside of the docker ecosystem. If the external database runs on another host, provide the necessary connection information in the <code class="docutils literal notranslate"><span class="pre">database</span></code> section. If you have the database running on your local system, then the host needs the IP address or hostname of the local system. Please note that <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> or <code class="docutils literal notranslate"><span class="pre">localhost</span></code> will not work, because it would try to connect to the container’s localhost. If you are unable to obtain the ip of your
-machine, or you cannot establish a connection, use <code class="docutils literal notranslate"><span class="pre">gateway.docker.internal</span></code>* as the host, e.g.:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.docker.internal</span>
-<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
-<span class="w">  </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-</pre></div>
-</div>
+<section id="further-customisation">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Further customisation</a><a class="headerlink" href="#further-customisation" title="Link to this heading">#</a></h2>
+<p>for further customisation please have a look at the <a class="reference internal" href="advanced-docker.html"><span class="doc std std-doc">advanced docker customisation-page</span></a>, where you can find:</p>
 <ul class="simple">
-<li><p>If this does not work out for you, you can also try using <code class="docutils literal notranslate"><span class="pre">host.docker.internal</span></code> as the host.</p></li>
+<li><p>How to access the Docker-Database from an external source</p></li>
+<li><p>How to manually use the Docker image</p></li>
+<li><p>Only running the Database in Docker</p></li>
+<li><p>Only running the Script in Docker</p></li>
 </ul>
-</section>
-<section id="troubleshooting-and-performance-improvement">
-<h2>Troubleshooting and performance improvement<a class="headerlink" href="#troubleshooting-and-performance-improvement" title="Link to this heading">#</a></h2>
-<section id="performance-when-running-netascore-in-docker">
-<h3>Performance when running NetAScore in Docker<a class="headerlink" href="#performance-when-running-netascore-in-docker" title="Link to this heading">#</a></h3>
-<p>When using NetAScore in a docker image on mac or windows, overall performance of the pipeline can be 3-5 times slower compared to executing NetAScore in local Python or in Docker on Linux. This is caused by slow docker volume mounts and might be an issue for computations on large input files.
-To resolve this issue, you can either execute the python script on your machine (outside Docker) or copy the files into a volume using the following steps:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>netascore-storage
-
-docker<span class="w"> </span>create<span class="w"> </span>-t<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span>--name<span class="w"> </span>netascore-pipe<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span>netascore-storage:/usr/src/netascore/data<span class="w"> </span>netascore<span class="w"> </span>data/settings.yml
-
-docker<span class="w"> </span>cp<span class="w"> </span>data/.<span class="w"> </span>netascore-pipe:/usr/src/netascore/data
-
-docker<span class="w"> </span>start<span class="w"> </span>netascore-pipe
-</pre></div>
-</div>
-<p>To monitor the progress (logs), run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>netascore-pipe
-</pre></div>
-</div>
-<p>This command will show the logs of the container and will follow the logs. You can stop the command with <code class="docutils literal notranslate"><span class="pre">ctrl+c</span></code>.</p>
-<p>To copy the resulting files back to your local system, you can use the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>copy<span class="w"> </span>netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE1.gpkg<span class="w"> </span>.
-docker<span class="w"> </span>copy<span class="w"> </span>netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE2.gpkg<span class="w"> </span>.
-</pre></div>
-</div>
-</section>
-<section id="memory-issues-with-large-datasets">
-<h3>Memory issues with large datasets<a class="headerlink" href="#memory-issues-with-large-datasets" title="Link to this heading">#</a></h3>
-<p>In case you experience errors when processing large datasets, please make sure that you have enough memory and disk space available.
-Furthermore, it might be necessary to dedicate more memory to the database container. This can be done by adding the following line to <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> within the section <code class="docutils literal notranslate"><span class="pre">netascore-db</span></code> (adjust the amount of memory to your needs):</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2gb</span>
-</pre></div>
-</div>
-<p>Then, the <code class="docutils literal notranslate"><span class="pre">netascore-db</span></code>-section of <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> should look like this:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">netascore-db</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgis/postgis:13-3.2</span>
-<span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2gb</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5433:5432&quot;</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=postgres</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=postgres</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=postgres</span>
-<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD-SHELL&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pg_isready&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-U&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
-<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="overwrite-default-style-for-osm-import-to-database">
-<h2>Overwrite <code class="docutils literal notranslate"><span class="pre">default.style</span></code> for OSM import to database<a class="headerlink" href="#overwrite-default-style-for-osm-import-to-database" title="Link to this heading">#</a></h2>
-<p>For importing OpenStreetMap data into the database, NetAScore uses <a class="reference external" href="https://osm2pgsql.org/">osm2pgsql</a>. Import settings for this commandline utility are provided in a <code class="docutils literal notranslate"><span class="pre">default.style</span></code> file. By default, NetAScore provides this file within its Docker container. In order to customize <code class="docutils literal notranslate"><span class="pre">default.style</span></code> settings you may perform the following steps:</p>
-<ul class="simple">
-<li><p>copy the file from this repository (<code class="docutils literal notranslate"><span class="pre">resources/default.style</span></code>)</p></li>
-<li><p>adapt the settings according to your needs</p></li>
-<li><p>mount the settings file into the docker container when running it</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># linux and mac:</span>
-docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-t<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/default.style:/usr/src/netascore/resources/default.style<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/data:/usr/src/netascore/data<span class="w"> </span>netascore<span class="w"> </span>data/settings.yml
-</pre></div>
-</div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># windows:</span>
-docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-t<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span>%cd%/default.style:/usr/src/netascore/resources/default.style<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-v<span class="w"> </span>%cd%/data:/usr/src/netascore/data<span class="w"> </span>netascore<span class="w"> </span>data/settings.yml
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -713,30 +554,12 @@ docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </sp
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Run NetAScore in Docker</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart">Quickstart</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-netascore-for-your-own-area-of-interest">Run NetAScore for your own area of interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-more-detail">Add more detail</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-use-of-the-docker-image">Manual use of the Docker image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-customisation">Further customisation</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docker-image-from-source">Build the Docker image from source</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-manual-stepwise-approach">The manual, stepwise approach</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration">Advanced configuration</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#only-the-database-runs-in-docker">Only the database runs in docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#only-the-script-runs-in-docker">Only the script runs in docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-and-performance-improvement">Troubleshooting and performance improvement</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-when-running-netascore-in-docker">Performance when running NetAScore in Docker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-issues-with-large-datasets">Memory issues with large datasets</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overwrite-default-style-for-osm-import-to-database">Overwrite <code class="docutils literal notranslate"><span class="pre">default.style</span></code> for OSM import to database</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

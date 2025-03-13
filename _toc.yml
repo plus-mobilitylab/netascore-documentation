@@ -33,6 +33,8 @@ parts:
       title: Adapting Mode Profiles
     - file: How-to-contribute
       title: Implementation Details & how to contribute
+    - file: advanced-docker
+      title: Advanced docker customisations
     - file: Requirements-and-Limitations
       title: Requirements and Limitations
     - file: Credits-and-license
