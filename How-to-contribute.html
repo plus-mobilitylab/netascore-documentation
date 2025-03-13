@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How to contribute &#8212; NetAScore wiki page</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'How-to-contribute';</script>
+    <link rel="icon" href="_static/NetAScore_Logo_Light.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Docker customisation" href="advanced-docker.html" />
+    <link rel="prev" title="Adapting Mode profiles" href="Mode-profiles.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/NetAScore_Logo_Light.png" class="logo__image only-light" alt="NetAScore wiki page - Home"/>
+    <img src="_static/NetAScore_Logo_Light.png" class="logo__image only-dark pst-js-only" alt="NetAScore wiki page - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Home.html">
+                    What is NetAScore?
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running NetAScore</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart-Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="The-workflow.html">The Workflow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="How-to-run-the-project.html">How to run NetAScore</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="How-to-run-the-project-in-a-Docker-environment.html">Running NetAScore in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run-NetAScore-manually-with-Python.html">Run NetAScore manually with Python</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Further Customisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration-of-the-settings.html">Settings file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mode-profiles.html">Adapting Mode Profiles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Implementation Details &amp; how to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-docker.html">Advanced Docker customisation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Requirements-and-Limitations.html">Requirements and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credits-and-license.html">Credits and License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/plus-mobilitylab/netascore" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plus-mobilitylab/netascore/issues/new?title=Issue%20on%20page%20%2FHow-to-contribute.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/How-to-contribute.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to contribute</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-overview">System Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interplay-of-python-and-sql">Interplay of Python and SQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-components-and-workflow">System Components and Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-directory">Data Directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-file-s-outputs">Input file(s) + outputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#settings-file">Settings file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mode-profile-files">Mode profile files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netascore-source-code-file-structure">NetAScore Source Code File Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresconnection-class-db-helper">PostgresConnection class (db helper)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="how-to-contribute">
+<h1>How to contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">#</a></h1>
+<p>We are happy about contributions, feedback and ideas that help developing NetAScore further. We also appreciate initiatives for integrating NetAScore and its output into other tools. If you encounter any issues or bugs within the toolbox, feel free to open an issue and if you want to further develop NetAScore or have any contributions, please fork the repository and make a pull request if you want to add to or modify the existing code.</p>
+<p>If you want to work with the source code of NetAScore, you can start exploring it from the entrypoint of execution in <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. This script parses all arguments and settings and verifies their correctness and that all mandatory information is given. Then it runs all processing steps in order and calls the respective handlers for each step.</p>
+<p>Below you find an overview over the general structure and main components of NetAScore. Detailed instructions on how to run NetAScore are available on the <a class="reference internal" href="How-to-run-the-project.html"><span class="doc std std-doc">respective wiki page</span></a>.</p>
+<section id="system-overview">
+<h2>System Overview<a class="headerlink" href="#system-overview" title="Link to this heading">#</a></h2>
+<p><img alt="image" src="_images/System_Overview.png" /></p>
+<section id="interplay-of-python-and-sql">
+<h3>Interplay of Python and SQL<a class="headerlink" href="#interplay-of-python-and-sql" title="Link to this heading">#</a></h3>
+<p>NetAScore can be categorized into 3 main components:</p>
+<ol class="arabic simple">
+<li><p>The NetAScore software: Scripts written in Python and SQL that automate the workflow and run (geo-) processing steps in the database. It relies on several command-line utilities to facilitate data import and export, as well as format conversion etc.</p></li>
+<li><p>A PostgreSQL database that stores all data and performs (spatial) computations to generate the results.</p></li>
+<li><p>The data directory that provides input data, mode profiles, and settings files to control the workflow. Results of the workflow are also added to this directory.</p></li>
+</ol>
+<p>To ease the use of NetAScore, we provide a Docker-compose setup that contains NetAScore, a PostgreSQL database, as well as all required tools and packages. Detailed instructions for how to run NetAScore in Docker are provided !— TODO: link to explanation [here]
+!— TODO: add gfx of docker vs. stand-alone Python approach</p>
+</section>
+</section>
+<section id="system-components-and-workflow">
+<h2>System Components and Workflow<a class="headerlink" href="#system-components-and-workflow" title="Link to this heading">#</a></h2>
+<p><img alt="continued overview over the system workflow" src="_images/system_overview2.png" />
+NetAScore reads all settings, model parameters (mode profiles) and input files from the data directory. It then handles workflow automation with Python scripts that run external command line utilities where needed. As the main processing steps take place in a PostgreSQL database, the Python code also handles code execution in the database through SQL statements.</p>
+<!-- add slide 82 graphic -->
+<p>All steps of the workflow are controlled from the main Python file <code class="docutils literal notranslate"><span class="pre">calculate_index.py</span></code>. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory.</p>
+<section id="data-directory">
+<h3>Data Directory<a class="headerlink" href="#data-directory" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> directory contains all external data NetAScore needs to access (settings file, mode profile files and all input datasets) as well as the output data sets generated by NetAScore.
+Users can specify their tasks for NetAScore in settings filess (e.g. <code class="docutils literal notranslate"><span class="pre">settings.yml</span></code>). The <em>mode profile</em> files are designed for editing, documenting, and sharing the definitions of model parameters for each transport mode.</p>
+<section id="input-file-s-outputs">
+<h4>Input file(s) + outputs<a class="headerlink" href="#input-file-s-outputs" title="Link to this heading">#</a></h4>
+<p>The input file(s) and the output are located within the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Typical input files are network datasets (OSM PBF File or GIP OGD export) and optionally a DEM (digital elevation model) or noise data (Noise Zones).</p>
+<p>The Output datasets will be exported as PostgreSQL tables (<code class="docutils literal notranslate"><span class="pre">export_edge</span></code> with attributes, indicators, indices &amp; <code class="docutils literal notranslate"><span class="pre">export_node</span></code> with elevation values) and as a GeoPackage file with the following layers: <code class="docutils literal notranslate"><span class="pre">edge</span></code> (with attributes, indicators &amp; indices) and <code class="docutils literal notranslate"><span class="pre">node</span></code> (with elevation values).</p>
+</section>
+<section id="settings-file">
+<h4>Settings file<a class="headerlink" href="#settings-file" title="Link to this heading">#</a></h4>
+<p>Settings files are written in YAML <code class="docutils literal notranslate"><span class="pre">.yml</span></code> and placed inside the data directory - e.g. <code class="docutils literal notranslate"><span class="pre">data/settings.yml</span></code>. For each run of NetAScore, the settings file to use is specified as command line parameter - e.g. <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">run</span> <span class="pre">netascore</span> <span class="pre">data/settings.yml</span></code>.</p>
+<p>The settings file contains information such as:</p>
+<p>… DB connection parameters</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">database</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+<span class="w">  </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore</span>
+<span class="w">  </span><span class="nt">on_existing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abort</span>
+</pre></div>
+</div>
+<p>… references to the input file and optional datasets</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">import</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">osm</span>
+<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">austria-latest.osm.pbf</span>
+<span class="nt">optional</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dem</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">austria.tif</span><span class="w"> </span><span class="c1"># GeoTIFF</span>
+<span class="w">    </span><span class="nt">srid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31287</span>
+<span class="w">  </span><span class="nt">noise</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noise.gpkg</span><span class="w"> </span><span class="c1"># GeoPackage</span>
+</pre></div>
+</div>
+<p>… references to mode profiles</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">profiles</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span>
+<span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bike</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weights_bike.yml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span>
+<span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">walk</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weights_walk.yml</span>
+</pre></div>
+</div>
+<p>… export settings</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">export</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geopackage</span>
+<span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore_output.gpkg</span>
+</pre></div>
+</div>
+<p>You find more information on the settings file on <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">on the settings page</span></a></p>
+</section>
+<section id="mode-profile-files">
+<h4>Mode profile files<a class="headerlink" href="#mode-profile-files" title="Link to this heading">#</a></h4>
+<p>Mode profiles are used to define the core model logic: Here, weights are assigned per indicator, and individual indicator values are mapped to numerical values that represent the respective suitability. It is also possible to define custom value overrides, to capture certain indicator value combinations.</p>
+<p>You find all information on the <a class="reference internal" href="Mode-profiles.html"><span class="doc std std-doc">mode profiles</span></a> page.</p>
+</section>
+</section>
+</section>
+<section id="netascore-source-code-file-structure">
+<h2>NetAScore Source Code File Structure<a class="headerlink" href="#netascore-source-code-file-structure" title="Link to this heading">#</a></h2>
+<p>This section gives an overview of the source code structure of NetAScore. If you only want to use the software and adjust model parameters, you do not need to dive into this. However, if you are interested in developing NetAScore further, we want to give you some hints on how the software is structured.</p>
+<!--- add images -> CW: suggest to use slide 79 for now to give an overview -->
+<p>The Main class and recommended starting point for working with the source code is the file <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. It contains the main sequential logic of NetAScore, reads the parameters and settings provided and triggers the individual processing steps.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sql</span></code> folder contains two subdirectories: <code class="docutils literal notranslate"><span class="pre">functions</span></code> and <code class="docutils literal notranslate"><span class="pre">templates</span></code>. Here the core logic of (geo-) processing within the PostgreSQL database is contained. Generic SQL-functions as well as <code class="docutils literal notranslate"><span class="pre">JinjaSQL</span></code> templates are used for automating the workflow with Postgres.</p>
+<p>The folder <code class="docutils literal notranslate"><span class="pre">toolbox</span></code> contains genereic helper classes. Currently those are a database helper (PostgresConnection) <code class="docutils literal notranslate"><span class="pre">dbhelper.py</span></code> and a class for logging and general tasks <code class="docutils literal notranslate"><span class="pre">helper.py</span></code>.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">core</span></code>, classes that handle the main processing steps of NetAScore are contained (<a class="reference internal" href="The-workflow.html"><span class="doc std std-doc">more information on the workflow can be found in the wiki</span></a>). The class <code class="docutils literal notranslate"><span class="pre">DbStep</span></code> in <code class="docutils literal notranslate"><span class="pre">db_step.py</span></code> defines the general interface for processing steps.</p>
+</section>
+<section id="postgresconnection-class-db-helper">
+<h2>PostgresConnection class (db helper)<a class="headerlink" href="#postgresconnection-class-db-helper" title="Link to this heading">#</a></h2>
+<p>The PostgresCnnection class is located at <code class="docutils literal notranslate"><span class="pre">/toolbox/dbhelper.py</span></code> and abstracts several commonly used functionalities regarding interaction with the Postgres database and PostGIS extension. It handles automatically (re-) establishing database connections and provides Python functions for common tasks such as setting the working schema, querying data, checking whether a table exists, handling name conflicts and parsing / executing JinjaSQL templates.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Mode-profiles.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Adapting Mode profiles</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advanced-docker.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced Docker customisation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-overview">System Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interplay-of-python-and-sql">Interplay of Python and SQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-components-and-workflow">System Components and Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-directory">Data Directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-file-s-outputs">Input file(s) + outputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#settings-file">Settings file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mode-profile-files">Mode profile files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netascore-source-code-file-structure">NetAScore Source Code File Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresconnection-class-db-helper">PostgresConnection class (db helper)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mobility Lab Research Group, Department of Geoinformatics, University of Salzburg
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

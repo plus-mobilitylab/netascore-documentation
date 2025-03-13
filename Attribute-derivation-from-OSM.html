@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Attribute derivation from OSM &#8212; NetAScore wiki page</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Attribute-derivation-from-OSM';</script>
+    <link rel="icon" href="_static/NetAScore_Logo_Light.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Attribute derivation from GIP" href="Attribute-derivation-from-GIP.html" />
+    <link rel="prev" title="Attributes and Indicators" href="Attributes-and-Indicators.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Home.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/NetAScore_Logo_Light.png" class="logo__image only-light" alt="NetAScore wiki page - Home"/>
+    <img src="_static/NetAScore_Logo_Light.png" class="logo__image only-dark pst-js-only" alt="NetAScore wiki page - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Home.html">
+                    What is NetAScore?
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running NetAScore</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">Quickstart-Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="The-workflow.html">The Workflow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="How-to-run-the-project.html">How to run NetAScore</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="How-to-run-the-project-in-a-Docker-environment.html">Running NetAScore in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Run-NetAScore-manually-with-Python.html">Run NetAScore manually with Python</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Further Customisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Attribute derivation from OSM</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration-of-the-settings.html">Settings file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mode-profiles.html">Adapting Mode Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-to-contribute.html">Implementation Details &amp; how to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-docker.html">Advanced Docker customisation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Requirements-and-Limitations.html">Requirements and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Credits-and-license.html">Credits and License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/plus-mobilitylab/netascore" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/plus-mobilitylab/netascore/issues/new?title=Issue%20on%20page%20%2FAttribute-derivation-from-OSM.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Attribute-derivation-from-OSM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Attribute derivation from OSM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Attribute derivation from OSM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Attributes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bicycle-infrastructure-tf-ft">bicycle_infrastructure_[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pedestrian-infrastructure-tf-ft">pedestrian_infrastructure_[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#designated-route-tf-ft">designated_route[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#road-category-tf-ft">road_category[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pavement">pavement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-lanes-tf-ft">number_lanes[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-speed-tf-ft">max_speed_[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-speed">max_speed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#facility-ratio">facility_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greenness-ratio">greenness_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-ratio">water_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crossing-ratio">crossing_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-ratio">building_ratio</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="attribute-derivation-from-osm">
+<h1>Attribute derivation from OSM<a class="headerlink" href="#attribute-derivation-from-osm" title="Link to this heading">#</a></h1>
+<p>NetAScore allows to derive indicators for bikeability and walkability index computation from OpenstreetMap network data.
+By default, OSM data is automatically queried using the <em>overpass turbo</em> API. See also <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">Configuration of the settings</span></a> for additional options.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">OSM</span></code> is maintained by volunteers via open collaboration, attributes might be mapped in various ways. For interpretation of OSM attributes to derive indicator values NetAScore follows the recommended tagging schemes as shown in the OSM wiki, but tries to also cover frequently used alternative specifications.</p>
+<p>While some of the NetAScore categories may overlap with OSM categories, there may be some differences. Therefore, please make sure to read the NetAScore indicator descriptions for further information.</p>
+</section>
+<section id="attributes">
+<h1>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h1>
+<p><em>More Information about the exact derivation of individual attributes will follow soon!</em></p>
+<p>For now, please refer to the general definition of indicators in <a class="reference internal" href="Attributes-and-Indicators.html"><span class="doc std std-doc">Attributes and Indicators</span></a> and check the source code at <a class="reference external" href="https://github.com/plus-mobilitylab/netascore/blob/main/sql/templates/osm_attributes.sql.j2"><code class="docutils literal notranslate"><span class="pre">sql/templates/osm_attributes.sql.j2</span></code></a>.</p>
+<p><em>The Queries given, that were used to request data and form the categories can be tested out using <a class="reference external" href="https://overpass-turbo.eu/#">Overpass turbo API</a>, (longer queries are provided as a separately linked <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file for better readability).</em></p>
+</section>
+<section id="id1">
+<h1>Attributes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="bicycle-infrastructure-tf-ft">
+<h2>bicycle_infrastructure_[tf/ft]<a class="headerlink" href="#bicycle-infrastructure-tf-ft" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines the bicycle infrastructure along a segment in both directions.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Value<br/>__________________</p></th>
+<th class="head text-left"><p>Description<br/>_______________________________</p></th>
+<th class="head text-left"><p>Example <br/>____________________________</p></th>
+<th class="head text-left"><p>OSM<br/>_________________________________</p></th>
+<th class="head text-left"><p>Overpass-QL Query<br/>_________________________________</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>bicycle way</p></td>
+<td class="text-left"><p>Separate way, that is exclusively used by cyclists</p></td>
+<td class="text-left"><p><img alt="Example of a designated bicycle path" src="https://wiki.openstreetmap.org/w/images/thumb/7/7d/Path-bicycledesignated.jpg/450px-Path-bicycledesignated.jpg?20130812161048" /></p></td>
+<td class="text-left"><p>bicycle=yes/designated + segregated=yes <br/><br/>cycleway=track/opposite_track/segregated/yes + foot!=yes/designated <br/><br/>cycleway=track/opposite_track/segregated/yes + segregated=yes <br/><br/>highway=cycleway + foot!=yes/designated <br/><br/>highway=cycleway + segregated=yes <br/><br/>bicycle_road=yes + foot!=yes/designated + maxspeed=”” + motor_vehicle=no <br/><br/>bicycle_road=yes + sidewalk:*=separate/yes + motor_vehicle=no <br/><br/>bicycle_road=yes + segregated=yes + motor_vehicle=no <br/><br/>cyclestreet=yes + foot!=yes/designated + motor_vehicle=no <br/><br/>cyclestreet=yes + sidewalk:*=separate/yes + motor_vehicle=no <br/><br/>cyclestreet=yes + segregated=yes + motor_vehicle=no</p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/christian-werner/testing-sandbox/blob/3d08904610572b243f8cc0876f2aca2ebbaecb49/attribute-ressources/bicycle_way.txt">bicycle way query</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>mixed way</p></td>
+<td class="text-left"><p>Way with mixed use, dedicated to cyclists and pedestrians, but not used by MIV</p></td>
+<td class="text-left"><p><img alt="Example of a mixed way" src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Radweg_Schee_Silschede_cut.jpg" /></p></td>
+<td class="text-left"><p>cycleway=track/opposite_track/segregated/yes + foot=yes/designated <br/><br/>cycleway=track/opposite_track/segregated/yes + segregated=no <br/><br/>highway=cycleway + foot=yes/designated <br/><br/>highway=cycleway + segregated=no <br/><br/>bicycle_road=yes + foot=yes/designated + maxspeed=”” + motor_vehicle=no <br/><br/>bicycle_road=yes + segregated=no + motor_vehicle=no <br/><br/>cyclestreet=yes + foot=yes/designated + motor_vehicle=no <br/><br/>cyclestreet=yes + segregated=yes + motor_vehicle=no <br/><br/>highway=footway + bicycle=yes/designated + access!=no/private + footway!=sidewalk <br/><br/>highway=pedestrian + bicycle=yes/designated</p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/christian-werner/testing-sandbox/blob/3d08904610572b243f8cc0876f2aca2ebbaecb49/attribute-ressources/mixed_way.txt">mixed way query</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>bicycle lane</p></td>
+<td class="text-left"><p>bicycle lane, dedicated to the use by cyclists, e.g. on road-markings or cycle track</p></td>
+<td class="text-left"><p><img alt="Example of a bicycle lane" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/387soft_separation_Graf-Moltke-Str_Bremen.jpg/800px-387soft_separation_Graf-Moltke-Str_Bremen.jpg" /></p></td>
+<td class="text-left"><p>cycleway:<em>=lane <br/>cycleway:</em>=lane + oneway:bicycle=no<br/>cycleway:*=opposite_lane + oneway:bicycle=no <br/>cycleway:lane=exclusive/advisory/pictogram</p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/christian-werner/testing-sandbox/blob/3d08904610572b243f8cc0876f2aca2ebbaecb49/attribute-ressources/bicycle_lane.txt">Bicycle lane query</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>bus lane</p></td>
+<td class="text-left"><p>bus lane with designated bicycle access</p></td>
+<td class="text-left"><p><img alt="example of a lane shared between bus and cyclists" src="https://wiki.openstreetmap.org/w/images/thumb/e/ea/2010-01-02_15.19.16.jpg/800px-2010-01-02_15.19.16.jpg?20100102164456" /></p></td>
+<td class="text-left"><p>cycleway=share_busway<br/>cycleway=opposite_share_busway<br/>cycleway=opposite_share_busway+oneway:bicycle=no<br/><em>-&gt; Use oneway:bicycle=no together with cycleway:left=share_busway and/or cycleway:right=share_busway, instead.</em></p></td>
+<td class="text-left"><p>nwr[cycleway~”^(share_busway|opposite_share_busway)$”].(area.searchArea)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>no (or missing value)</p></td>
+<td class="text-left"><p>absence of any bicycle infrastructure</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pedestrian-infrastructure-tf-ft">
+<h2>pedestrian_infrastructure_[tf/ft]<a class="headerlink" href="#pedestrian-infrastructure-tf-ft" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines the pedestrian  infrastructure along a segment in both directions.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Value<br/>__________________</p></th>
+<th class="head text-left"><p>Description<br/>_______________________________</p></th>
+<th class="head text-left"><p>Example <br/>_________________________________</p></th>
+<th class="head text-left"><p>OSM<br/>_________________________________</p></th>
+<th class="head text-left"><p>Overpass-QL Query<br/>_________________________________</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Pedestrian area</p></td>
+<td class="text-left"><p>Road or an area mainly or exclusively for pedestrians.</p></td>
+<td class="text-left"><p><img alt="Example of a pedestrian area" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Cambridge_Rd_-_geograph.org.uk_-_1189572.jpg" /></p></td>
+<td class="text-left"><p>highway=pedestrian</p></td>
+<td class="text-left"><p>nwr[“highway”=”pedestrian”][bicycle!~”^(yes|designated|permissive|destination)$”](area.searchArea)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Pedestrian way</p></td>
+<td class="text-left"><p>Way accessible to pedestrians exclusively and segregated from other traffic.</p></td>
+<td class="text-left"><p><img alt="Example of a designated footway" src="https://wiki.openstreetmap.org/w/images/4/4d/Path-footdesignated.jpg?20080521104831" /></p></td>
+<td class="text-left"><p>highway=footway + footway!=sidewalk + bicycle!=yes/designated</p></td>
+<td class="text-left"><p>nwr[“highway”=”footway”][bicycle!~”^(yes|designated)$”][access!~”^(no|private)$”][“footway”!=”sidewalk”](area.searchArea);</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Mixed way</p></td>
+<td class="text-left"><p>Road designated to pedestrians that is also accessible to cyclists.</p></td>
+<td class="text-left"><p><img alt="Example of a mixed way" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Trakt_pieszorowerowy_wzd%C5%82u%C5%BC_Warty_w_Poznaniu_przy_ulicy_Ewangelickiej_-_kwiecie%C5%84_2018.jpg/800px-Trakt_pieszorowerowy_wzd%C5%82u%C5%BC_Warty_w_Poznaniu_przy_ulicy_Ewangelickiej_-_kwiecie%C5%84_2018.jpg" /></p></td>
+<td class="text-left"><p><em>See bicycle_infrastructure!</em></p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/christian-werner/testing-sandbox/blob/3d08904610572b243f8cc0876f2aca2ebbaecb49/attribute-ressources/mixed_way.txt">mixed way query</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Stairs</p></td>
+<td class="text-left"><p>A set of stairs.</p></td>
+<td class="text-left"><p><img alt="Example of a set of stairs" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/%22Wheeling_ramp%22%2C_Skeldergate_Bridge_-_geograph.org.uk_-_2424314.jpg/450px-%22Wheeling_ramp%22%2C_Skeldergate_Bridge_-_geograph.org.uk_-_2424314.jpg" /></p></td>
+<td class="text-left"><p>highway=steps</p></td>
+<td class="text-left"><p>nwr[“highway”=”steps”](area.searchArea)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Sidewalk</p></td>
+<td class="text-left"><p>indication that a sidewalk for pedestrian access is present on a road.</p></td>
+<td class="text-left"><p><img alt="Example of a road with a sidewalk" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/PompeiiStreet.jpg/448px-PompeiiStreet.jpg" /></p></td>
+<td class="text-left"><p>highway=* + sidewalk=yes/left/right/both/separate</p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/christian-werner/testing-sandbox/blob/3d08904610572b243f8cc0876f2aca2ebbaecb49/attribute-ressources/sidewalk.txt">Sidewalk Query</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>no</p></td>
+<td class="text-left"><p>No suitable pedestrian infrastructure or missing value.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="designated-route-tf-ft">
+<h2>designated_route[tf/ft]<a class="headerlink" href="#designated-route-tf-ft" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Designated bicycle routes (in Austria, e.g. Donauradweg), in both directions.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Value<br/>__________________</p></th>
+<th class="head text-left"><p>Description<br/>_______________________________</p></th>
+<th class="head text-left"><p>OSM <br/>_________________________________</p></th>
+<th class="head text-left"><p>Overpass-QL Query<br/>_________________________________</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>local</p></td>
+<td class="text-left"><p>Designates that a road or path is part of a Local Cycling Network route.</p></td>
+<td class="text-left"><p>network=lcn <br/>lcn=yes/proposed</p></td>
+<td class="text-left"><p>(<br/>nwr[“network”=”lcn”](area.searchArea);<br/>nwr[“lcn”=”yes”](area.searchArea);<br/>);</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>regional</p></td>
+<td class="text-left"><p>Designates that a road or path is part of a Regional Cycling Network route.</p></td>
+<td class="text-left"><p>network=rcn <br/>rcn=yes/proposed</p></td>
+<td class="text-left"><p>(<br/>nwr[“network”=”rcn”](area.searchArea);<br/>nwr[“rcn”=”yes”](area.searchArea);<br/>);</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>national</p></td>
+<td class="text-left"><p>Designates that a road or path is part of a National Cycling Network route.</p></td>
+<td class="text-left"><p>network=ncn <br/>ncn=yes/proposed</p></td>
+<td class="text-left"><p>(<br/>nwr[“network”=”ncn”](area.searchArea);<br/>nwr[“ncn”=”yes”](area.searchArea);<br/>);</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>international</p></td>
+<td class="text-left"><p>Designates that a road or path is part of an International Cycling Network route.</p></td>
+<td class="text-left"><p>network=icn <br/>icn=yes/proposed</p></td>
+<td class="text-left"><p>(<br/>nwr[“network”=”icn”](area.searchArea);<br/>nwr[“icn”=”yes”](area.searchArea);<br/>);</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="road-category-tf-ft">
+<h2>road_category[tf/ft]<a class="headerlink" href="#road-category-tf-ft" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines the road category along a segment in both directions.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Value<br/>__________________</p></th>
+<th class="head text-left"><p>Description<br/>_______________________________</p></th>
+<th class="head text-left"><p>Example <br/>_________________________________</p></th>
+<th class="head text-left"><p>OSM<br/>_________________________________</p></th>
+<th class="head text-left"><p>Overpass-QL Query<br/>_________________________________</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>primary</p></td>
+<td class="text-left"><p>highway linking large towns</p></td>
+<td class="text-left"><p><img alt="primary road in urban area" src="https://wiki.openstreetmap.org/w/images/thumb/c/c5/Dscf0172_600.jpg/360px-Dscf0172_600.jpg" /> <img alt="primary road in rural area" src="https://wiki.openstreetmap.org/w/images/thumb/c/c3/Primary-photo.jpg/200px-Primary-photo.jpg" /></p></td>
+<td class="text-left"><p>highway=primary/primary_link</p></td>
+<td class="text-left"><p>nwr[highway~”^(primary|primary_link)$”](area.searchArea);</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>secondary</p></td>
+<td class="text-left"><p>highways which are not part of major routes, but nevertheless form a link in the national route network;  cross-regional connecting roads between bigger locations</p></td>
+<td class="text-left"><p><img alt="secondary road in an urban area" src="https://wiki.openstreetmap.org/w/images/thumb/3/3d/Highway_Tram01.jpg/360px-Highway_Tram01.jpg" /><img alt="secondary road in a rural area" src="https://wiki.openstreetmap.org/w/images/thumb/7/7b/Highway_secondary-photo.jpg/360px-Highway_secondary-photo.jpg" /></p></td>
+<td class="text-left"><p>highway=secondary/secondary_link</p></td>
+<td class="text-left"><p>nwr[highway~”^(secondary|secondary_link)$”](area.searchArea);</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>residential</p></td>
+<td class="text-left"><p>road in residential area, with negligible transit traffic and Minor roads, connecting local centers of a large town or city or smaller settlements</p></td>
+<td class="text-left"><p><img alt="residential road in urban area" src="https://wiki.openstreetmap.org/w/images/thumb/1/12/Dscf0181_600.jpg/360px-Dscf0181_600.jpg" /> <img alt="residential road in rural area" src="https://wiki.openstreetmap.org/w/images/thumb/f/f8/Brake-K200-Schmalenfleth1.JPG/360px-Brake-K200-Schmalenfleth1.JPG" /></p></td>
+<td class="text-left"><p>highway=residential/tertiary/unclassified</p></td>
+<td class="text-left"><p>nwr[highway~”^(residential|tertiary|tertiary_link|unclassified)$”](area.searchArea);</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>service</p></td>
+<td class="text-left"><p>road, whose main purpose is access to a building, service station, beach, business park etc.</p></td>
+<td class="text-left"><p><img alt="service road" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Alley_leading_from_the_High_Street_to_Green_Lane_Shopping_Centre_-_geograph.org.uk_-_942796.jpg/200px-Alley_leading_from_the_High_Street_to_Green_Lane_Shopping_Centre_-_geograph.org.uk_-_942796.jpg" /></p></td>
+<td class="text-left"><p>highway=service</p></td>
+<td class="text-left"><p><a class="reference external" href="https://github.com/christian-werner/testing-sandbox/blob/3d08904610572b243f8cc0876f2aca2ebbaecb49/attribute-ressources/service.txt">service road query</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>calmed</p></td>
+<td class="text-left"><p>Road with very low speed limits and other pedestrian friendly traffic rules.</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>highway=living_street</p></td>
+<td class="text-left"><p>(<br/>nwr[“highway”=”living_street”][access!~”^(no|private)$”](area.searchArea);<br/>nwr[maxspeed~”^(20|10|15|4)$”][access!~”^(no|private)$”][motor_vehicle!~”^(yes|designated)$”](area.searchArea);<br/>);</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>no_mit</p></td>
+<td class="text-left"><p>generic or multi-purpose path, not used by motorised vehicles</p></td>
+<td class="text-left"><p><img alt="example of a way classified no_mit" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Wien_-_Graben_%281%29.JPG/220px-Wien_-_Graben_%281%29.JPG" /></p></td>
+<td class="text-left"><p>highway=bridleway<br/>highway=track + tracktype=grade1/grade2<br/>highway=path + surface=pave/chipseal/asphalt/concrete/paving_stones/bricks/brickcompacted <em>→ see pavement for more info!</em></p></td>
+<td class="text-left"><p>(<br/>nwr[highway~”^(bridleway)$”](area.searchArea);<br/>nwr[“highway”=”path”][access!~”^(no|private)$”][vehicle!~”^(no|private)$”][surface~”^(paved|asphalt|chipseal|concrete|paving_stones|bricks|brick|compacted)$”](area.searchArea);<br/>nwr[“highway”=”track”][“motor_vehicle”=”no”][access!~”^(no|private)$”][vehicle!~”^(no|private)$”][tracktype~”^(grade1|grade2)$”](area.searchArea);<br/>);</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>track</p></td>
+<td class="text-left"><p>generic or multi-purpose path, not used by motorised vehicles and with worse conditions than no_mit</p></td>
+<td class="text-left"><p><img alt="example of a path" src="https://wiki.openstreetmap.org/w/images/thumb/4/49/GuideFootPathCycleYes.jpg/200px-GuideFootPathCycleYes.jpg" /></p></td>
+<td class="text-left"><p>highway=path + surface!=paved/asphalt/chispeal/concrete/paving_stones/bricks/brick/compacted<br/>highway=track + motor_vehicle=no + tracktype=grade3/4/5</p></td>
+<td class="text-left"><p>(<br/>nwr[“highway”=”path”][access!~”^(no|private)$”][vehicle!~”^(no|private)$”][surface!~”^(paved|asphalt|chipseal|concrete|paving_stones|bricks|brick|compacted)$”](area.searchArea);<br/>nwr[“highway”=”track”][“motor_vehicle”=”no”][access!~”^(no|private)$”][vehicle!~”^(no|private)$”][tracktype~”^(grade3|grade4|grade5)$”](area.searchArea);<br/>);</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pavement">
+<h2>pavement<a class="headerlink" href="#pavement" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines the pavement of segments.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Value<br/>__________________</p></th>
+<th class="head text-left"><p>Description<br/>_______________________________</p></th>
+<th class="head text-left"><p>Example <br/>_________________________________</p></th>
+<th class="head text-left"><p>OSM<br/>_________________________________</p></th>
+<th class="head text-left"><p>Overpass-QL Query<br/>_________________________________</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>asphalt</p></td>
+<td class="text-left"><p>A feature that is predominantly paved; i.e., it is covered with paving stones, concrete or bitumen and well suited to be accessed by bike</p></td>
+<td class="text-left"><p><img alt="example of asphalt road" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Asphaltbelag.jpg/220px-Asphaltbelag.jpg" /></p></td>
+<td class="text-left"><p>(surface=paved) <br/>surface=asphalt<br/> surface=chipseal <br/>surface=concrete <br/>surface=metal</p></td>
+<td class="text-left"><p>nwr[surface~”^(paved|asphalt|chipseal|concrete|metal)$”]</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>gravel</p></td>
+<td class="text-left"><p>A feature that is predominantly unsealed (unpaved); i.e., it has a loose covering , but still has some kind of covering like loose stones or gravel, that eases access by bike</p></td>
+<td class="text-left"><p><img alt="example or gravel road" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/%C5%A0t%C4%9Brkov%C3%A1_cesta_u_Pl%C3%A1%C5%A1t%C3%ADku.jpg/200px-%C5%A0t%C4%9Brkov%C3%A1_cesta_u_Pl%C3%A1%C5%A1t%C3%ADku.jpg" /></p></td>
+<td class="text-left"><p>surface=paving_stones <br/>surface=bricks <br/>surface=brick <br/>surface=compacted <br/>surface=fine_gravel <br/>surface=gravel <br/>surface=pebblestone <br/>(surface=ground) <br/>(surface=unpaved)</p></td>
+<td class="text-left"><p>nwr[surface~”^(paving_stones|bricks|brick|compacted|fine_gravel|gravel|pebblestone|ground|unpaved)$”]</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>soft</p></td>
+<td class="text-left"><p>A feature that is predominantly unsealed (unpaved); i.e., it has a loose covering that considerably hinder access by bike, like earth or grass</p></td>
+<td class="text-left"><p><img alt="example of road with soft pavement" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Gfp-florida-big-shaols-state-park-forest-trail.jpg/200px-Gfp-florida-big-shaols-state-park-forest-trail.jpg" /></p></td>
+<td class="text-left"><p>surface=dirt <br/>surface=earth <br/>surface=grass <br/>surface=sand <br/>surface=wood <br/>surface=woodchips <br/>(surface=ground)</p></td>
+<td class="text-left"><p>nwr[surface~”^(dirt|earth|grass|sand|wood|woodchips|ground|soil|dirt/sand)$”]</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>cobble</p></td>
+<td class="text-left"><p>cobblestone road, unevenness may be unpleasant while biking.</p></td>
+<td class="text-left"><p><img alt="example of cobblestone road" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Kohlenbrennerbr%C3%BCcke%2C_sett_paved_white_lines_01.jpg/200px-Kohlenbrennerbr%C3%BCcke%2C_sett_paved_white_lines_01.jpg" /></p></td>
+<td class="text-left"><p>surface=sett<br/> surface=unhewn_cobblestone <br/>(surface=cobblestone) <br/>surface=grass_paver</p></td>
+<td class="text-left"><p>nwr[surface~”^(sett|unhewn_cobblestone|cobblestone|grass_paver)$”]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="number-lanes-tf-ft">
+<h2>number_lanes[tf/ft]<a class="headerlink" href="#number-lanes-tf-ft" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines the number of lanes along one segment in both directions.</p>
+</section>
+<section id="max-speed-tf-ft">
+<h2>max_speed_[tf/ft]<a class="headerlink" href="#max-speed-tf-ft" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines maximum speed for motorized vehicles along segments in both directions.</p>
+</section>
+<section id="max-speed">
+<h2>max_speed<a class="headerlink" href="#max-speed" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Defines maximum speed for motorized vehicles.</p>
+</section>
+<section id="facility-ratio">
+<h2>facility_ratio<a class="headerlink" href="#facility-ratio" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Counts the facilities (POIs) within a distance of 30 meters along a segment and ratios it to the segment length.</p>
+</section>
+<section id="greenness-ratio">
+<h2>greenness_ratio<a class="headerlink" href="#greenness-ratio" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Describes the proportion of the green area within a 30 meters buffer: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+</section>
+<section id="water-ratio">
+<h2>water_ratio<a class="headerlink" href="#water-ratio" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Detects whether a water area is within a 30 meter distance to a segment or if a stream runs along a segment.</p>
+</section>
+<section id="crossing-ratio">
+<h2>crossing_ratio<a class="headerlink" href="#crossing-ratio" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Counts the number of crossings within a 10 meter distance to the segment and ratios it to the segment length.</p>
+</section>
+<section id="building-ratio">
+<h2>building_ratio<a class="headerlink" href="#building-ratio" title="Link to this heading">#</a></h2>
+<p><strong>Description:</strong> Ratios the area of buildings within a 30 meter Buffer along a segment to the total area of the buffer.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Attributes-and-Indicators.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Attributes and Indicators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Attribute-derivation-from-GIP.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Attribute derivation from GIP</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Attribute derivation from OSM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Attributes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bicycle-infrastructure-tf-ft">bicycle_infrastructure_[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pedestrian-infrastructure-tf-ft">pedestrian_infrastructure_[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#designated-route-tf-ft">designated_route[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#road-category-tf-ft">road_category[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pavement">pavement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-lanes-tf-ft">number_lanes[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-speed-tf-ft">max_speed_[tf/ft]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-speed">max_speed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#facility-ratio">facility_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greenness-ratio">greenness_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-ratio">water_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crossing-ratio">crossing_ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-ratio">building_ratio</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mobility Lab Research Group, Department of Geoinformatics, University of Salzburg
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
