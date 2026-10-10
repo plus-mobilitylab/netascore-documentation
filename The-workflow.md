@@ -37,7 +37,7 @@ In this step a network dataset is imported. Currently `osm` (OpenStreetMap) and 
 
 `osm`
 
-- The necessary database tables are imported from a PBF or XML file, as defined in the settings file. The geometry is not transformed - this will be done in the network_step. Another option is to directly query OpenStreetMap data by providing a place name or bounding box.
+- The necessary database tables are imported from a PBF or XML file, as defined in the settings file. The geometry is not transformed - this will be done in the network_step. Another option is to directly query OpenStreetMap data by providing a place name, a bounding box or an AOI file.
 - Additionally, the optional datasets `building`, `crossing`, `facility`, `greenness`, `water` are derived as database tables. The geometry is transformed.
 
 `gip`

@@ -35,7 +35,7 @@ The settings file can consist of the following **sections**:
 
 ### Property `target_srid` 
 
-**This parameter is optional if using GIP** (for the whole of Austria) **or OSM Download via place name** - in these cases NetAScore uses the centroid's UTM zone by default. However, **if working with OSM file import** (e.g. Planet OSM / Geofabrik downloads), you should **provide an appropriate reference system** for your specific area of interest.
+**This parameter is optional if using GIP** (for the whole of Austria) **or OSM download via place name, bounding box or AOI file** - in these cases NetAScore uses the centroid's UTM zone by default. However, **if working with OSM file import** (e.g. Planet OSM / Geofabrik downloads), you should **provide an appropriate reference system** for your specific area of interest.
 Specify the SRID (spatial reference system as EPSG-code) to use for processing and data output. 
 Datasets will be imported and if necessary transformed to this reference system. 
 **Please note: currently only metric unit systems are supported such as UTM**.
@@ -113,17 +113,18 @@ Refers to the file containing the geodata.
 
 NetAScore allows you to **directly download OpenStreetMap data** via Overpass API. You can simply provide the following properties instead of the `filename` property:
 
-- property **`place_name`**: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. 'Salzburg' or 'City of London'. If the place name given is not unique, you can either opt for an interactive prompt by adding the setting `interactive: True` or specify additional parameters:
-
-  - `admin_level`: filters the given results for OSM 'admin_level' property (see [OSM documentation](https://wiki.openstreetmap.org/wiki/Item:Q1074))
-  - `zip_code`: filters the given results for a ZIP code (if available in OSM data) 
+- property **`place_name`**: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. 'Salzburg' or 'City of London'. The place is looked up using OSM Nominatim. If the place name given is not unique, you can opt for an interactive prompt by adding the setting `interactive: True`. Otherwise the first result is used.
 
   **Please note**: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
-- property **`buffer`**: When using the `place_name` query, this option allows you to specify a spatial buffer to enlarge the extent of network data being queried. The unit of the buffer is defined by the target SRID - currently this must be in meters. 
+- property **`buffer`**: When downloading OpenStreetMap data for a place name, bounding box or AOI file, this option allows you to specify a spatial buffer to enlarge the extent of network data being queried. The unit of the buffer is defined by the target SRID - currently this must be in meters. If omitted, no buffer is applied.
 
 - property **`bbox`**: Bounding box of your area of interest in WGS 84 (longitude and latitude, geographic coordinates) - e.g. for Salzburg (Austria) use: `bbox: 47.7957,13.0117,47.8410,13.0748`
-  **Please note**: when using this option, please specify **`target_srid`** in the `global` settings section to define an appropriate spatial reference system for your custom area of interest
+  **Please note**: If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
+
+- property **`aoi_filename`**: Name of a geofile in the data directory (e.g. a GeoPackage) that contains the area of interest as polygon geometry in WGS 84. If the file contains several features and a column `name` matches `case_id`, those features are used. Otherwise all features are combined.
+
+  **Please note**: Network data is being queried based on the bounding box (rectangle) containing this polygon. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
 - properties **`include_rail`** and **`include_aerialway`**: These optional `boolean` tags allow you to include railway and aerialway features into the network dataset. This may be useful for visualization and specific types of analysis. For example, provide `include_rail: True` if you want railway geometry to be included in the output data set.
   
@@ -150,6 +151,16 @@ import:
   on_existing: delete
   place_name: Salzburg
   interactive: True
+  buffer: 1000
+```
+
+The following example uses a local AOI polygon instead of a place name:
+
+```yaml
+import:
+  type: osm
+  on_existing: delete
+  aoi_filename: aoi.gpkg
   buffer: 1000
 ```
 

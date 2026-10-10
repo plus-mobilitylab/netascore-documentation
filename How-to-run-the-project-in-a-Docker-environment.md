@@ -19,7 +19,7 @@ NetAScore comes with a `docker compose` configuration in `docker-compose.yml` an
 - from within this directory, execute the following command from a terminal:
   `docker compose run netascore`
 
-NetAScore first loads an area of interest from Overpass Turbo API, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. A new subdirectory named `data` will be present after successful execution. Within this folder, the assessed network is stored in `netascore_salzburg.gpkg`. It includes *bikeability* in columns `index_bike_ft` and `index_bike_tf` and *walkability* in `index_walk_ft` and `index_walk_tf`. The extensions `ft` and `tf` refer to the direction along an edge: *from-to* or *to-from* node.
+NetAScore first loads an area of interest by place name, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. A new subdirectory named `data` will be present after successful execution. Within this folder, the assessed network is stored in `netascore_salzburg.gpkg`. It includes *bikeability* in columns `index_bike_ft` and `index_bike_tf` and *walkability* in `index_walk_ft` and `index_walk_tf`. The extensions `ft` and `tf` refer to the direction along an edge: *from-to* or *to-from* node.
 
 ## Run NetAScore for your own area of interest
 
@@ -30,7 +30,7 @@ The easiest way to run a network assessment for your own area of interest is by 
 - add the **mode profiles** for *bikeability* and *walkability* to the `data` direcotry: copy both, `profile_bike.yml` and `profile_walk.yml` from the `examples` folder.
 - **edit** your newly created **settings file** `settings_osm_query.yml` - e.g. to download data for the City of London:
   - provide a **`case_id`**  in `global` section (only alphanumeric characters are allowed - please avoid special characters such as German "Umlaute" etc.; this will be added e.g. to the output file name) - e.g. `case_id: london`
-  - specify a **`place_name`** that is used to query data from OSM in the section `import`: e.g. `place_name: City of London` (please note: currently, this must equal the OSM "name" tag of your target area - you may check this using e.g. www.openstreetmap.org)
+  - specify a **`place_name`** that is used to query data from OSM in the section `import`: e.g. `place_name: City of London` (please note: the place name is resolved using OSM Nominatim; if several areas match, set `interactive: True`)
   - for editing this file we recommend using a code editor such as Visual Studio Code, Notepad++ or comparable which handles text encodings properly
 - **run NetAScore** by executing the following line from a terminal inside the main directory (parent of `data`):
   `docker compose run netascore data/settings_osm_query.yml`

@@ -29,7 +29,7 @@ The easiest way to get started is running the ready-made Docker image. All you n
 ![command 'docker compose run netascore' shown in terminal](resources/img/run_netascore_docker.png)
 
 
-- running the docker image might take a while, as NetAScore first loads an area of interest by place name from Overpass API, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. You can tell the run was completed successfully once the Database connection is closed, which looks like this:
+- running the docker image might take a while, as NetAScore first loads an area of interest by place name, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. You can tell the run was completed successfully once the Database connection is closed, which looks like this:
 
 ![completed successful run](resources/img/cmd_complete.png)
 
@@ -69,12 +69,7 @@ The easiest way to run a network assessment for your own area of interest is by 
 
   (Here, the last argument represents the settings file to use. Note that this is the general way of specifying the settings file that should be used.)
 
-_NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the 'filename' property instead of the 'place_name' that is given in the 'settings_osm_query.yml'. In some cases you might want to specify your search, if the place name given is not unique (e.g. Frankfurt (Main) & Frankfurt (Oder)). To accomplish a specification you can either specify additional parameters:_
-
-* `admin_level`: filters the given results for OSM `admin_level` property (see [OSM documentation](https://wiki.openstreetmap.org/wiki/Item:Q1074))
-* `zip_code`: filters the given results for a ZIP code (if available in OSM data)
-
-Another option is to set the `interactive`- Variable to `interactive: True`, to opt for an interactive prompt.
+_NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the 'filename' property instead of the 'place_name' that is given in the 'settings_osm_query.yml'. In some cases you might want to specify your search, if the place name given is not unique (e.g. Frankfurt (Main) & Frankfurt (Oder)). The place name is resolved using OSM Nominatim. Set the `interactive`- Variable to `interactive: True`, to opt for an interactive prompt. Otherwise the first result is used._
 
 **_Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used._**
 
