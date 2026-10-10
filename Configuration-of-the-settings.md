@@ -176,7 +176,7 @@ The following optional data is currently supported:
 
 - **dem** (GeoTIFF): digital elevation model
 - **noise** (GeoPackage: Polygon, MultiPolygon): polygons with noise attribute (e.g. traffic noise)
-- **osm** (PBF): only relevant for GIP import, if OpenStreetMap data should be used to infer the layers `building`, `crossing`, `facility`, `greenness` and `water`
+- **osm** (PBF): only relevant for GIP import, if OpenStreetMap data should be used to infer the layers `building`, `crossing`, `facility`, `greenness`, `water`, `parking` and `sights`
 
 The following layers can be supplied if OpenStreetMap data is not used or if you wish to use custom datasets:
 
@@ -185,6 +185,8 @@ The following layers can be supplied if OpenStreetMap data is not used or if you
 - **facility** (GeoPackage: Point, Polygon)
 - **greenness** (GeoPackage: Polygon)
 - **water** (GeoPackage: LineString, Polygon)
+- **parking** (GeoPackage: LineString, Polygon)
+- **sights** (GeoPackage: Point, Polygon)
 
 ### Subsection `dem`
 
@@ -215,11 +217,11 @@ You can do this preprocessing step for your area of interest in a gis-software o
 
 ### Subsection `osm`
 
-This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: `building`, `crossing`, `facility`, `greenness`, `water`
+This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: `building`, `crossing`, `facility`, `greenness`, `water`, `parking`, `sights`
 
 - `filename`: name of the OSM file to be imported
 
-### Subsections `building`, `crossing`, `facility`, `greenness`, `water`
+### Subsections `building`, `crossing`, `facility`, `greenness`, `water`, `parking`, `sights`
 
 If these datasets are not directly derived from an OSM dataset, they can be imported from individual data sets. This might be useful e.g. when working with local, authoritative data sets.
 

@@ -38,7 +38,7 @@ In this step a network dataset is imported. Currently `osm` (OpenStreetMap), `gi
 `osm`
 
 - The necessary database tables are imported from a PBF or XML file, as defined in the settings file. The geometry is not transformed - this will be done in the network_step. Another option is to directly query OpenStreetMap data by providing a place name, a bounding box or an AOI file.
-- Additionally, the optional datasets `building`, `crossing`, `facility`, `greenness`, `water` are derived as database tables. The geometry is transformed.
+- Additionally, the optional datasets `building`, `crossing`, `facility`, `greenness`, `water`, `parking` and `sights` are derived as database tables. The geometry is transformed.
 
 `gip`
 
@@ -54,7 +54,7 @@ In this step a network dataset is imported. Currently `osm` (OpenStreetMap), `gi
 
 ## 2. optional_step
 
-In this step optional datasets are imported. Currently `dem`, `noise`, `building`, `crossing`, `facility`, `greenness` and `water` are supported, resulting in identically named database tables.
+In this step optional datasets are imported. Currently `dem`, `noise`, `building`, `crossing`, `facility`, `greenness`, `water`, `parking` and `sights` are supported, resulting in identically named database tables.
 
 `dem`
 
@@ -62,7 +62,7 @@ In this step optional datasets are imported. Currently `dem`, `noise`, `building
 - The SRID of the input file needs to be defined in the settings file.
 - **Please note:** DEM input is not considered for **GIP**-based workflow, as elevation data is already provided with the network dataset.
 
-`noise`, `building`, `crossing`, `facility`, `greenness`, `water`
+`noise`, `building`, `crossing`, `facility`, `greenness`, `water`, `parking`, `sights`
 
 - A respective database table is generated from each geopackage file. The geometry is transformed.
 

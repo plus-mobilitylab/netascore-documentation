@@ -12,7 +12,7 @@ Make sure you have installed these **software dependencies**:
 
 - Python 3.13
 - recent PostgreSQL with PostGIS extension (make sure to enable all GDAL drivers if prompted; this should include psql, raster2pgsql and ogr2ogr)
-- osm2pgsql ([osm2pgsql.org](https://osm2pgsql.org/doc/install.html)) (Please use a Version > 2.0, since the newer version has breaking changes that cause conflicts within NetAScore)
+- osm2pgsql ([osm2pgsql.org](https://osm2pgsql.org/doc/install.html)) (Please use version 2. NetAScore uses the pgsql output, which this version still provides.)
 
 After installation of PostgreSQL, please make sure that its subfolder containing the binaries (e.g. `Program Files/PostgreSQL/<version>/bin`) is added to the PATH environment variable.
 
@@ -65,7 +65,7 @@ If you want to manually install the requirements using conda, make sure to insta
 
 ## Additional commandline parameters
 
-If you want to re-run the pipeline, but **skip certain steps**, use the **`--skip`** flag with a list of steps you want to skip:  `import`, `network`, `attributes`, `optional`, `index`, `export` (the steps are explained in detail in this readme file). In the following example, `import`, `network` and `attributes` steps will be skipped and only the `export` step is re-executed:
+If you want to re-run the pipeline, but **skip certain steps**, use the **`--skip`** flag with a list of steps you want to skip:  `import`, `network`, `attributes`, `optional`, `index`, `export` (the steps are explained in detail in this readme file). In the following example, `import`, `network` and `attributes` are skipped. `optional` (if that section is present in the settings file), `index` and `export` still run:
 
 ```bash
 python generate_index.py your-settings-file.yml --skip import network attributes
