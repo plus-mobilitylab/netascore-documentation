@@ -33,7 +33,7 @@ In the following subsections, we explain these individual steps.
 
 ## 1. import_step
 
-In this step a network dataset is imported. Currently `osm` (OpenStreetMap) and `gip` (Austrian authoritative dataset) are supported, resulting in several database tables with the prefix `osm_` or `gip_`.
+In this step a network dataset is imported. Currently `osm` (OpenStreetMap), `gip` (previous Austrian GIP OGD export) and `gip2` (GIP 2.0 OGD export) are supported, resulting in several database tables with the prefix `osm_`, `gip_` or `gip2_`.
 
 `osm`
 
@@ -45,6 +45,12 @@ In this step a network dataset is imported. Currently `osm` (OpenStreetMap) and 
 - The necessary sub-datasets are extracted from the ZIP files of the OGD dataset, as defined in the settings file.
 - The extracted TXT files are parsed to CSV and SQL files, containing the raw data and `create table` statements.
 - The database tables are imported from the SQL, CSV, GPKG files, primary keys are added, attributes are cleaned. The geometry is not transformed.
+
+`gip2`
+
+- The GIP 2.0 OGD export is read from a single IDF file, as defined in the settings file.
+- The necessary sub-datasets are extracted from this file.
+- The database tables are imported, primary keys are added, attributes are cleaned. The geometry is not transformed.
 
 ## 2. optional_step
 
