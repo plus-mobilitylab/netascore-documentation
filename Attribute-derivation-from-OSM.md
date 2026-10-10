@@ -98,7 +98,7 @@ _The Queries given, that were used to request data and form the categories can b
 **Description:** Describes the proportion of the green area within a 30 meters buffer: `0` to `100`.
 
 ## water_ratio
-**Description:** Detects whether a water area is within a 30 meter distance to a segment or if a stream runs along a segment.
+**Description:** Describes the proportion of water within a 30 meters buffer, including streams running along a segment: `0` to `100`.
 
 ## crossing_ratio
 **Description:** Counts the number of crossings within a 10 meter distance to the segment and ratios it to the segment length. 

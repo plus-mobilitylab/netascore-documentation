@@ -143,19 +143,31 @@ Default weight: - (bike) / 0.3 (walk)
 
 ### water
 
-Describes the presence of water bodies within a 30 meters buffer: `true`, `false`.
+Describes the proportion of water within a 30 meters buffer, including streams running along a segment: `0` to `100`.
 
 Default data source: OpenStreetMap
 
 Default weight: - (bike) / 0.4 (walk)
 
-### parking_* (placeholder)
 
-Describes designated streetside car parking: `yes`, `no`. Currently, this indicator is not computed due to data availability. However, if included in the mode profile, lack of indicator data will be documented accordingly in the `index_<mode>_*_robustness`-column.
+### parking
 
-Note: Implementation is planned for the future, given data availability.
+Describes car parking along a road segment: `allowed`, `implicit`, `forbidden`. `allowed` is mapped street parking or a parking area. `implicit` means motor vehicles are permitted and parking is not mapped. `forbidden` means parking is not allowed or the way is closed to motor vehicles.
+
+Default data source: OpenStreetMap
 
 Default weight: 0.1 (bike) / - (walk)
+
+
+### sights
+
+Describes the number of sights per 100m segment length within a 30 meters buffer.
+
+Default data source: OpenStreetMap
+
+Default weight: - (bike) / - (walk)
+
+
 ## Optional Indicators for _bikeability_ and _walkability_
 
 Computation of these indicators may require provision of additional data sets (unless the network data set carries respective attributes - e.g. elevation data is included in the GIP network for Austria).
