@@ -33,7 +33,7 @@ Indicates a road segment which belongs to a tunnel: `true`, `false`
 
 ### bicycle_infrastructure_*
 
-Describes the presence of dedicated bicycle infrastructure along a road segment: `bicycle_way`, `mixed_way`, `bicycle_road`, `cyclestreet`, `bicycle_lane`, `bus_lane`, `no`.
+Describes the presence of dedicated bicycle infrastructure along a road segment: `bicycle_way`, `mixed_way`, `mixed_way_non_designated`, `bicycle_lane`, `bus_lane`, `shared_lane`, `no`, `no_separate`.
 
 Default data source: OpenStreetMap network geometry with attributes 
 
@@ -42,7 +42,7 @@ Default weight: 0.2 (bike) / - (walk)
 
 ### pedestrian_infrastructure_*
 
-Describes the presence of dedicated pedestrian infrastructure: `pedestrian_area`, `pedestrian_way`, `mixed_way`, `stairs`, `sidewalk`, `no`.
+Describes the presence of dedicated pedestrian infrastructure: `pedestrian_area`, `pedestrian_way`, `mixed_way`, `mixed_way_non_designated`, `stairs`, `sidewalk`, `no`, `no_separate`.
 
 Default data source: OpenStreetMap network geometry with attributes 
 
