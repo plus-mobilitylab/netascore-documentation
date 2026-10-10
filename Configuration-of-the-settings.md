@@ -116,22 +116,22 @@ Refers to the file containing the geodata.
 
 NetAScore allows you to **directly download OpenStreetMap data** via Overpass API. You can simply provide the following properties instead of the `filename` property:
 
-- property **`place_name`**: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. 'Salzburg' or 'City of London'. The place is looked up using OSM Nominatim. If the place name given is not unique, you can opt for an interactive prompt by adding the setting `interactive: True`. Otherwise the first result is used.
+- property **`place_name`**: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. 'Salzburg' or 'City of London'. The place is looked up using OSM Nominatim. Only boundary results are used, with the highest importance first. If the place name given is not unique, you can opt for an interactive prompt by adding the setting `interactive: True`. Otherwise the first result is used.
 
-  **Please note**: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
+  **Please note**: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If that polygon is a multipolygon, only its largest part is used. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
 - property **`buffer`**: When downloading OpenStreetMap data for a place name, bounding box or AOI file, this option allows you to specify a spatial buffer to enlarge the extent of network data being queried. The unit of the buffer is defined by the target SRID - currently this must be in meters. If omitted, no buffer is applied.
 
-- property **`bbox`**: Bounding box of your area of interest in WGS 84 (longitude and latitude, geographic coordinates) - e.g. for Salzburg (Austria) use: `bbox: 47.7957,13.0117,47.8410,13.0748`
+- property **`bbox`**: Bounding box of your area of interest in WGS 84 (latitude, longitude, latitude, longitude) - e.g. for Salzburg (Austria) use: `bbox: 47.7957,13.0117,47.8410,13.0748`
   **Please note**: If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
-- property **`aoi_filename`**: Name of a geofile in the data directory (e.g. a GeoPackage) that contains the area of interest as polygon geometry in WGS 84. If the file contains several features and a column `name` matches `case_id`, those features are used. Otherwise all features are combined.
+- property **`aoi_filename`**: Name of a geofile in the data directory (e.g. a GeoPackage) that contains the area of interest as polygon geometry in WGS 84. If the file contains several features and values in the column `name` match `case_id`, those features are used. Otherwise all features are combined.
 
   **Please note**: Network data is being queried based on the bounding box (rectangle) containing this polygon. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
 - properties **`include_rail`** and **`include_aerialway`**: These optional `boolean` tags allow you to include railway and aerialway features into the network dataset. This may be useful for visualization and specific types of analysis. For example, provide `include_rail: True` if you want railway geometry to be included in the output data set.
   
-- (advanced) property `filename_style`: For importing OpenStreetMap data into the database, NetAScore uses [osm2pgsql](https://osm2pgsql.org/). Import settings for this commandline utility are provided in a `default.style` file. By default, NetAScore provides this file in the `resources` directory. This setting, however, allows you to specify a custom style file.
+- For importing OpenStreetMap data into the database, NetAScore uses [osm2pgsql](https://osm2pgsql.org/) with the style file `resources/default.style`. This file is always used.
 
 
 ### Property `on_existing`
@@ -167,13 +167,12 @@ import:
   buffer: 1000
 ```
 
-The following example uses an existing OSM extract for Austria downloaded from [geofabrik.de](https://download.geofabrik.de). It additionally specifies a custom `default.style` for OSM import to the database.
+The following example uses an existing OSM extract for Austria downloaded from [geofabrik.de](https://download.geofabrik.de).
 
 ```yaml
 import:
   type: osm
   filename: austria-latest.osm.pbf
-  filename_style: default.style
   on_existing: delete
 ```
 
@@ -226,11 +225,11 @@ You can do this preprocessing step for your area of interest in a gis-software o
 
 ### Subsection `osm`
 
-This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: `building`, `crossing`, `facility`, `greeness`, `water`
+This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: `building`, `crossing`, `facility`, `greenness`, `water`
 
 - `filename`: name of the OSM file to be imported
 
-### Subsections `building`, `crossing`, `facility`, `greeness`, `water`
+### Subsections `building`, `crossing`, `facility`, `greenness`, `water`
 
 If these datasets are not directly derived from an OSM dataset, they can be imported from individual data sets. This might be useful e.g. when working with local, authoritative data sets.
 

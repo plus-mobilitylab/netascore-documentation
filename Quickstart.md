@@ -52,7 +52,7 @@ This is an exemplary visualization of *bikeability* for Salzburg, Austria:
 The easiest way to run a network assessment for your own area of interest is by adapting the given example in `examples/settings_osm_query.yml`:
 
 - create a new **subdirectory** named **`data`** (if you already ran the quickstart example, you can just use the `data` directory created)
-- download the **settings template** from `examples/settings_osm_query.yml` [file link](https://github.com/plus-mobilitylab/netascore/blob/5099d4a7ff6a2c348fe39dd9f0dfb8b8ba973c32/examples/settings_osm_query.yml). 
+- download the **settings template** from `examples/settings_osm_query.yml` [file link](https://github.com/plus-mobilitylab/netascore/blob/main/examples/settings_osm_query.yml). 
 - add the **mode profiles** for *bikeability* and *walkability* to the `data` directory: download both, `profile_bike.yml` and `profile_walk.yml` from the `examples` folder.
 - **edit** your newly created **settings file** `settings_osm_query.yml` - e.g. to download data for the City of London:
   - provide a **`case_id`**  in `global` section (only alphanumeric characters are allowed; this will be added e.g. to the output file name) - e.g. `case_id: london`
@@ -69,9 +69,9 @@ The easiest way to run a network assessment for your own area of interest is by 
 
   (Here, the last argument represents the settings file to use. Note that this is the general way of specifying the settings file that should be used.)
 
-_NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the 'filename' property instead of the 'place_name' that is given in the 'settings_osm_query.yml'. In some cases you might want to specify your search, if the place name given is not unique (e.g. Frankfurt (Main) & Frankfurt (Oder)). The place name is resolved using OSM Nominatim. Set the `interactive`- Variable to `interactive: True`, to opt for an interactive prompt. Otherwise the first result is used._
+_NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the 'filename' property instead of the 'place_name' that is given in the 'settings_osm_query.yml'. In some cases you might want to specify your search, if the place name given is not unique (e.g. Frankfurt (Main) & Frankfurt (Oder)). The place name is resolved using OSM Nominatim. Only boundary results are used, with the highest importance first. Set the `interactive`- Variable to `interactive: True`, to opt for an interactive prompt. Otherwise the first result is used. If the result is a multipolygon, only its largest part is kept._
 
-**_Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used._**
+**_Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If that polygon is a multipolygon, only its largest part is used. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used._**
 
 For further information on additional options for OSM see the [settings documentation](#additional-options-for-osm).
 

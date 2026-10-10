@@ -17,7 +17,7 @@ After installation of PostgreSQL, please make sure that its subfolder containing
 
 Then, install the **Python dependencies** for this project - with pip:
 
-    RUN pip install -r requirements.txt
+    pip install -r requirements.txt
 
 _If you run into issues with the installation via pip, you can also try using Conda for the installation, the necessary steps are outlined below._
 

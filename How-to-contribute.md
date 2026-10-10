@@ -24,7 +24,7 @@ To ease the use of NetAScore, we provide a Docker-compose setup that contains Ne
 ![continued overview over the system workflow](resources/img/system_overview2.png)
 NetAScore reads all settings, model parameters (mode profiles) and input files from the data directory. It then handles workflow automation with Python scripts that run external command line utilities where needed. As the main processing steps take place in a PostgreSQL database, the Python code also handles code execution in the database through SQL statements.
 <!-- add slide 82 graphic -->
-All steps of the workflow are controlled from the main Python file `calculate_index.py`. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory.
+All steps of the workflow are controlled from the main Python file `generate_index.py`. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory.
 
 
 ### Data Directory
@@ -68,10 +68,10 @@ optional:
 profiles:
   -
     profile_name: bike
-    filename: weights_bike.yml
+    filename: profile_bike.yml
   -
     profile_name: walk
-    filename: weights_walk.yml
+    filename: profile_walk.yml
 
 ```
 ... export settings

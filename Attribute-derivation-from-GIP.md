@@ -10,4 +10,4 @@ As the GIP data set already includes elevation data, there is no need to provide
 
 _More information about the process applied to derive all indicators will follow!_
 
-For now, please refer to the general definition of indicators in [Attributes and Indicators](Attributes-and-Indicators) and check the source code at [`sql/templates/gip_attributes.sql.j2`](https://github.com/plus-mobilitylab/netascore/blob/main/sql/templates/gip_attributes.sql.j2) (`type: gip`) and `sql/templates/gip2_attributes.sql.j2` (`type: gip2`).
+For now, please refer to the general definition of indicators in [Attributes and Indicators](Attributes-and-Indicators) and check the source code at [`sql/templates/gip_attributes.sql.j2`](https://github.com/plus-mobilitylab/netascore/blob/main/sql/templates/gip_attributes.sql.j2) (`type: gip`) and [`sql/templates/gip2_attributes.sql.j2`](https://github.com/plus-mobilitylab/netascore/blob/main/sql/templates/gip2_attributes.sql.j2) (`type: gip2`).

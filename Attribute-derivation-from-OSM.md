@@ -1,6 +1,6 @@
 # Attribute derivation from OSM
 NetAScore allows to derive indicators for bikeability and walkability index computation from OpenstreetMap network data. 
-By default, OSM data is automatically queried using the *overpass turbo* API. See also [Configuration of the settings](Configuration-of-the-settings) for additional options.
+By default, OSM data is automatically queried using the **Overpass API**. See also [Configuration of the settings](Configuration-of-the-settings) for additional options.
 
 Since `OSM` is maintained by volunteers via open collaboration, attributes might be mapped in various ways. For interpretation of OSM attributes to derive indicator values NetAScore follows the recommended tagging schemes as shown in the OSM wiki, but tries to also cover frequently used alternative specifications. 
 
@@ -52,10 +52,10 @@ _The Queries given, that were used to request data and form the categories can b
 
 | Value<br/>__________________ | Description<br/>_______________________________ | OSM <br/>_________________________________ | Overpass-QL Query<br/>_________________________________ |
 | :--- | :--- | :--- | :--- |
-| local | Designates that a road or path is part of a Local Cycling Network route. | network=lcn <br/>lcn=yes/proposed | (<br/>nwr["network"="lcn"]\(area.searchArea\);<br/>nwr["lcn"="yes"]\(area.searchArea\);<br/>); |
-| regional | Designates that a road or path is part of a Regional Cycling Network route. | network=rcn <br/>rcn=yes/proposed | (<br/>nwr["network"="rcn"]\(area.searchArea\);<br/>nwr["rcn"="yes"]\(area.searchArea\);<br/>); |
-| national | Designates that a road or path is part of a National Cycling Network route. | network=ncn <br/>ncn=yes/proposed | (<br/>nwr["network"="ncn"]\(area.searchArea\);<br/>nwr["ncn"="yes"]\(area.searchArea\);<br/>); |
-| international | Designates that a road or path is part of an International Cycling Network route. | network=icn <br/>icn=yes/proposed | (<br/>nwr["network"="icn"]\(area.searchArea\);<br/>nwr["icn"="yes"]\(area.searchArea\);<br/>); |
+| local | Designates that a road or path is part of a Local Cycling Network route. | network=lcn <br/>lcn=yes | (<br/>nwr["network"="lcn"]\(area.searchArea\);<br/>nwr["lcn"="yes"]\(area.searchArea\);<br/>); |
+| regional | Designates that a road or path is part of a Regional Cycling Network route. | network=rcn <br/>rcn=yes | (<br/>nwr["network"="rcn"]\(area.searchArea\);<br/>nwr["rcn"="yes"]\(area.searchArea\);<br/>); |
+| national | Designates that a road or path is part of a National Cycling Network route. | network=ncn <br/>ncn=yes | (<br/>nwr["network"="ncn"]\(area.searchArea\);<br/>nwr["ncn"="yes"]\(area.searchArea\);<br/>); |
+| international | Designates that a road or path is part of an International Cycling Network route. | network=icn <br/>icn=yes | (<br/>nwr["network"="icn"]\(area.searchArea\);<br/>nwr["icn"="yes"]\(area.searchArea\);<br/>); |
 
 ## road_category[tf/ft]
 **Description:** Defines the road category along a segment in both directions. 
@@ -104,5 +104,5 @@ _The Queries given, that were used to request data and form the categories can b
 **Description:** Counts the number of crossings within a 10 meter distance to the segment and ratios it to the segment length. 
 
 ## building_ratio
-**Description:** Ratios the area of buildings within a 30 meter Buffer along a segment to the total area of the buffer.
+**Description:** Ratios the area of buildings within a 20 meter Buffer along a segment to the total area of the buffer.
 

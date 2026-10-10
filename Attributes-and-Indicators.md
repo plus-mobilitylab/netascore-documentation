@@ -73,9 +73,9 @@ Describes the condition of the road surface: `asphalt`, `gravel`, `cobble`, `sof
 
 Default data source: OpenStreetMap network geometry with attributes 
 
-Default weight: 0.1* (bike) / 0.3 (walk)
+Default weight: 0.1* (bike) / - (walk)
 
-*Note: weight is increased in case of gravel combined with steep gradient
+*Note: weight is increased in case of gravel, soft or cobble combined with steep gradient
 
 
 ### max_speed\_* / max_speed_greatest
@@ -108,7 +108,7 @@ Default weight: -
 
 ### buildings
 
-Represents the proportion of the area covered by buildings within a 30 meters buffer along the road segment: `0` to `100`.
+Represents the proportion of the area covered by buildings within a 20 meters buffer along the road segment: `0` to `100`.
 
 Default data source: OpenStreetMap (building footprints)
 
@@ -178,11 +178,11 @@ Describes the gradient class of a road segment for downhill and uphill: `-4` to 
 
 | Class | Definition  |
 |-------|-------------|
-| 0     | 0 - 1,5 %   |
-| 1     | > 1,5 - 3 % |
-| 2     | > 3 - 6 %   |
-| 3     | > 6 - 12 %  |
-| 4     | > 12 %      |
+| 0     | < 1,5 %        |
+| 1     | >= 1,5 - < 3 % |
+| 2     | >= 3 - < 6 %   |
+| 3     | >= 6 - < 12 %  |
+| 4     | >= 12 %        |
 
 The influence of gradient classes on the final index can be assigned per mode using the section `indicator_mapping` within mode profile files.
 
@@ -191,7 +191,7 @@ Default data source: OpenStreetMap network geometry and digital elevation model 
 Default weight:
 - 0.1* (bike) / 0.3 (walk)
 
-*Note: weight is increased in case of gravel combined with steep gradient
+*Note: weight is increased in case of gravel, soft or cobble combined with steep gradient
 
 
 ### noise
