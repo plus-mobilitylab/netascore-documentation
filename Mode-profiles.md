@@ -1,7 +1,8 @@
 # Adapting Mode profiles
+
 ## Mode profiles
 
-The mode profile files are written in YAML and contain definitions of model parameters. The first part defines indicator weights, and the second part provides numeric value mappings for all indicator values. These files are contained in the `data` folder. 
+The mode profile files are written in YAML and contain definitions of model parameters. The first part defines indicator weights, and the second part provides numeric value mappings for all indicator values. These files are contained in the `data` folder.
 
 To set an indicator to be ignored for index computation, its weight can be set to `NULL`.
 
@@ -40,8 +41,8 @@ overrides:
     output:
       type: weight
       for: [pavement, gradient]
-    mapping: 
-      "{gravel, soft, cobble}":  
+    mapping:
+      "{gravel, soft, cobble}":
         indicator: gradient
         mapping:
           "{-4, -3, 3, 4}": 1.6
@@ -51,6 +52,7 @@ overrides:
 The last section of a mode profile contains the value mappings per indicator. These represent individual contributions of specific indicator values - such as a specific type of cycling infrastructure - to infrastructure suitability.
 
 Exemplary indicator value mapping:
+
 ```yaml
 indicator_mapping:
   - indicator: bicycle_infrastructure

@@ -14,30 +14,28 @@ Besides the settings file, you also need to provide a mode profile file for each
 
 The settings file can consist of the following **sections**:
 
-- **version**: 
+- **version**:
   mandatory, single value. NetAScore 2.0 requires `2.0`. Older settings files are rejected.
-- [**global**](#section-global): 
+- [**global**](#section-global):
   general settings such as target reference system (SRID) to use
-- [**database**](#section-database): 
+- [**database**](#section-database):
   connection parameters for PostgreSQL database
-- [**import**](#section-import): 
+- [**import**](#section-import):
   essential information for importing core datasets
-- [**optional**](#section-optional): 
+- [**optional**](#section-optional):
   information on optional datasets to import
-- [**profiles**](#section-profiles): 
+- [**profiles**](#section-profiles):
   specification of indicator weights and indicator value mappings per mode profile - e.g. for *bikeability* and *walkability*
-- [**export**](#section-export): 
+- [**export**](#section-export):
   information for exporting results
-
-
 
 ## Section `global`
 
-### Property `target_srid` 
+### Property `target_srid`
 
 **This parameter is optional if using GIP** (for the whole of Austria) **or OSM download via place name, bounding box or AOI file** - in these cases NetAScore uses the centroid's UTM zone by default. However, **if working with OSM file import** (e.g. Planet OSM / Geofabrik downloads), you should **provide an appropriate reference system** for your specific area of interest.
-Specify the SRID (spatial reference system as EPSG-code) to use for processing and data output. 
-Datasets will be imported and if necessary transformed to this reference system. 
+Specify the SRID (spatial reference system as EPSG-code) to use for processing and data output.
+Datasets will be imported and if necessary transformed to this reference system.
 **Please note: currently only metric unit systems are supported such as UTM**.
 
 **Example**:
@@ -53,9 +51,6 @@ Make sure to *only* use a metric unit system, otherwise the toolbox cannot run s
 This parameter allows you to specify a unique identifier for the current task as defined in the settings file. It may be useful if working with different areas of interest, different mode profiles, or when re-executing parts of a workflow. You can include this identifier e.g. in export file names using `<case_id>` as a placeholder.
 
 **Note**: Only alphanumeric characters [A-Z, a-z, 0-9] and '_' are allowed. Other characters will be removed.
-
-
-
 
 ## Section `database`
 
@@ -83,18 +78,16 @@ database:
   dbname: postgres        # name of target database
   username: postgres      # local postgres user
   password: postgres
-  on_existing: abort 	  # skip, delete, abort
+  on_existing: abort       # skip, delete, abort
 ```
 
 For using the whole toolset without Docker, just provide connection details for your PostgreSQL database as you do with any other software.
 
 **Note**: For security reasons, you should **provide `username` and `password` as environment variables** if you do not work within a test environment. In this case just set `DB_USERNAME` and `DB_PASSWORD` accordingly and remove `username` and `password` keys from the settings file.
 
-
-
 ## Section `import`
 
-### Property `type` 
+### Property `type`
 
 Specify the type of geodata you want to import. At the moment, the following file formats
 are supported:
@@ -130,9 +123,8 @@ NetAScore allows you to **directly download OpenStreetMap data** via Overpass AP
   **Please note**: Network data is being queried based on the bounding box (rectangle) containing this polygon. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
 - properties **`include_rail`** and **`include_aerialway`**: These optional `boolean` tags allow you to include railway and aerialway features into the network dataset. This may be useful for visualization and specific types of analysis. For example, provide `include_rail: True` if you want railway geometry to be included in the output data set.
-  
-- For importing OpenStreetMap data into the database, NetAScore uses [osm2pgsql](https://osm2pgsql.org/) with the style file `resources/default.style`. This file is always used.
 
+- For importing OpenStreetMap data into the database, NetAScore uses [osm2pgsql](https://osm2pgsql.org/) with the style file `resources/default.style`. This file is always used.
 
 ### Property `on_existing`
 
@@ -176,8 +168,6 @@ import:
   on_existing: delete
 ```
 
-
-
 ## Section `optional`
 
 This is the most flexible section and specifies data that can optionally be imported for higher quality results of the resulting index.
@@ -219,7 +209,7 @@ The noise dataset contains a mapping of noise levels in decibels, represented as
 For Austrian states the noise datasets can be downloaded here: [https://www.inspire.gv.at](https://geometadatensuche.inspire.gv.at/metadatensuche/srv/ger/catalog.search#/metadata/125ec87c-7120-48a7-bd2c-2718cbf878c6)
 
 ```{warning}
-Currently, the noise dataset can only be processed if the input geopackage has a column named noise. 
+Currently, the noise dataset can only be processed if the input geopackage has a column named noise.
 You can do this preprocessing step for your area of interest in a gis-software of your choice and export it as a geopackage.
 ```
 
@@ -234,8 +224,6 @@ This is only relevant when working with GIP data as main input. An OSM dataset c
 If these datasets are not directly derived from an OSM dataset, they can be imported from individual data sets. This might be useful e.g. when working with local, authoritative data sets.
 
 - `filename`: name of the file to be imported
-
-
 
 ## Section `profiles`
 
@@ -270,8 +258,6 @@ profiles:
 
 For details on weight file definition and computation steps involved, please refer to the [README](https://github.com/plus-mobilitylab/netascore/blob/main/README.md) and [attributes](Attributes-and-Indicators) documentation.
 
-
-
 ## Section `export`
 
 Currently, NetAScore supports exporting the assessed network into a geopackage file. You can define this as follows:
@@ -279,7 +265,7 @@ Currently, NetAScore supports exporting the assessed network into a geopackage f
 ```yaml
 export:
   type: geopackage
-  filename: osm_network.gpkg 
+  filename: osm_network.gpkg
 ```
 
 If you provide a `case_id` in the `global` settings section, you can include it in the export filename by using the placeholder `<case_id>`:

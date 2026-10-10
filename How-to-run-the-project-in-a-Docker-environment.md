@@ -1,4 +1,5 @@
 # Run NetAScore in Docker
+
 In this file, we describe how to run all components or only parts in Docker.
 There are two components involved:
 
@@ -32,10 +33,10 @@ To run the workflow with an existing postgres database, simply follow these step
 docker run -i -t -v <dir_to_data_directory>:/usr/src/netascore/data plusmobilitylab/netascore data/settings.yml
 ```
 
-
 ## Further customisation
 
 for further customisation please have a look at the [advanced docker customisation-page](advanced-docker), where you can find:
+
 - How to access the Docker-Database from an external source
 - How to manually use the Docker image
 - Only running the Database in Docker

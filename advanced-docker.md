@@ -5,6 +5,7 @@ In addition to the [running NetAScore in a Docker environment](How-to-run-the-pr
 ```{contents}
 :local:
 ```
+
 # Build the Docker image from source
 
 The easiest way to build and launch NetAScore is by using docker compose. The `docker-compose.yml` inside the main code directory is configured accordingly. Therefore, the only command you need to execute should be:
@@ -67,8 +68,6 @@ docker run -i -t --network=netascore-net \
         -v %cd%/data:/usr/src/netascore/data netascore data/settings.yml
 ```
 
-
-
 # Advanced configuration
 
 ## Only the database runs in docker
@@ -107,15 +106,17 @@ database:
   password: postgres
 ```
 
-    * If this does not work out for you, you can also try using `host.docker.internal` as the host.
+\* If this does not work out for you, you can also try using `host.docker.internal` as the host.
 
 ## Access the docker database through a local PostgreSQL-Instance:
+
 If you want to see or access the data stored in the Docker-DB-Instance you can do so using Postgres or PGAdmin.
 
 First run NetAScore through docker once, to start up the processes neccessary. Afterwards check if the run was successful and if the Docker Container is active.
 
-Continue in PGAdmin and register a new server (Servers>Register>Server...). 
+Continue in PGAdmin and register a new server (Servers>Register>Server...).
 Name your instance `netascore-db` and implement the following settings in the `Connection-tab`:
+
 - set the host to: ***localhost***
 - set the port to 5433
 - the password and the user both to postgres
@@ -141,7 +142,7 @@ The `port`-Section specifies the internal mapping between the port in the Docker
 
 ### Performance when running NetAScore in Docker
 
-When using NetAScore in a docker image on mac or windows, overall performance of the pipeline can be 3-5 times slower compared to executing NetAScore in local Python or in Docker on Linux. This is caused by slow docker volume mounts and might be an issue for computations on large input files. 
+When using NetAScore in a docker image on mac or windows, overall performance of the pipeline can be 3-5 times slower compared to executing NetAScore in local Python or in Docker on Linux. This is caused by slow docker volume mounts and might be an issue for computations on large input files.
 To resolve this issue, you can either execute the python script on your machine (outside Docker) or copy the files into a volume using the following steps:
 
 ```bash
@@ -172,7 +173,7 @@ docker copy netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE2.gpkg .
 
 ### Memory issues with large datasets
 
-In case you experience errors when processing large datasets, please make sure that you have enough memory and disk space available. 
+In case you experience errors when processing large datasets, please make sure that you have enough memory and disk space available.
 Furthermore, it might be necessary to dedicate more memory to the database container. This can be done by adding the following line to `docker-compose.yml` within the section `netascore-db` (adjust the amount of memory to your needs):
 
 ```yaml
@@ -198,7 +199,6 @@ netascore-db:
       timeout: 20s
       retries: 120
 ```
-
 
 ## Overwrite `default.style` for OSM import to database
 
