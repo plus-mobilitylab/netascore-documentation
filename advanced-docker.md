@@ -33,13 +33,13 @@ Then, to run the workflow, first start the PostgreSQL database and attach it to 
 
 ```bash
 docker run --name netascore-db --network=netascore-net \
-        -e POSTGRES_PASSWORD=postgres -d postgis/postgis:13-3.2
+        -e POSTGRES_PASSWORD=postgres -d postgis/postgis:18-3.6
 ```
 
 ```bash
 # Map TCP port 5432 in the container to port 5433 on the Docker host:
 docker run --name netascore-db --network=netascore-net -p 5433:5432 \
-        -e POSTGRES_PASSWORD=postgres -d postgis/postgis:13-3.2
+        -e POSTGRES_PASSWORD=postgres -d postgis/postgis:18-3.6
 ```
 
 Make sure that the database connection in your `settings.yml` is set up to use the Docker network:
@@ -77,7 +77,7 @@ If the database runs in docker, then you have to configure your database to acce
 
 ```bash
 docker run --name netascore-db --network=netascore-net -p 5432:5432 \
-        -e POSTGRES_PASSWORD=postgres -d postgis/postgis:13-3.2
+        -e POSTGRES_PASSWORD=postgres -d postgis/postgis:18-3.6
 ```
 
 Your `database` section in the settings file should point to the local port which is mapped to the database on localhost:
@@ -183,7 +183,8 @@ Then, the `netascore-db`-section of `docker-compose.yml` should look like this:
 
 ```yaml
 netascore-db:
-    image: postgis/postgis:13-3.2
+    image: postgis/postgis:18-3.6
+    platform: linux/amd64
     shm_size: 2gb
     ports:
     - "5433:5432"
@@ -192,7 +193,7 @@ netascore-db:
     - POSTGRES_PASSWORD=postgres
     - POSTGRES_DB=postgres
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-U", "postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 20s
       retries: 120

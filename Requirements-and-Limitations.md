@@ -11,24 +11,22 @@ Please also consider the limitations of NetAScore:
 
 Running NetAScore locally requires...
 
-- Python 3.x
+- Python 3.13
 - recent PostrgeSQL with PostGIS extension
 - psql
 - ogr2ogr
 - osm2pgsql
-- raster 2 pgsql
+- raster2pgsql
 
 ...and the following Python-Libraries:
 
-- gdal (Version 3.2.2)
-- igraph
-- pandas
-- Flask (Version 2.0.3)
-- psycopg2
-- Jinja2 (earlier than Version 3.1.0)
-- JinjaSql
-- requests
+- gdal
+- geopandas
+- geopy
+- jinjasql2
 - osm2geojson
-- PyYaml
+- psycopg2
+- pyyaml
+- requests
 
 If you want more information about running NetAScore locally with python, more information can be found in the [guide for running NetAScore manually](Run-NetAScore-manually-with-Python)

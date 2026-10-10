@@ -9,7 +9,7 @@ Please find more information on possible options available in the **settings fil
 
 Make sure you have installed these **software dependencies**:
 
-- Python 3.x
+- Python 3.13
 - recent PostgreSQL with PostGIS extension (make sure to enable all GDAL drivers if prompted; this should include psql, raster2pgsql and ogr2ogr)
 - osm2pgsql ([osm2pgsql.org](https://osm2pgsql.org/doc/install.html)) (Please use a Version > 2.0, since the newer version has breaking changes that cause conflicts within NetAScore)
 
@@ -19,7 +19,7 @@ Then, install the **Python dependencies** for this project - with pip:
 
     RUN pip install -r requirements.txt
 
-_If you run into issues with the installation via pip, you can also try using Anaconda for the installation, the necessary steps are outlined below._
+_If you run into issues with the installation via pip, you can also try using Conda for the installation, the necessary steps are outlined below._
 
 Now you can **run NetAScore** by providing the filename of the settings file as commandline parameter to the Python script:
 
@@ -27,34 +27,31 @@ Now you can **run NetAScore** by providing the filename of the settings file as 
 
 The processing can take several minutes up to several hours - depending on the size of the geodata and the hardware used. Therefore, we recommend to **start with a small example** first.
 
-You can also use Anaconda to create a virtual environment with the following Python dependencies:
+You can also use Conda to create a virtual environment with the following Python dependencies:
 
-_We tested the installation using miniconda3 on Windows 10 (64-bit) and using the Anaconda powershell prompt on Windows 11 (64-Bit)._
+- python 3.13.16
+- gdal 3.13.3
+- geopandas 1.2.0
+- geopy 2.5.0
+- psycopg2 2.9.13
+- pyyaml 6.0.3
+- requests 2.34.2
+- jinjasql2 0.1.13 *
+- osm2geojson 0.3.2 *
 
-- gdal (Version 3.6.2)
-- igraph (Version 0.10.4)
-- pandas (Version 1.5.1)
-- Flask (Version 2.2.3)
-- psycopg2 (Version 2.9.7)
-- Jinja2 (Version 3.0.3)
-- JinjaSql (Version 0.1.8)
-- requests (Version 2.28.2)
-- osm2geojson (Version 0.2.5)*
-- PyYaml (Version 6.0)
-
-*osm2geojson needs to be installed afterwards by using pip.
+* jinjasql2 and osm2geojson need to be installed afterwards by using pip.
 
 You can also import the environment file provided by running:
 
 ```
-conda env create -f netascoreenvironment.yml
+conda env create -f environment.yml
 ```
-Afterwards activate the environment netascore3.9:
+Afterwards activate the environment netascore:
 ```
-conda activate netascore3.9
+conda activate netascore
 ```
 You can now run NetAScore, using the prompt described above. 
-_An important thing to note here, is to execute the command within miniconda or anaconda, as this ensures that the python version within the environment is used, rather than the system default._
+_An important thing to note here, is to execute the command within conda, as this ensures that the python version within the environment is used, rather than the system default._
 
 If you want to manually install the requirements using conda, make sure to install the packages in the order given witihin the requirements.txt files, as some of the required versions may become overwritten otherwise, leading to conflicts.
 
