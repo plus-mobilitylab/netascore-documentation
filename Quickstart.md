@@ -69,11 +69,11 @@ The easiest way to run a network assessment for your own area of interest is by 
 
   (Here, the last argument represents the settings file to use. Note that this is the general way of specifying the settings file that should be used.)
 
-_NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the 'filename' property instead of the 'place_name' that is given in the 'settings_osm_query.yml'. In some cases you might want to specify your search, if the place name given is not unique (e.g. Frankfurt (Main) & Frankfurt (Oder)). The place name is resolved using OSM Nominatim. Only boundary results are used, with the highest importance first. Set the `interactive`- Variable to `interactive: True`, to opt for an interactive prompt. Otherwise the first result is used. If the result is a multipolygon, only its largest part is kept._
+_NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the 'filename' property instead of the 'place_name' that is given in the 'settings_osm_query.yml'. The place name is resolved using OSM Nominatim. If several areas match, set `interactive: True`._
 
-**_Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If that polygon is a multipolygon, only its largest part is used. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used._**
+**_Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used._**
 
-For further information on additional options for OSM see the [settings documentation](#additional-options-for-osm).
+For further information on additional options for OSM see the [settings documentation](Configuration-of-the-settings).
 
 ## Add more detail
 

@@ -2,7 +2,7 @@
 
 NetAScore uses a settings file that holds the necessary information to perform all steps for computing *bikeability* and *walkability*. It is written in YAML markup language. General information about YAML can be found at https://yaml.org/.
 
-We provide a set of **example settings files** with NetAScore. You find them inside the subdirectory `examples`. The most common to start from is `settings_osm_query.yml`. This is the file used by default in the Docker image. It is configured for easy use with all components running in Docker and no local input files required. See [docker-guide](How-to-run-the-project-in-a-Docker-environment) for instructions on executing NetAScore in this example setup.
+We provide a set of **example settings files** with NetAScore. You find them inside the subdirectory `examples`. The most common to start from is `settings_osm_query.yml`. This is the file used by default in the Docker image. It is configured for easy use with all components running in Docker and no local input files required. See the [Quickstart](Quickstart) for instructions on executing NetAScore in this example setup.
 
 Settings files for NetAScore consist of several sections. For **every processing step** that should be executed, a **corresponding settings section** needs to be provided. This means that you can omit sections if you skip all processing steps that require this section. E.g. if you skip the `export` step, then you don't need to provide an `export` section.
 
