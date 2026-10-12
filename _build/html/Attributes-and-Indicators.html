@@ -30,11 +30,11 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -107,7 +107,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore</div>
 </aside>
 
   
@@ -186,7 +186,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Attributes &amp; Indicators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
-
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
 
@@ -345,7 +344,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -369,7 +368,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -415,7 +414,8 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#facilities">facilities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#greenness">greenness</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water">water</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parking-placeholder">parking_* (placeholder)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parking">parking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sights">sights</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-indicators-for-bikeability-and-walkability">Optional Indicators for <em>bikeability</em> and <em>walkability</em></a><ul class="nav section-nav flex-column">
@@ -466,13 +466,13 @@ In the default mode profile for bikeability an override is defined for emphasizi
 <h2>Indicators<a class="headerlink" href="#indicators" title="Link to this heading">#</a></h2>
 <section id="bicycle-infrastructure">
 <h3>bicycle_infrastructure_*<a class="headerlink" href="#bicycle-infrastructure" title="Link to this heading">#</a></h3>
-<p>Describes the presence of dedicated bicycle infrastructure along a road segment: <code class="docutils literal notranslate"><span class="pre">bicycle_way</span></code>, <code class="docutils literal notranslate"><span class="pre">mixed_way</span></code>, <code class="docutils literal notranslate"><span class="pre">bicycle_road</span></code>, <code class="docutils literal notranslate"><span class="pre">cyclestreet</span></code>, <code class="docutils literal notranslate"><span class="pre">bicycle_lane</span></code>, <code class="docutils literal notranslate"><span class="pre">bus_lane</span></code>, <code class="docutils literal notranslate"><span class="pre">no</span></code>.</p>
+<p>Describes the presence of dedicated bicycle infrastructure along a road segment: <code class="docutils literal notranslate"><span class="pre">bicycle_way</span></code>, <code class="docutils literal notranslate"><span class="pre">mixed_way</span></code>, <code class="docutils literal notranslate"><span class="pre">mixed_way_non_designated</span></code>, <code class="docutils literal notranslate"><span class="pre">bicycle_lane</span></code>, <code class="docutils literal notranslate"><span class="pre">bus_lane</span></code>, <code class="docutils literal notranslate"><span class="pre">shared_lane</span></code>, <code class="docutils literal notranslate"><span class="pre">no</span></code>, <code class="docutils literal notranslate"><span class="pre">no_separate</span></code>.</p>
 <p>Default data source: OpenStreetMap network geometry with attributes</p>
 <p>Default weight: 0.2 (bike) / - (walk)</p>
 </section>
 <section id="pedestrian-infrastructure">
 <h3>pedestrian_infrastructure_*<a class="headerlink" href="#pedestrian-infrastructure" title="Link to this heading">#</a></h3>
-<p>Describes the presence of dedicated pedestrian infrastructure: <code class="docutils literal notranslate"><span class="pre">pedestrian_area</span></code>, <code class="docutils literal notranslate"><span class="pre">pedestrian_way</span></code>, <code class="docutils literal notranslate"><span class="pre">mixed_way</span></code>, <code class="docutils literal notranslate"><span class="pre">stairs</span></code>, <code class="docutils literal notranslate"><span class="pre">sidewalk</span></code>, <code class="docutils literal notranslate"><span class="pre">no</span></code>.</p>
+<p>Describes the presence of dedicated pedestrian infrastructure: <code class="docutils literal notranslate"><span class="pre">pedestrian_area</span></code>, <code class="docutils literal notranslate"><span class="pre">pedestrian_way</span></code>, <code class="docutils literal notranslate"><span class="pre">mixed_way</span></code>, <code class="docutils literal notranslate"><span class="pre">mixed_way_non_designated</span></code>, <code class="docutils literal notranslate"><span class="pre">stairs</span></code>, <code class="docutils literal notranslate"><span class="pre">sidewalk</span></code>, <code class="docutils literal notranslate"><span class="pre">no</span></code>, <code class="docutils literal notranslate"><span class="pre">no_separate</span></code>.</p>
 <p>Default data source: OpenStreetMap network geometry with attributes</p>
 <p>Default weight: - (bike) / 0.4 (walk)</p>
 </section>
@@ -492,15 +492,15 @@ In the default mode profile for bikeability an override is defined for emphasizi
 <h3>pavement<a class="headerlink" href="#pavement" title="Link to this heading">#</a></h3>
 <p>Describes the condition of the road surface: <code class="docutils literal notranslate"><span class="pre">asphalt</span></code>, <code class="docutils literal notranslate"><span class="pre">gravel</span></code>, <code class="docutils literal notranslate"><span class="pre">cobble</span></code>, <code class="docutils literal notranslate"><span class="pre">soft</span></code>.</p>
 <p>Default data source: OpenStreetMap network geometry with attributes</p>
-<p>Default weight: 0.1* (bike) / 0.3 (walk)</p>
-<p>*Note: weight is increased in case of gravel combined with steep gradient</p>
+<p>Default weight: 0.1* (bike) / - (walk)</p>
+<p>*Note: weight is increased in case of gravel, soft or cobble combined with steep gradient</p>
 </section>
 <section id="max-speed-max-speed-greatest">
 <h3>max_speed_* / max_speed_greatest<a class="headerlink" href="#max-speed-max-speed-greatest" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">max_speed_*</span></code> describes the speed limit (car) in the direction of travel: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">130</span></code>.
 <code class="docutils literal notranslate"><span class="pre">max_speed_greatest_*</span></code> uses the maximum value of speed limits for both directions along the segment.</p>
 <p>Default data source: OpenStreetMap network geometry with attributes</p>
-<p>Default weight (directional): 0.1 (bike)</p>
+<p>Default weight: 0.1 (bike, <code class="docutils literal notranslate"><span class="pre">max_speed</span></code>) / 0.3 (walk, <code class="docutils literal notranslate"><span class="pre">max_speed_greatest</span></code>)</p>
 </section>
 <section id="number-lanes">
 <h3>number_lanes_*<a class="headerlink" href="#number-lanes" title="Link to this heading">#</a></h3>
@@ -516,7 +516,7 @@ In the default mode profile for bikeability an override is defined for emphasizi
 </section>
 <section id="buildings">
 <h3>buildings<a class="headerlink" href="#buildings" title="Link to this heading">#</a></h3>
-<p>Represents the proportion of the area covered by buildings within a 30 meters buffer along the road segment: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+<p>Represents the proportion of the area covered by buildings within a 20 meters buffer along the road segment: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
 <p>Default data source: OpenStreetMap (building footprints)</p>
 <p>Default weight: - (bike) / 0.1 (walk)</p>
 </section>
@@ -540,15 +540,21 @@ Default data source: OpenStreetMap</p>
 </section>
 <section id="water">
 <h3>water<a class="headerlink" href="#water" title="Link to this heading">#</a></h3>
-<p>Describes the presence of water bodies within a 30 meters buffer: <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>Describes the proportion of water within a 30 meters buffer, including streams running along a segment: <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
 <p>Default data source: OpenStreetMap</p>
 <p>Default weight: - (bike) / 0.4 (walk)</p>
 </section>
-<section id="parking-placeholder">
-<h3>parking_* (placeholder)<a class="headerlink" href="#parking-placeholder" title="Link to this heading">#</a></h3>
-<p>Describes designated streetside car parking: <code class="docutils literal notranslate"><span class="pre">yes</span></code>, <code class="docutils literal notranslate"><span class="pre">no</span></code>. Currently, this indicator is not computed due to data availability. However, if included in the mode profile, lack of indicator data will be documented accordingly in the <code class="docutils literal notranslate"><span class="pre">index_&lt;mode&gt;_*_robustness</span></code>-column.</p>
-<p>Note: Implementation is planned for the future, given data availability.</p>
+<section id="parking">
+<h3>parking<a class="headerlink" href="#parking" title="Link to this heading">#</a></h3>
+<p>Describes car parking along a road segment: <code class="docutils literal notranslate"><span class="pre">allowed</span></code>, <code class="docutils literal notranslate"><span class="pre">implicit</span></code>, <code class="docutils literal notranslate"><span class="pre">forbidden</span></code>. <code class="docutils literal notranslate"><span class="pre">allowed</span></code> is mapped street parking or a parking area that is not underground, multi-storey, or <code class="docutils literal notranslate"><span class="pre">level=-1</span></code>. <code class="docutils literal notranslate"><span class="pre">implicit</span></code> includes any way whose <code class="docutils literal notranslate"><span class="pre">motor_vehicle</span></code> value permits cars, and listed road classes when <code class="docutils literal notranslate"><span class="pre">access</span></code> permits cars or is missing and at least one parking key is missing. <code class="docutils literal notranslate"><span class="pre">forbidden</span></code> includes ways with <code class="docutils literal notranslate"><span class="pre">access</span></code> permitted or missing that are closed to motor vehicles or untagged for it while a parking key is missing or <code class="docutils literal notranslate"><span class="pre">no</span></code>, and foot or cycle ways with that same <code class="docutils literal notranslate"><span class="pre">access</span></code>. Tag lists are on the OSM derivation page.</p>
+<p>Default data source: OpenStreetMap</p>
 <p>Default weight: 0.1 (bike) / - (walk)</p>
+</section>
+<section id="sights">
+<h3>sights<a class="headerlink" href="#sights" title="Link to this heading">#</a></h3>
+<p>Describes the number of sights per 100m segment length within a 30 meters buffer.</p>
+<p>Default data source: OpenStreetMap</p>
+<p>Default weight: - (bike) / - (walk)</p>
 </section>
 </section>
 <section id="optional-indicators-for-bikeability-and-walkability">
@@ -565,19 +571,19 @@ Default data source: OpenStreetMap</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p>0 - 1,5 %</p></td>
+<td><p>&lt; 1,5 %</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p>&gt; 1,5 - 3 %</p></td>
+<td><p>&gt;= 1,5 - &lt; 3 %</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p>&gt; 3 - 6 %</p></td>
+<td><p>&gt;= 3 - &lt; 6 %</p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
-<td><p>&gt; 6 - 12 %</p></td>
+<td><p>&gt;= 6 - &lt; 12 %</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
-<td><p>&gt; 12 %</p></td>
+<td><p>&gt;= 12 %</p></td>
 </tr>
 </tbody>
 </table>
@@ -588,7 +594,7 @@ Default data source: OpenStreetMap</p>
 <ul class="simple">
 <li><p>0.1* (bike) / 0.3 (walk)</p></li>
 </ul>
-<p>*Note: weight is increased in case of gravel combined with steep gradient</p>
+<p>*Note: weight is increased in case of gravel, soft or cobble combined with steep gradient</p>
 </section>
 <section id="noise">
 <h3>noise<a class="headerlink" href="#noise" title="Link to this heading">#</a></h3>
@@ -660,11 +666,12 @@ Default data source: OpenStreetMap</p>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-attributes">Access attributes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-car-access-bicycle-access-pedestrian">access_car_* / access_bicycle_* / access_pedestrian_*</a></li>
@@ -689,7 +696,8 @@ Default data source: OpenStreetMap</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#facilities">facilities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#greenness">greenness</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water">water</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parking-placeholder">parking_* (placeholder)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parking">parking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sights">sights</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-indicators-for-bikeability-and-walkability">Optional Indicators for <em>bikeability</em> and <em>walkability</em></a><ul class="nav section-nav flex-column">

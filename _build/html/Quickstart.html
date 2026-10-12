@@ -30,11 +30,11 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -107,7 +107,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore</div>
 </aside>
 
   
@@ -186,7 +186,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
-
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
 
@@ -345,7 +344,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -369,7 +368,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -441,7 +440,7 @@ In this guide you will learn how to run NetAScore for a sample area, how to adju
 </ul>
 <p><img alt="command 'docker compose run netascore' shown in terminal" src="_images/run_netascore_docker.png" /></p>
 <ul class="simple">
-<li><p>running the docker image might take a while, as NetAScore first loads an area of interest by place name from Overpass API, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. You can tell the run was completed successfully once the Database connection is closed, which looks like this:</p></li>
+<li><p>running the docker image might take a while, as NetAScore first loads an area of interest by place name, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. You can tell the run was completed successfully once the Database connection is closed, which looks like this:</p></li>
 </ul>
 <p><img alt="completed successful run" src="_images/cmd_complete.png" /></p>
 <ul class="simple">
@@ -461,7 +460,7 @@ In this guide you will learn how to run NetAScore for a sample area, how to adju
 <p>The easiest way to run a network assessment for your own area of interest is by adapting the given example in <code class="docutils literal notranslate"><span class="pre">examples/settings_osm_query.yml</span></code>:</p>
 <ul class="simple">
 <li><p>create a new <strong>subdirectory</strong> named <strong><code class="docutils literal notranslate"><span class="pre">data</span></code></strong> (if you already ran the quickstart example, you can just use the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory created)</p></li>
-<li><p>download the <strong>settings template</strong> from <code class="docutils literal notranslate"><span class="pre">examples/settings_osm_query.yml</span></code> <a class="reference external" href="https://github.com/plus-mobilitylab/netascore/blob/5099d4a7ff6a2c348fe39dd9f0dfb8b8ba973c32/examples/settings_osm_query.yml">file link</a>.</p></li>
+<li><p>download the <strong>settings template</strong> from <code class="docutils literal notranslate"><span class="pre">examples/settings_osm_query.yml</span></code> <a class="reference external" href="https://github.com/plus-mobilitylab/netascore/blob/main/examples/settings_osm_query.yml">file link</a>.</p></li>
 <li><p>add the <strong>mode profiles</strong> for <em>bikeability</em> and <em>walkability</em> to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory: download both, <code class="docutils literal notranslate"><span class="pre">profile_bike.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">profile_walk.yml</span></code> from the <code class="docutils literal notranslate"><span class="pre">examples</span></code> folder.</p></li>
 <li><p><strong>edit</strong> your newly created <strong>settings file</strong> <code class="docutils literal notranslate"><span class="pre">settings_osm_query.yml</span></code> - e.g. to download data for the City of London:</p>
 <ul>
@@ -480,14 +479,9 @@ In this guide you will learn how to run NetAScore for a sample area, how to adju
 <p>(Here, the last argument represents the settings file to use. Note that this is the general way of specifying the settings file that should be used.)</p>
 </li>
 </ul>
-<p><em>NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the ‘filename’ property instead of the ‘place_name’ that is given in the ‘settings_osm_query.yml’. In some cases you might want to specify your search, if the place name given is not unique (e.g. Frankfurt (Main) &amp; Frankfurt (Oder)). To accomplish a specification you can either specify additional parameters:</em></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">admin_level</span></code>: filters the given results for OSM <code class="docutils literal notranslate"><span class="pre">admin_level</span></code> property (see <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Item:Q1074">OSM documentation</a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">zip_code</span></code>: filters the given results for a ZIP code (if available in OSM data)</p></li>
-</ul>
-<p>Another option is to set the <code class="docutils literal notranslate"><span class="pre">interactive</span></code>- Variable to <code class="docutils literal notranslate"><span class="pre">interactive:</span> <span class="pre">True</span></code>, to opt for an interactive prompt.</p>
-<p><strong><em>Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used.</em></strong></p>
-<p>For further information on additional options for OSM see the <a class="reference internal" href="#additional-options-for-osm"><span class="xref myst">settings documentation</span></a>.</p>
+<p><em>NetAScore allows you to directly download OpenStreetMap data via Overpass API. If you want to provide a local OSM-Export you can do so using the ‘filename’ property instead of the ‘place_name’ that is given in the ‘settings_osm_query.yml’. The place name is resolved using OSM Nominatim. If several areas match, set <code class="docutils literal notranslate"><span class="pre">interactive:</span> <span class="pre">True</span></code>.</em></p>
+<p><em><strong>Please note: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option target_srid), the UTM zone suitable for the centroid of the area of interest is used.</strong></em></p>
+<p>For further information on additional options for OSM see the <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">settings documentation</span></a>.</p>
 </section>
 <section id="add-more-detail">
 <h2>Add more detail<a class="headerlink" href="#add-more-detail" title="Link to this heading">#</a></h2>
@@ -573,11 +567,12 @@ In this guide you will learn how to run NetAScore for a sample area, how to adju
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-get-started">How to get started?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-quickstart-ready-made-docker-image">Easy quickstart: ready-made Docker image</a><ul class="nav section-nav flex-column">

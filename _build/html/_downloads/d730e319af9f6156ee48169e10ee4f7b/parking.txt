@@ -1,0 +1,114 @@
+[out:json][timeout:90];
+
+(
+  // allowed: mapped street parking
+  way["highway"]["parking"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:left"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:right"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:both"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:lane"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+  way["highway"]["parking:lane:left"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+  way["highway"]["parking:lane:right"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+  way["highway"]["parking:lane:both"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+
+  // allowed: parking areas, unless underground, multi-storey, or level=-1
+  // a missing parking or level tag still matches
+  wr["amenity"="parking"][!"parking"][!"level"]({{bbox}});
+  wr["amenity"="parking"][!"parking"]["level"!="-1"]({{bbox}});
+  wr["amenity"="parking"]["parking"!="underground"]["parking"!="multi-storey"][!"level"]({{bbox}});
+  wr["amenity"="parking"]["parking"!="underground"]["parking"!="multi-storey"]["level"!="-1"]({{bbox}});
+
+  // implicit: a permitting motor_vehicle value is enough
+  way["motor_vehicle"~"^(yes|designated|private|destination|customers|delivery)$"]({{bbox}});
+
+  // implicit: listed highway, access permitted or missing, and at least one parking key missing
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:left"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:right"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:both"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:lane"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:lane:left"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:lane:right"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking:lane:both"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:left"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:right"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:both"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:lane"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:lane:left"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:lane:right"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking:lane:both"]({{bbox}});
+
+  // forbidden: access permitted or missing, and a foot or cycle way
+  way["highway"~"^(cycleway|pedestrian|bridleway|footway)$"]["access"~"^(designated|destination|yes)$"]({{bbox}});
+  way["highway"~"^(cycleway|pedestrian|bridleway|footway)$"][!"access"]({{bbox}});
+
+  // forbidden: access permitted or missing, motor_vehicle excluded or missing,
+  // and at least one parking key missing or no
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:left"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:left"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:right"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:right"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:both"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:both"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane:left"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane:left"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane:right"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane:right"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane:both"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane:both"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:left"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:left"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:right"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:right"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:both"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:both"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:lane"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:lane"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:lane:left"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:lane:left"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:lane:right"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:lane:right"="no"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"][!"parking:lane:both"]({{bbox}});
+  way["access"~"^(designated|destination|yes)$"][!"motor_vehicle"]["parking:lane:both"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:left"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:left"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:right"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:right"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:both"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:both"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane:left"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane:left"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane:right"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane:right"="no"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"][!"parking:lane:both"]({{bbox}});
+  way[!"access"]["motor_vehicle"~"^(no|discouraged)$"]["parking:lane:both"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:left"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:left"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:right"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:right"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:both"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:both"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:lane"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:lane"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:lane:left"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:lane:left"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:lane:right"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:lane:right"="no"]({{bbox}});
+  way[!"access"][!"motor_vehicle"][!"parking:lane:both"]({{bbox}});
+  way[!"access"][!"motor_vehicle"]["parking:lane:both"="no"]({{bbox}});
+);
+
+out geom;

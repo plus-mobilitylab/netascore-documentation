@@ -1,14 +1,15 @@
 # Adapting Mode profiles
+
 ## Mode profiles
 
-The mode profile files are written in YAML and contain definitions of model parameters. The first part defines indicator weights, and the second part provides numeric value mappings for all indicator values. These files are contained in the `data` folder. 
+The mode profile files are written in YAML and contain definitions of model parameters. The first part defines indicator weights, and the second part provides numeric value mappings for all indicator values. These files are contained in the `data` folder.
 
 To set an indicator to be ignored for index computation, its weight can be set to `NULL`.
 
-The default mode profiles for bikeability and walkability can be found at `/examples/profile_bike.yml` and `/examples/profile_walk.yml`. Their definition looks like this:
+The default mode profiles for bikeability and walkability can be found at `/examples/profile_bike.yml` and `/examples/profile_walk.yml`. An additional profile for recreational cycling is `/examples/profile_bike_tourism.yml`. The example settings files do not reference it. Profile files require `version: 2.0`. Older profile files are rejected. Their definition looks like this:
 
 ```yaml
-version: 1.1
+version: 2.0
 
 weights:
   bicycle_infrastructure: 0.2
@@ -27,6 +28,7 @@ weights:
   buildings: NULL
   greenness: NULL
   water: NULL
+  sights: NULL
   noise: NULL
 ```
 
@@ -39,8 +41,8 @@ overrides:
     output:
       type: weight
       for: [pavement, gradient]
-    mapping: 
-      "{gravel, soft, cobble}":  
+    mapping:
+      "{gravel, soft, cobble}":
         indicator: gradient
         mapping:
           "{-4, -3, 3, 4}": 1.6
@@ -50,15 +52,17 @@ overrides:
 The last section of a mode profile contains the value mappings per indicator. These represent individual contributions of specific indicator values - such as a specific type of cycling infrastructure - to infrastructure suitability.
 
 Exemplary indicator value mapping:
+
 ```yaml
 indicator_mapping:
   - indicator: bicycle_infrastructure
     mapping:
       "bicycle_way": 1
       "mixed_way": 0.9
+      "mixed_way_non_designated": 0.9
       "bicycle_lane": 0.75
       "bus_lane": 0.75
       "shared_lane": 0.5
-      "undefined": 0.2
       "no": 0
+      "no_separate": 0
 ```

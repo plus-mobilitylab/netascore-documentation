@@ -2,7 +2,7 @@
 
 NetAScore uses a settings file that holds the necessary information to perform all steps for computing *bikeability* and *walkability*. It is written in YAML markup language. General information about YAML can be found at https://yaml.org/.
 
-We provide a set of **example settings files** with NetAScore. You find them inside the subdirectory `examples`. The most common to start from is `settings_osm_query.yml`. This is the file used by default in the Docker image. It is configured for easy use with all components running in Docker and no local input files required. See [docker-guide](How-to-run-the-project-in-a-Docker-environment) for instructions on executing NetAScore in this example setup.
+We provide a set of **example settings files** with NetAScore. You find them inside the subdirectory `examples`. The most common to start from is `settings_osm_query.yml`. This is the file used by default in the Docker image. It is configured for easy use with all components running in Docker and no local input files required. See the [Quickstart](Quickstart) for instructions on executing NetAScore in this example setup.
 
 Settings files for NetAScore consist of several sections. For **every processing step** that should be executed, a **corresponding settings section** needs to be provided. This means that you can omit sections if you skip all processing steps that require this section. E.g. if you skip the `export` step, then you don't need to provide an `export` section.
 
@@ -14,30 +14,28 @@ Besides the settings file, you also need to provide a mode profile file for each
 
 The settings file can consist of the following **sections**:
 
-- **version**: 
-  mandatory, single value. For compatibility with NetAScore version 1.1, the settings file `version` entry should be `1.2`.
-- [**global**](#section-global): 
+- **version**:
+  mandatory, single value. NetAScore 2.0 requires `2.0`. Older settings files are rejected.
+- [**global**](#section-global):
   general settings such as target reference system (SRID) to use
-- [**database**](#section-database): 
+- [**database**](#section-database):
   connection parameters for PostgreSQL database
-- [**import**](#section-import): 
+- [**import**](#section-import):
   essential information for importing core datasets
-- [**optional**](#section-optional): 
+- [**optional**](#section-optional):
   information on optional datasets to import
-- [**profiles**](#section-profiles): 
+- [**profiles**](#section-profiles):
   specification of indicator weights and indicator value mappings per mode profile - e.g. for *bikeability* and *walkability*
-- [**export**](#section-export): 
+- [**export**](#section-export):
   information for exporting results
-
-
 
 ## Section `global`
 
-### Property `target_srid` 
+### Property `target_srid`
 
-**This parameter is optional if using GIP** (for the whole of Austria) **or OSM Download via place name** - in these cases NetAScore uses the centroid's UTM zone by default. However, **if working with OSM file import** (e.g. Planet OSM / Geofabrik downloads), you should **provide an appropriate reference system** for your specific area of interest.
-Specify the SRID (spatial reference system as EPSG-code) to use for processing and data output. 
-Datasets will be imported and if necessary transformed to this reference system. 
+**This parameter is optional if using GIP** (for the whole of Austria) **or OSM download via place name, bounding box or AOI file** - in these cases NetAScore uses the centroid's UTM zone by default. However, **if working with OSM file import** (e.g. Planet OSM / Geofabrik downloads), you should **provide an appropriate reference system** for your specific area of interest.
+Specify the SRID (spatial reference system as EPSG-code) to use for processing and data output.
+Datasets will be imported and if necessary transformed to this reference system.
 **Please note: currently only metric unit systems are supported such as UTM**.
 
 **Example**:
@@ -53,9 +51,6 @@ Make sure to *only* use a metric unit system, otherwise the toolbox cannot run s
 This parameter allows you to specify a unique identifier for the current task as defined in the settings file. It may be useful if working with different areas of interest, different mode profiles, or when re-executing parts of a workflow. You can include this identifier e.g. in export file names using `<case_id>` as a placeholder.
 
 **Note**: Only alphanumeric characters [A-Z, a-z, 0-9] and '_' are allowed. Other characters will be removed.
-
-
-
 
 ## Section `database`
 
@@ -83,24 +78,23 @@ database:
   dbname: postgres        # name of target database
   username: postgres      # local postgres user
   password: postgres
-  on_existing: abort 	  # skip, delete, abort
+  on_existing: abort       # skip, delete, abort
 ```
 
 For using the whole toolset without Docker, just provide connection details for your PostgreSQL database as you do with any other software.
 
 **Note**: For security reasons, you should **provide `username` and `password` as environment variables** if you do not work within a test environment. In this case just set `DB_USERNAME` and `DB_PASSWORD` accordingly and remove `username` and `password` keys from the settings file.
 
-
-
 ## Section `import`
 
-### Property `type` 
+### Property `type`
 
 Specify the type of geodata you want to import. At the moment, the following file formats
 are supported:
 
 - value `osm`: OpenStreetMap
-- value `gip`: Austrian authoritative dataset *"Graphenintegrations-Plattform GIP"* - see also: [http://www.gip.gv.at](http://www.gip.gv.at/en/index.html)
+- value `gip`: Austrian authoritative dataset *"Graphenintegrations-Plattform GIP"* (previous OGD routing export) - see also: [http://www.gip.gv.at](http://www.gip.gv.at/en/index.html)
+- value `gip2`: Austrian authoritative dataset *"Graphenintegrations-Plattform GIP"* (GIP 2.0 OGD export) - see also: [http://www.gip.gv.at](http://www.gip.gv.at/en/index.html)
 
 ### Property `filename`
 
@@ -108,27 +102,29 @@ Refers to the file containing the geodata.
 
 - OSM data can be imported from `PBF` format, which can be downloaded e.g. from https://download.geofabrik.de. For directly downloading a small AOI with NetAScore, use one of the options outlined in the following section "Additional options for OSM".
 - GIP data for Austria can be imported from the `IDF` export files which can be downloaded from [https://www.data.gv.at](https://www.data.gv.at/katalog/dataset/3fefc838-791d-4dde-975b-a4131a54e7c5)
+  - Previous export (`type: gip`): split `IDF` package (`filename_A`, typically `A_routingexport_ogd_split.zip`)
+  - GIP 2.0 (`type: gip2`): single `IDF` file (`filename_A`, typically `A_routingexport_ogd.zip` or `A_routingexport_ogd.txt`)
 
 ### Additional options for OSM
 
 NetAScore allows you to **directly download OpenStreetMap data** via Overpass API. You can simply provide the following properties instead of the `filename` property:
 
-- property **`place_name`**: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. 'Salzburg' or 'City of London'. If the place name given is not unique, you can either opt for an interactive prompt by adding the setting `interactive: True` or specify additional parameters:
+- property **`place_name`**: Name of a place, referring to a polygon. Typically you could use the name of a city or city district. E.g. 'Salzburg' or 'City of London'. The place is looked up using OSM Nominatim. Only boundary results are used, with the highest importance first. If the place name given is not unique, you can opt for an interactive prompt by adding the setting `interactive: True`. Otherwise the first result is used.
 
-  - `admin_level`: filters the given results for OSM 'admin_level' property (see [OSM documentation](https://wiki.openstreetmap.org/wiki/Item:Q1074))
-  - `zip_code`: filters the given results for a ZIP code (if available in OSM data) 
+  **Please note**: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If that polygon is a multipolygon, only its largest part is used. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
-  **Please note**: Network data is being queried based on the bounding box (rectangle) containing the polygon returned for the place name query. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
+- property **`buffer`**: When downloading OpenStreetMap data for a place name, bounding box or AOI file, this option allows you to specify a spatial buffer to enlarge the extent of network data being queried. The unit of the buffer is defined by the target SRID - currently this must be in meters. If omitted, no buffer is applied.
 
-- property **`buffer`**: When using the `place_name` query, this option allows you to specify a spatial buffer to enlarge the extent of network data being queried. The unit of the buffer is defined by the target SRID - currently this must be in meters. 
+- property **`bbox`**: Bounding box of your area of interest in WGS 84 (latitude, longitude, latitude, longitude) - e.g. for Salzburg (Austria) use: `bbox: 47.7957,13.0117,47.8410,13.0748`
+  **Please note**: If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
-- property **`bbox`**: Bounding box of your area of interest in WGS 84 (longitude and latitude, geographic coordinates) - e.g. for Salzburg (Austria) use: `bbox: 47.7957,13.0117,47.8410,13.0748`
-  **Please note**: when using this option, please specify **`target_srid`** in the `global` settings section to define an appropriate spatial reference system for your custom area of interest
+- property **`aoi_filename`**: Name of a geofile in the data directory (e.g. a GeoPackage) that contains the area of interest as polygon geometry in WGS 84. If the file contains several features and values in the column `name` match `case_id`, those features are used. Otherwise all features are combined.
+
+  **Please note**: Network data is being queried based on the bounding box (rectangle) containing this polygon. If you do not specify a reference system (global option `target_srid`), the UTM zone suitable for the centroid of the area of interest is used.
 
 - properties **`include_rail`** and **`include_aerialway`**: These optional `boolean` tags allow you to include railway and aerialway features into the network dataset. This may be useful for visualization and specific types of analysis. For example, provide `include_rail: True` if you want railway geometry to be included in the output data set.
-  
-- (advanced) property `filename_style`: For importing OpenStreetMap data into the database, NetAScore uses [osm2pgsql](https://osm2pgsql.org/). Import settings for this commandline utility are provided in a `default.style` file. By default, NetAScore provides this file in the `resources` directory. This setting, however, allows you to specify a custom style file.
 
+- For importing OpenStreetMap data into the database, NetAScore uses [osm2pgsql](https://osm2pgsql.org/) with the style file `resources/default.style`. This file is always used.
 
 ### Property `on_existing`
 
@@ -153,17 +149,24 @@ import:
   buffer: 1000
 ```
 
-The following example uses an existing OSM extract for Austria downloaded from [geofabrik.de](https://download.geofabrik.de). It additionally specifies a custom `default.style` for OSM import to the database.
+The following example uses a local AOI polygon instead of a place name:
+
+```yaml
+import:
+  type: osm
+  on_existing: delete
+  aoi_filename: aoi.gpkg
+  buffer: 1000
+```
+
+The following example uses an existing OSM extract for Austria downloaded from [geofabrik.de](https://download.geofabrik.de).
 
 ```yaml
 import:
   type: osm
   filename: austria-latest.osm.pbf
-  filename_style: default.style
   on_existing: delete
 ```
-
-
 
 ## Section `optional`
 
@@ -173,7 +176,7 @@ The following optional data is currently supported:
 
 - **dem** (GeoTIFF): digital elevation model
 - **noise** (GeoPackage: Polygon, MultiPolygon): polygons with noise attribute (e.g. traffic noise)
-- **osm** (PBF): only relevant for GIP import, if OpenStreetMap data should be used to infer the layers `building`, `crossing`, `facility`, `greenness` and `water`
+- **osm** (PBF): only relevant for GIP import, if OpenStreetMap data should be used to infer the layers `building`, `crossing`, `facility`, `greenness`, `water`, `parking` and `sights`
 
 The following layers can be supplied if OpenStreetMap data is not used or if you wish to use custom datasets:
 
@@ -182,6 +185,8 @@ The following layers can be supplied if OpenStreetMap data is not used or if you
 - **facility** (GeoPackage: Point, Polygon)
 - **greenness** (GeoPackage: Polygon)
 - **water** (GeoPackage: LineString, Polygon)
+- **parking** (GeoPackage: LineString, Polygon)
+- **sights** (GeoPackage: Point, Polygon)
 
 ### Subsection `dem`
 
@@ -206,23 +211,21 @@ The noise dataset contains a mapping of noise levels in decibels, represented as
 For Austrian states the noise datasets can be downloaded here: [https://www.inspire.gv.at](https://geometadatensuche.inspire.gv.at/metadatensuche/srv/ger/catalog.search#/metadata/125ec87c-7120-48a7-bd2c-2718cbf878c6)
 
 ```{warning}
-Currently, the noise dataset can only be processed if the input geopackage has a column named noise. 
+Currently, the noise dataset can only be processed if the input geopackage has a column named noise.
 You can do this preprocessing step for your area of interest in a gis-software of your choice and export it as a geopackage.
 ```
 
 ### Subsection `osm`
 
-This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: `building`, `crossing`, `facility`, `greeness`, `water`
+This is only relevant when working with GIP data as main input. An OSM dataset can be used to derive the following optional datasets: `building`, `crossing`, `facility`, `greenness`, `water`, `parking`, `sights`
 
 - `filename`: name of the OSM file to be imported
 
-### Subsections `building`, `crossing`, `facility`, `greeness`, `water`
+### Subsections `building`, `crossing`, `facility`, `greenness`, `water`, `parking`, `sights`
 
 If these datasets are not directly derived from an OSM dataset, they can be imported from individual data sets. This might be useful e.g. when working with local, authoritative data sets.
 
 - `filename`: name of the file to be imported
-
-
 
 ## Section `profiles`
 
@@ -257,8 +260,6 @@ profiles:
 
 For details on weight file definition and computation steps involved, please refer to the [README](https://github.com/plus-mobilitylab/netascore/blob/main/README.md) and [attributes](Attributes-and-Indicators) documentation.
 
-
-
 ## Section `export`
 
 Currently, NetAScore supports exporting the assessed network into a geopackage file. You can define this as follows:
@@ -266,7 +267,7 @@ Currently, NetAScore supports exporting the assessed network into a geopackage f
 ```yaml
 export:
   type: geopackage
-  filename: osm_network.gpkg 
+  filename: osm_network.gpkg
 ```
 
 If you provide a `case_id` in the `global` settings section, you can include it in the export filename by using the placeholder `<case_id>`:
@@ -275,4 +276,13 @@ If you provide a `case_id` in the `global` settings section, you can include it 
 export:
   type: geopackage
   filename: netascore_<case_id>.gpkg
+```
+
+For **GIP** you can optionally include source attributes in the edge export layer by setting `include_source_attributes: True`.
+
+```yaml
+export:
+  type: geopackage
+  filename: gip_network.gpkg
+  include_source_attributes: True
 ```

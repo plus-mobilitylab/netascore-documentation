@@ -1,0 +1,10 @@
+[out:json][timeout:90];
+
+(
+  way["highway"="living_street"]({{bbox}});
+
+  way["maxspeed"~"^(30|20|15|10|7|5\.4|5|4)$"]["bicycle"="yes"]["foot"="yes"]["motor_vehicle"~"^(yes|designated)$"]({{bbox}});
+  way["maxspeed"~"^(30|20|15|10|7|5\.4|5|4)$"]["bicycle"="yes"]["foot"="yes"][!"motor_vehicle"]["access"!="no"]({{bbox}});
+);
+
+out geom;

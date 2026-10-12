@@ -30,11 +30,11 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -107,7 +107,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore</div>
 </aside>
 
   
@@ -186,7 +186,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
-
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
 
@@ -345,7 +344,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -369,7 +368,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -410,8 +409,8 @@
 <h2>Mode profiles<a class="headerlink" href="#mode-profiles" title="Link to this heading">#</a></h2>
 <p>The mode profile files are written in YAML and contain definitions of model parameters. The first part defines indicator weights, and the second part provides numeric value mappings for all indicator values. These files are contained in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder.</p>
 <p>To set an indicator to be ignored for index computation, its weight can be set to <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>The default mode profiles for bikeability and walkability can be found at <code class="docutils literal notranslate"><span class="pre">/examples/profile_bike.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">/examples/profile_walk.yml</span></code>. Their definition looks like this:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1</span>
+<p>The default mode profiles for bikeability and walkability can be found at <code class="docutils literal notranslate"><span class="pre">/examples/profile_bike.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">/examples/profile_walk.yml</span></code>. An additional profile for recreational cycling is <code class="docutils literal notranslate"><span class="pre">/examples/profile_bike_tourism.yml</span></code>. The example settings files do not reference it. Profile files require <code class="docutils literal notranslate"><span class="pre">version:</span> <span class="pre">2.0</span></code>. Older profile files are rejected. Their definition looks like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 
 <span class="nt">weights</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">bicycle_infrastructure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
@@ -430,6 +429,7 @@
 <span class="w">  </span><span class="nt">buildings</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL</span>
 <span class="w">  </span><span class="nt">greenness</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL</span>
 <span class="w">  </span><span class="nt">water</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL</span>
+<span class="w">  </span><span class="nt">sights</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL</span>
 <span class="w">  </span><span class="nt">noise</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL</span>
 </pre></div>
 </div>
@@ -440,11 +440,11 @@
 <span class="w">    </span><span class="nt">output</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weight</span>
 <span class="w">      </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">pavement</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">gradient</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span>
-<span class="w">      </span><span class="s">&quot;{gravel,</span><span class="nv"> </span><span class="s">soft,</span><span class="nv"> </span><span class="s">cobble}&quot;</span><span class="p p-Indicator">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">mapping</span><span class="p">:</span>
+<span class="w">      </span><span class="s">"{gravel,</span><span class="nv"> </span><span class="s">soft,</span><span class="nv"> </span><span class="s">cobble}"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="nt">indicator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradient</span>
 <span class="w">        </span><span class="nt">mapping</span><span class="p">:</span>
-<span class="w">          </span><span class="s">&quot;{-4,</span><span class="nv"> </span><span class="s">-3,</span><span class="nv"> </span><span class="s">3,</span><span class="nv"> </span><span class="s">4}&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.6</span>
+<span class="w">          </span><span class="s">"{-4,</span><span class="nv"> </span><span class="s">-3,</span><span class="nv"> </span><span class="s">3,</span><span class="nv"> </span><span class="s">4}"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.6</span>
 </pre></div>
 </div>
 <p>The last section of a mode profile contains the value mappings per indicator. These represent individual contributions of specific indicator values - such as a specific type of cycling infrastructure - to infrastructure suitability.</p>
@@ -452,13 +452,14 @@
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">indicator_mapping</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">indicator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bicycle_infrastructure</span>
 <span class="w">    </span><span class="nt">mapping</span><span class="p">:</span>
-<span class="w">      </span><span class="s">&quot;bicycle_way&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">      </span><span class="s">&quot;mixed_way&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
-<span class="w">      </span><span class="s">&quot;bicycle_lane&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
-<span class="w">      </span><span class="s">&quot;bus_lane&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
-<span class="w">      </span><span class="s">&quot;shared_lane&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
-<span class="w">      </span><span class="s">&quot;undefined&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span>
-<span class="w">      </span><span class="s">&quot;no&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="s">"bicycle_way"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="s">"mixed_way"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
+<span class="w">      </span><span class="s">"mixed_way_non_designated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9</span>
+<span class="w">      </span><span class="s">"bicycle_lane"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
+<span class="w">      </span><span class="s">"bus_lane"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.75</span>
+<span class="w">      </span><span class="s">"shared_lane"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">      </span><span class="s">"no"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="s">"no_separate"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
 </section>
@@ -523,11 +524,12 @@
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mode-profiles">Mode profiles</a></li>
 </ul>

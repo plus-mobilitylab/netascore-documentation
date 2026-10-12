@@ -1,0 +1,14 @@
+[out:json][timeout:90];
+
+(
+  way["highway"~"^(footway|cycleway|pedestrian)$"]({{bbox}});
+  way["highway"="service"]["motor_vehicle"="no"]({{bbox}});
+  way["highway"="bridleway"]["bicycle"="designated"]({{bbox}});
+  way["highway"="bridleway"]["foot"="designated"]({{bbox}});
+  way["highway"="path"]["surface"~"^(paved|asphalt|chipseal|concrete|paving_stones|brick|bricks|compacted)$"]({{bbox}});
+  way["highway"="path"]["bicycle"~"^(designated|official)$"]({{bbox}});
+  way["highway"="track"]["tracktype"~"^(grade1|grade2)$"][!"width"]({{bbox}});
+  way["highway"="track"]["tracktype"~"^(grade1|grade2)$"](if:number(t["width"])>=1.5)({{bbox}});
+);
+
+out geom;

@@ -30,11 +30,11 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -107,7 +107,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore</div>
 </aside>
 
   
@@ -186,7 +186,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
-
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
 
@@ -345,7 +344,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -369,7 +368,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -443,7 +442,7 @@
 <p><img alt="continued overview over the system workflow" src="_images/system_overview2.png" />
 NetAScore reads all settings, model parameters (mode profiles) and input files from the data directory. It then handles workflow automation with Python scripts that run external command line utilities where needed. As the main processing steps take place in a PostgreSQL database, the Python code also handles code execution in the database through SQL statements.</p>
 <!-- add slide 82 graphic -->
-<p>All steps of the workflow are controlled from the main Python file <code class="docutils literal notranslate"><span class="pre">calculate_index.py</span></code>. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory.</p>
+<p>All steps of the workflow are controlled from the main Python file <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory.</p>
 <section id="data-directory">
 <h3>Data Directory<a class="headerlink" href="#data-directory" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> directory contains all external data NetAScore needs to access (settings file, mode profile files and all input datasets) as well as the output data sets generated by NetAScore.
@@ -481,10 +480,10 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">profiles</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span>
 <span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bike</span>
-<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weights_bike.yml</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile_bike.yml</span>
 <span class="w">  </span><span class="p p-Indicator">-</span>
 <span class="w">    </span><span class="nt">profile_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">walk</span>
-<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weights_walk.yml</span>
+<span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile_walk.yml</span>
 </pre></div>
 </div>
 <p>… export settings</p>
@@ -576,11 +575,12 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-overview">System Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interplay-of-python-and-sql">Interplay of Python and SQL</a></li>

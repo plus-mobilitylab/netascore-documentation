@@ -30,11 +30,11 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -107,7 +107,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore</div>
 </aside>
 
   
@@ -186,7 +186,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
-
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
 
@@ -345,7 +344,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -369,7 +368,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -418,51 +417,49 @@
 <p>Please find more information on possible options available in the <strong>settings file</strong> and their meaning in the <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">configuration guide</span></a>.</p>
 <p>Make sure you have installed these <strong>software dependencies</strong>:</p>
 <ul class="simple">
-<li><p>Python 3.x</p></li>
+<li><p>Python 3.13</p></li>
 <li><p>recent PostgreSQL with PostGIS extension (make sure to enable all GDAL drivers if prompted; this should include psql, raster2pgsql and ogr2ogr)</p></li>
-<li><p>osm2pgsql (<a class="reference external" href="https://osm2pgsql.org/doc/install.html">osm2pgsql.org</a>) (Please use a Version &gt; 2.0, since the newer version has breaking changes that cause conflicts within NetAScore)</p></li>
+<li><p>osm2pgsql (<a class="reference external" href="https://osm2pgsql.org/doc/install.html">osm2pgsql.org</a>) (Please use version 2. NetAScore uses the pgsql output, which this version still provides.)</p></li>
 </ul>
 <p>After installation of PostgreSQL, please make sure that its subfolder containing the binaries (e.g. <code class="docutils literal notranslate"><span class="pre">Program</span> <span class="pre">Files/PostgreSQL/&lt;version&gt;/bin</span></code>) is added to the PATH environment variable.</p>
 <p>Then, install the <strong>Python dependencies</strong> for this project - with pip:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RUN pip install -r requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
-<p><em>If you run into issues with the installation via pip, you can also try using Anaconda for the installation, the necessary steps are outlined below.</em></p>
+<p><em>If you run into issues with the installation via pip, you can also try using Conda for the installation, the necessary steps are outlined below.</em></p>
 <p>Now you can <strong>run NetAScore</strong> by providing the filename of the settings file as commandline parameter to the Python script:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python generate_index.py your-settings-file.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_index.py<span class="w"> </span>your-settings-file.yml
 </pre></div>
 </div>
 <p>The processing can take several minutes up to several hours - depending on the size of the geodata and the hardware used. Therefore, we recommend to <strong>start with a small example</strong> first.</p>
-<p>You can also use Anaconda to create a virtual environment with the following Python dependencies:</p>
-<p><em>We tested the installation using miniconda3 on Windows 10 (64-bit) and using the Anaconda powershell prompt on Windows 11 (64-Bit).</em></p>
+<p>You can also use Conda to create a virtual environment with the following Python dependencies:</p>
 <ul class="simple">
-<li><p>gdal (Version 3.6.2)</p></li>
-<li><p>igraph (Version 0.10.4)</p></li>
-<li><p>pandas (Version 1.5.1)</p></li>
-<li><p>Flask (Version 2.2.3)</p></li>
-<li><p>psycopg2 (Version 2.9.7)</p></li>
-<li><p>Jinja2 (Version 3.0.3)</p></li>
-<li><p>JinjaSql (Version 0.1.8)</p></li>
-<li><p>requests (Version 2.28.2)</p></li>
-<li><p>osm2geojson (Version 0.2.5)*</p></li>
-<li><p>PyYaml (Version 6.0)</p></li>
+<li><p>python 3.13</p></li>
+<li><p>gdal</p></li>
+<li><p>geopandas</p></li>
+<li><p>geopy</p></li>
+<li><p>psycopg2</p></li>
+<li><p>pyyaml</p></li>
+<li><p>requests</p></li>
+<li><p>jinjasql2*</p></li>
+<li><p>osm2geojson*</p></li>
 </ul>
-<p>*osm2geojson needs to be installed afterwards by using pip.</p>
+<p>* jinjasql2 and osm2geojson need to be installed afterwards by using pip.</p>
 <p>You can also import the environment file provided by running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">netascoreenvironment</span><span class="o">.</span><span class="n">yml</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </pre></div>
 </div>
-<p>Afterwards activate the environment netascore3.9:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">netascore3</span><span class="mf">.9</span>
+<p>Afterwards activate the environment netascore:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>netascore
 </pre></div>
 </div>
 <p>You can now run NetAScore, using the prompt described above.
-<em>An important thing to note here, is to execute the command within miniconda or anaconda, as this ensures that the python version within the environment is used, rather than the system default.</em></p>
-<p>If you want to manually install the requirements using conda, make sure to install the packages in the order given witihin the requirements.txt files, as some of the required versions may become overwritten otherwise, leading to conflicts.</p>
+<em>An important thing to note here, is to execute the command within conda, as this ensures that the python version within the environment is used, rather than the system default.</em></p>
+<p>If you want to manually install the requirements using conda, install the packages in the order given in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
 <section id="additional-commandline-parameters">
 <h2>Additional commandline parameters<a class="headerlink" href="#additional-commandline-parameters" title="Link to this heading">#</a></h2>
-<p>If you want to re-run the pipeline, but <strong>skip certain steps</strong>, use the <strong><code class="docutils literal notranslate"><span class="pre">--skip</span></code></strong> flag with a list of steps you want to skip:  <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code>, <code class="docutils literal notranslate"><span class="pre">attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">optional</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">export</span></code> (the steps are explained in detail in this readme file). In the following example, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">attributes</span></code> steps will be skipped and only the <code class="docutils literal notranslate"><span class="pre">export</span></code> step is re-executed:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python generate_index.py your-settings-file.yml --skip import network attributes
+<p>If you want to re-run the pipeline, but <strong>skip certain steps</strong>, use the <strong><code class="docutils literal notranslate"><span class="pre">--skip</span></code></strong> flag with a list of steps you want to skip:  <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code>, <code class="docutils literal notranslate"><span class="pre">attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">optional</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">export</span></code> (the steps are explained in detail in this readme file). In the following example, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">attributes</span></code> are skipped. <code class="docutils literal notranslate"><span class="pre">optional</span></code> (if that section is present in the settings file), <code class="docutils literal notranslate"><span class="pre">index</span></code> and <code class="docutils literal notranslate"><span class="pre">export</span></code> still run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_index.py<span class="w"> </span>your-settings-file.yml<span class="w"> </span>--skip<span class="w"> </span>import<span class="w"> </span>network<span class="w"> </span>attributes
 </pre></div>
 </div>
 <p>If you want to get more (or less) detailed <strong>log outputs</strong>, set the <strong><code class="docutils literal notranslate"><span class="pre">--loglevel</span></code></strong> flag to one of the following levels:
@@ -545,11 +542,12 @@
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-commandline-parameters">Additional commandline parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-shooting-and-resolving-common-issues">Trouble shooting and resolving common issues</a><ul class="nav section-nav flex-column">

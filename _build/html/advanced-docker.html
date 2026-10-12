@@ -30,11 +30,11 @@
   <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -49,7 +49,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -107,7 +107,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore</div>
+  <div class="bd-header-announcement__content">The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore</div>
 </aside>
 
   
@@ -186,7 +186,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Attributes-and-Indicators.html">Attributes &amp; Indicators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
-
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
 
@@ -345,7 +344,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -369,7 +368,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -441,12 +440,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">network</span> <span class="pre">create</span> <span class="pre">netascore-net</span></code></p>
 <p>Then, to run the workflow, first start the PostgreSQL database and attach it to the network:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>netascore-db<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:13-3.2
+<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:18-3.6
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Map TCP port 5432 in the container to port 5433 on the Docker host:</span>
 docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>netascore-db<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span>-p<span class="w"> </span><span class="m">5433</span>:5432<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:13-3.2
+<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:18-3.6
 </pre></div>
 </div>
 <p>Make sure that the database connection in your <code class="docutils literal notranslate"><span class="pre">settings.yml</span></code> is set up to use the Docker network:</p>
@@ -477,7 +476,7 @@ docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </sp
 <h2>Only the database runs in docker<a class="headerlink" href="#only-the-database-runs-in-docker" title="Link to this heading">#</a></h2>
 <p>If the database runs in docker, then you have to configure your database to accept connections from the local machine:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>netascore-db<span class="w"> </span>--network<span class="o">=</span>netascore-net<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:13-3.2
+<span class="w">        </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres<span class="w"> </span>-d<span class="w"> </span>postgis/postgis:18-3.6
 </pre></div>
 </div>
 <p>Your <code class="docutils literal notranslate"><span class="pre">database</span></code> section in the settings file should point to the local port which is mapped to the database on localhost:</p>
@@ -503,9 +502,7 @@ machine, or you cannot establish a connection, use <code class="docutils literal
 <span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* If this does not work out for you, you can also try using `host.docker.internal` as the host.
-</pre></div>
-</div>
+<p>* If this does not work out for you, you can also try using <code class="docutils literal notranslate"><span class="pre">host.docker.internal</span></code> as the host.</p>
 </section>
 <section id="access-the-docker-database-through-a-local-postgresql-instance">
 <h2>Access the docker database through a local PostgreSQL-Instance:<a class="headerlink" href="#access-the-docker-database-through-a-local-postgresql-instance" title="Link to this heading">#</a></h2>
@@ -550,8 +547,8 @@ docker<span class="w"> </span>start<span class="w"> </span>netascore-pipe
 </div>
 <p>This command will show the logs of the container and will follow the logs. You can stop the command with <code class="docutils literal notranslate"><span class="pre">ctrl+c</span></code>.</p>
 <p>To copy the resulting files back to your local system, you can use the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>copy<span class="w"> </span>netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE1.gpkg<span class="w"> </span>.
-docker<span class="w"> </span>copy<span class="w"> </span>netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE2.gpkg<span class="w"> </span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>cp<span class="w"> </span>netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE1.gpkg<span class="w"> </span>.
+docker<span class="w"> </span>cp<span class="w"> </span>netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE2.gpkg<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
@@ -564,16 +561,17 @@ Furthermore, it might be necessary to dedicate more memory to the database conta
 </div>
 <p>Then, the <code class="docutils literal notranslate"><span class="pre">netascore-db</span></code>-section of <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> should look like this:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">netascore-db</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgis/postgis:13-3.2</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgis/postgis:18-3.6</span>
+<span class="w">    </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux/amd64</span>
 <span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2gb</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5433:5432&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"5433:5432"</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=postgres</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=postgres</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=postgres</span>
 <span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD-SHELL&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pg_isready&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-U&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD-SHELL"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pg_isready</span><span class="nv"> </span><span class="s">-U</span><span class="nv"> </span><span class="s">postgres"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
 <span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
@@ -663,11 +661,12 @@ docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </sp
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Advanced Docker customisation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docker-image-from-source">Build the Docker image from source</a><ul class="visible nav section-nav flex-column">
