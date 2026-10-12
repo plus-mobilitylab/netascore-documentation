@@ -1,0 +1,11 @@
+[out:json][timeout:90];
+
+(
+  way["footway"="sidewalk"]({{bbox}});
+  way["sidewalk"~"^(both|yes|opposite|left|right)$"]({{bbox}});
+  way["sidewalk:both"~"^(both|yes)$"]({{bbox}});
+  way["sidewalk:left"~"^(both|yes|opposite)$"]({{bbox}});
+  way["sidewalk:right"~"^(both|yes|opposite)$"]({{bbox}});
+);
+
+out geom;

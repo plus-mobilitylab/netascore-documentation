@@ -1,0 +1,35 @@
+[out:json][timeout:90];
+
+(
+  // allowed: mapped street parking
+  way["highway"]["parking"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:left"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:right"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:both"~"^(surface|street_side|lane|layby|on_kerb|half_on_kerb|shoulder|yes)$"]({{bbox}});
+  way["highway"]["parking:lane"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+  way["highway"]["parking:lane:left"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+  way["highway"]["parking:lane:right"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+  way["highway"]["parking:lane:both"~"^(both|left|right|parallel|perpendicular|marked|diagonal|yes)$"]({{bbox}});
+
+  // allowed: parking areas, excluding underground and multi-storey
+  wr["amenity"="parking"]["parking"!="underground"]["parking"!="multi-storey"]["level"!="-1"]({{bbox}});
+
+  // implicit: cars permitted, parking not mapped
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"]["access"~"^(designated|destination|yes|private|customers|delivery)$"][!"parking"][!"parking:left"][!"parking:right"][!"parking:both"][!"parking:lane"][!"parking:lane:left"][!"parking:lane:right"][!"parking:lane:both"]({{bbox}});
+  way["highway"~"^(residential|unclassified|tertiary|secondary|primary|primary_link|secondary_link|motorway_junction)$"][!"access"][!"parking"][!"parking:left"][!"parking:right"][!"parking:both"][!"parking:lane"][!"parking:lane:left"][!"parking:lane:right"][!"parking:lane:both"]({{bbox}});
+  way["motor_vehicle"~"^(yes|designated|private|destination|customers|delivery)$"][!"parking"][!"parking:left"][!"parking:right"][!"parking:both"][!"parking:lane"][!"parking:lane:left"][!"parking:lane:right"][!"parking:lane:both"]({{bbox}});
+
+  // forbidden: parking tagged no, or the way is closed to motor vehicles
+  way["parking"="no"]({{bbox}});
+  way["parking:left"="no"]({{bbox}});
+  way["parking:right"="no"]({{bbox}});
+  way["parking:both"="no"]({{bbox}});
+  way["parking:lane"="no"]({{bbox}});
+  way["parking:lane:left"="no"]({{bbox}});
+  way["parking:lane:right"="no"]({{bbox}});
+  way["parking:lane:both"="no"]({{bbox}});
+  way["highway"~"^(cycleway|pedestrian|bridleway|footway)$"]({{bbox}});
+  way["motor_vehicle"~"^(no|discouraged)$"]({{bbox}});
+);
+
+out geom;

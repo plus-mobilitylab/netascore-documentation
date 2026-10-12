@@ -1,0 +1,10 @@
+[out:json][timeout:90];
+
+(
+  way["highway"="service"]["motor_vehicle"!="no"]["bicycle"~"^(yes|designated|official)$"]({{bbox}});
+  way["highway"="service"]["motor_vehicle"!="no"]["foot"~"^(yes|designated|official)$"]({{bbox}});
+  way["highway"="service"]["motor_vehicle"!="no"][!"bicycle"]({{bbox}});
+  way["highway"="service"]["motor_vehicle"!="no"][!"foot"]({{bbox}});
+);
+
+out geom;

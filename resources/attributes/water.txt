@@ -1,0 +1,8 @@
+[out:json][timeout:90];
+
+(
+  wr["waterway"][!"tunnel"]({{bbox}});
+  wr["natural"="water"][!"tunnel"]({{bbox}});
+);
+
+out geom;
