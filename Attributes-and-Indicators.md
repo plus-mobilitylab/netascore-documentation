@@ -79,7 +79,7 @@ Default weight: 0.1* (bike) / - (walk)
 
 Default data source: OpenStreetMap network geometry with attributes
 
-Default weight (directional): 0.1 (bike)
+Default weight: 0.1 (bike, `max_speed`) / 0.3 (walk, `max_speed_greatest`)
 
 ### number_lanes_*
 
@@ -138,7 +138,7 @@ Default weight: - (bike) / 0.4 (walk)
 
 ### parking
 
-Describes car parking along a road segment: `allowed`, `implicit`, `forbidden`. `allowed` is mapped street parking or a parking area. `implicit` means motor vehicles are permitted and parking is not mapped. `forbidden` means parking is not allowed or the way is closed to motor vehicles.
+Describes car parking along a road segment: `allowed`, `implicit`, `forbidden`. `allowed` is mapped street parking or a parking area that is not underground, multi-storey, or `level=-1`. `implicit` includes any way whose `motor_vehicle` value permits cars, and listed road classes when `access` permits cars or is missing and at least one parking key is missing. `forbidden` includes ways with `access` permitted or missing that are closed to motor vehicles or untagged for it while a parking key is missing or `no`, and foot or cycle ways with that same `access`. Tag lists are on the OSM derivation page.
 
 Default data source: OpenStreetMap
 

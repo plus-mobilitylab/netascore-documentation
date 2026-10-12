@@ -167,8 +167,8 @@ This command will show the logs of the container and will follow the logs. You c
 To copy the resulting files back to your local system, you can use the following command:
 
 ```bash
-docker copy netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE1.gpkg .
-docker copy netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE2.gpkg .
+docker cp netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE1.gpkg .
+docker cp netascore-pipe:/usr/src/netascore/data/YOUR_RESULT_FILE2.gpkg .
 ```
 
 ### Memory issues with large datasets

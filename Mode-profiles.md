@@ -6,7 +6,7 @@ The mode profile files are written in YAML and contain definitions of model para
 
 To set an indicator to be ignored for index computation, its weight can be set to `NULL`.
 
-The default mode profiles for bikeability and walkability can be found at `/examples/profile_bike.yml` and `/examples/profile_walk.yml`. An additional profile for recreational cycling is `/examples/profile_bike_tourism.yml`. Profile files require `version: 2.0`. Older profile files are rejected. Their definition looks like this:
+The default mode profiles for bikeability and walkability can be found at `/examples/profile_bike.yml` and `/examples/profile_walk.yml`. An additional profile for recreational cycling is `/examples/profile_bike_tourism.yml`. The example settings files do not reference it. Profile files require `version: 2.0`. Older profile files are rejected. Their definition looks like this:
 
 ```yaml
 version: 2.0

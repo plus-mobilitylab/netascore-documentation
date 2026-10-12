@@ -34,17 +34,17 @@ The processing can take several minutes up to several hours - depending on the s
 
 You can also use Conda to create a virtual environment with the following Python dependencies:
 
-- python 3.13.16
-- gdal 3.13.3
-- geopandas 1.2.0
-- geopy 2.5.0
-- psycopg2 2.9.13
-- pyyaml 6.0.3
-- requests 2.34.2
-- jinjasql2 0.1.13 *
-- osm2geojson 0.3.2 *
+- python 3.13
+- gdal
+- geopandas
+- geopy
+- psycopg2
+- pyyaml
+- requests
+- jinjasql2\*
+- osm2geojson\*
 
-- jinjasql2 and osm2geojson need to be installed afterwards by using pip.
+\* jinjasql2 and osm2geojson need to be installed afterwards by using pip.
 
 You can also import the environment file provided by running:
 
@@ -61,7 +61,7 @@ conda activate netascore
 You can now run NetAScore, using the prompt described above.
 *An important thing to note here, is to execute the command within conda, as this ensures that the python version within the environment is used, rather than the system default.*
 
-If you want to manually install the requirements using conda, make sure to install the packages in the order given witihin the requirements.txt files, as some of the required versions may become overwritten otherwise, leading to conflicts.
+If you want to manually install the requirements using conda, install the packages in the order given in `requirements.txt`.
 
 ## Additional commandline parameters
 

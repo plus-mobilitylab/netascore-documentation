@@ -32,7 +32,7 @@ html:
   use_repository_button: true
   #home_page_in_navbar: false  # Whether to include your home page in the left Navigation Bar
   favicon: resources/img/NetAScore_Logo_Light.png
-  announcement: "The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore"
+  announcement: "The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore"
 
 
 parse:
