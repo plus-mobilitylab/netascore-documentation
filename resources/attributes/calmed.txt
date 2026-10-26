@@ -1,10 +1,14 @@
 [out:json][timeout:90];
 
 (
+  // bicycle roads on residential and similar roads (open to motor traffic; otherwise no_mit)
+  way["bicycle_road"="yes"]["highway"~"^(residential|unclassified|tertiary|tertiary_link|service|living_street)$"]({{bbox}});
+  way["cyclestreet"="yes"]["highway"~"^(residential|unclassified|tertiary|tertiary_link|service|living_street)$"]({{bbox}});
+
   way["highway"="living_street"]({{bbox}});
 
   way["maxspeed"~"^(30|20|15|10|7|5\.4|5|4)$"]["bicycle"="yes"]["foot"="yes"]["motor_vehicle"~"^(yes|designated)$"]({{bbox}});
-  way["maxspeed"~"^(30|20|15|10|7|5\.4|5|4)$"]["bicycle"="yes"]["foot"="yes"][!"motor_vehicle"]["access"!="no"]({{bbox}});
+  way["maxspeed"~"^(30|20|15|10|7|5\.4|5|4)$"]["bicycle"="yes"]["foot"="yes"][!"motor_vehicle"]["access"]["access"!="no"]({{bbox}});
 );
 
 out geom;

@@ -3,6 +3,11 @@
 (
   way["highway"~"^(footway|cycleway|pedestrian)$"]({{bbox}});
   way["highway"="service"]["motor_vehicle"="no"]({{bbox}});
+
+  // roads closed to motor vehicles: paved, or surface unknown (except unclassified roads)
+  way["highway"~"^(residential|tertiary|tertiary_link|unclassified)$"]["motor_vehicle"="no"]["surface"~"^(paved|asphalt|chipseal|concrete|paving_stones|brick|bricks|compacted)$"]({{bbox}});
+  way["highway"~"^(residential|tertiary|tertiary_link)$"]["motor_vehicle"="no"][!"surface"]({{bbox}});
+
   way["highway"="bridleway"]["bicycle"="designated"]({{bbox}});
   way["highway"="bridleway"]["foot"="designated"]({{bbox}});
   way["highway"="path"]["surface"~"^(paved|asphalt|chipseal|concrete|paving_stones|brick|bricks|compacted)$"]({{bbox}});
@@ -10,5 +15,7 @@
   way["highway"="track"]["tracktype"~"^(grade1|grade2)$"][!"width"]({{bbox}});
   way["highway"="track"]["tracktype"~"^(grade1|grade2)$"](if:number(t["width"])>=1.5)({{bbox}});
 );
+
+// bicycle roads without car access are no_mit as well (see bicycle_road query)
 
 out geom;

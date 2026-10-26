@@ -8,32 +8,6 @@
   way["cycleway:right"~"^(track|opposite_track|segregated|yes)$"]["foot"!~"^(yes|designated)$"]({{bbox}});
   way["cycleway:both"~"^(track|opposite_track|segregated|yes)$"]["foot"!~"^(yes|designated)$"]({{bbox}});
 
-  way["bicycle_road"="yes"]["foot"!~"^(yes|designated)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["foot"!~"^(yes|designated)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["segregated"="yes"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["segregated"="yes"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk"~"^(yes|separate|opposite|left|right)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk"~"^(yes|separate|opposite|left|right)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk:both"~"^(yes|separate)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk:both"~"^(yes|separate)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk:left"~"^(yes|separate|opposite)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk:left"~"^(yes|separate|opposite)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk:right"~"^(yes|separate|opposite)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["bicycle_road"="yes"]["sidewalk:right"~"^(yes|separate|opposite)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-
-  way["cyclestreet"="yes"]["foot"!~"^(yes|designated)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["foot"!~"^(yes|designated)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["segregated"="yes"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["segregated"="yes"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk"~"^(yes|separate|left|right|opposite)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk"~"^(yes|separate|left|right|opposite)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk:both"~"^(yes|separate)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk:both"~"^(yes|separate)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk:left"~"^(yes|separate|opposite)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk:left"~"^(yes|separate|opposite)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk:right"~"^(yes|separate|opposite)$"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
-  way["cyclestreet"="yes"]["sidewalk:right"~"^(yes|separate|opposite)$"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
-
   way["bicycle"~"^(yes|designated|official)$"]["foot"!~"^(yes|designated)$"]["segregated"="yes"]["motor_vehicle"="no"]({{bbox}});
   way["bicycle"~"^(yes|designated|official)$"]["foot"!~"^(yes|designated)$"]["segregated"="yes"][!"motor_vehicle"]({{bbox}});
 );

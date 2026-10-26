@@ -1,0 +1,12 @@
+[out:json][timeout:90];
+
+// bicycle roads / cyclestreets
+// - open to motor traffic: bicycle_infrastructure = bicycle_road, road_category = calmed
+// - without car access: bicycle_infrastructure = bicycle_way / mixed_way / mixed_way_non_designated,
+//   road_category = no_mit (car access is derived from the access tags, see the access functions of NetAScore)
+(
+  way["bicycle_road"="yes"]({{bbox}});
+  way["cyclestreet"="yes"]({{bbox}});
+);
+
+out geom;
