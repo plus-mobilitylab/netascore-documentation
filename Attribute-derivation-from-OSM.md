@@ -1,9 +1,10 @@
 # Attribute derivation from OSM
 
-NetAScore allows to derive indicators for bikeability and walkability index computation from OpenstreetMap network data.
+NetAScore allows to derive indicators for bikeability and walkability index computation from globally available OpenstreetMap network data.
 By default, OSM data is automatically queried using the **Overpass API**. See also [Configuration of the settings](Configuration-of-the-settings) for additional options.
 
-Since `OSM` is maintained by volunteers via open collaboration, attributes might be mapped in various ways. For interpretation of OSM attributes to derive indicator values NetAScore follows the recommended tagging schemes as shown in the OSM wiki, but tries to also cover frequently used alternative specifications.
+Since `OSM` is a crowdsourcing effort and maintained by volunteers, attributes might be mapped in various ways. NetAScore follows the recommended tagging schemes as shown in the OSM wiki for interpretation of OSM attributes to derive indicator values. Additionally, it covers frequently used alternative specifications. 
+With OSM data it may happen that specific features are mapped inconsistently or mapping errorrs occured. If you notice such cases, you are more than welcome to fix the issue in the OSM data and thereby help contribute to improving the OSM data base. If you find systematic misclassification in the NetAScore results, please open an issue on the NetAScore GitHub repository so we can assess the issue and try to find a generic fix for it.
 
 While some of the NetAScore categories may overlap with OSM categories, there may be some differences. Therefore, please make sure to read the NetAScore indicator descriptions for further information.
 
@@ -11,9 +12,9 @@ While some of the NetAScore categories may overlap with OSM categories, there ma
 
 Rules in a table are applied from top to bottom and the first match is used. A value written as `""` means the tag is missing. A `!=` comparison also matches a missing tag, except `access!=no` for `calmed`: a missing `access` does not match when `motor_vehicle` is missing.
 
-Please refer to the general definition of indicators in [Attributes and Indicators](Attributes-and-Indicators) and to the implementation in [`sql/templates/osm_attributes.sql.j2`](https://github.com/plus-mobilitylab/netascore/blob/main/sql/templates/osm_attributes.sql.j2). Parking, water, sights, facilities and greenness are selected in [`core/import_step.py`](https://github.com/plus-mobilitylab/netascore/blob/main/core/import_step.py).
+Please also refer to the general definition of indicators in [Attributes and Indicators](Attributes-and-Indicators) and to the implementation in [`sql/templates/osm_attributes.sql.j2`](https://github.com/plus-mobilitylab/netascore/blob/main/sql/templates/osm_attributes.sql.j2). Parking, water, sights, facilities, crossings, buildings and greenness are generated in [`core/import_step.py`](https://github.com/plus-mobilitylab/netascore/blob/main/core/import_step.py). OSM data is imported with osm2pgsql using the flex configuration [`resources/osm2pgsql_flex.lua`](https://github.com/plus-mobilitylab/netascore/blob/main/resources/osm2pgsql_flex.lua), which also extracts the members of bicycle route relations.
 
-*The queries can be tested in [Overpass turbo](https://overpass-turbo.eu/). Longer queries are linked as `.txt` files. Zoom to the area of interest before running: those files query only the current map view.*
+*The queries can be tested in [Overpass turbo](https://overpass-turbo.eu/). Longer queries are linked as `.txt` files. Zoom to the area of interest before running: those files query only the extent of the current map view.*
 
 ## bicycle_infrastructure_[tf/ft]
 
@@ -21,14 +22,21 @@ Please refer to the general definition of indicators in [Attributes and Indicato
 
 | Value<br/>__________________ | Description<br/>_______________________________ | Example <br/>____________________________ | OSM<br/>_________________________________ | Overpass-QL Query<br/>_________________________________ |
 | :--- | :--- | :--- | :--- | :--- |
-| bicycle_way | Separate way, that is exclusively used by cyclists | ![Example of a designated bicycle path](https://wiki.openstreetmap.org/w/images/thumb/7/7d/Path-bicycledesignated.jpg/450px-Path-bicycledesignated.jpg?20130812161048) | highway=cycleway + foot!=yes/designated/permissive <br/>cycleway/cycleway:left/right/both=track/opposite_track/segregated/yes + foot!=yes/designated <br/>bicycle=yes/designated/official + segregated=yes + foot!=yes/designated + motor_vehicle=no/"" <br/>bicycle_road/cyclestreet=yes + maxspeed="" + motor_vehicle=no/"" + (foot!=yes/designated or segregated=yes or sidewalk=yes/separate/opposite/left/right or sidewalk:both=yes/separate or sidewalk:left/right=yes/separate/opposite) | [bicycle way query](resources/attributes/bicycle_way.txt) |
-| mixed_way | Way with mixed use, dedicated to cyclists and pedestrians, but not used by MIV | ![Example of a mixed way](https://upload.wikimedia.org/wikipedia/commons/b/ba/Radweg_Schee_Silschede_cut.jpg) | cycleway=track/opposite_track/segregated/yes/opposite + foot=designated <br/>cycleway:left/right/both=track/opposite_track/segregated/yes + foot=designated <br/>highway=cycleway + foot=designated <br/>highway=cycleway + segregated=no + foot!=yes <br/>highway=footway + bicycle=designated + footway!=sidewalk <br/>highway=pedestrian + bicycle=designated <br/>bicycle_road/cyclestreet=yes + maxspeed="" + motor_vehicle=no/"" + (foot=designated or segregated=no) <br/>bicycle=designated + foot=designated + (motor_vehicle=no/destination/"" or access=no or highway=path/bridleway/cycleway/footway/track + tracktype!=grade4/grade5) | [mixed way query](resources/attributes/mixed_way.txt) |
+| bicycle_way | Separate way, that is exclusively used by cyclists | ![Example of a designated bicycle path](https://wiki.openstreetmap.org/w/images/thumb/7/7d/Path-bicycledesignated.jpg/450px-Path-bicycledesignated.jpg?20130812161048) | highway=cycleway + foot!=yes/designated/permissive <br/>cycleway/cycleway:left/right/both=track/opposite_track/segregated/yes + foot!=yes/designated <br/>bicycle=yes/designated/official + segregated=yes + foot!=yes/designated + motor_vehicle=no/"" | [bicycle way query](resources/attributes/bicycle_way.txt) |
+| mixed_way | Way with mixed use, dedicated to cyclists and pedestrians, but not used by MIV | ![Example of a mixed way](https://upload.wikimedia.org/wikipedia/commons/b/ba/Radweg_Schee_Silschede_cut.jpg) | cycleway=track/opposite_track/segregated/yes/opposite + foot=designated <br/>cycleway:left/right/both=track/opposite_track/segregated/yes + foot=designated <br/>highway=cycleway + foot=designated <br/>highway=cycleway + segregated=no + foot!=yes <br/>highway=footway + bicycle=designated + footway!=sidewalk <br/>highway=pedestrian + bicycle=designated <br/>bicycle=designated + foot=designated + (motor_vehicle=no/destination/"" or access=no or highway=path/bridleway/cycleway/footway/track + tracktype!=grade4/grade5) | [mixed way query](resources/attributes/mixed_way.txt) |
 | bicycle_lane | Bicycle lane, dedicated to the use by cyclists, e.g. on road-markings or cycle track | ![Example of a bicycle lane](https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/387soft_separation_Graf-Moltke-Str_Bremen.jpg/500px-387soft_separation_Graf-Moltke-Str_Bremen.jpg) | cycleway/cycleway:left/right/both=lane/opposite_lane<br/>cycleway:both:lane=advisory<br/>cycleway:lane=exclusive/advisory/pictogram | [Bicycle lane query](resources/attributes/bicycle_lane.txt) |
+| bicycle_road | Bicycle road (e.g. *Fahrradstraße*), open to motor traffic | - | bicycle_road=yes<br/>cyclestreet=yes | [bicycle road query](resources/attributes/bicycle_road.txt) |
 | shared_lane | Lane shared by cyclists and motor vehicles | - | cycleway/cycleway:left/right/both=shared_lane | [shared lane query](resources/attributes/shared_lane.txt) |
 | bus_lane | Bus lane with designated bicycle access | ![example of a lane shared between bus and cyclists](https://wiki.openstreetmap.org/w/images/thumb/e/ea/2010-01-02_15.19.16.jpg/800px-2010-01-02_15.19.16.jpg?20100102164456) | cycleway/cycleway:left/right/both=share_busway/opposite_share_busway | [bus lane query](resources/attributes/bus_lane.txt) |
 | mixed_way_non_designated | Way with mixed use, dedicated to cyclists and pedestrians, tagged with yes instead of designated | - | highway=cycleway + foot=yes<br/>highway=footway + bicycle=yes<br/>highway=pedestrian + bicycle=yes<br/>cycleway=track/opposite_track/segregated/yes/opposite + foot=yes<br/>cycleway:left/right/both=track/opposite_track/segregated/yes + foot=yes<br/>bicycle=yes/designated + foot=yes/designated + (motor_vehicle=no/destination/"" or access=no or highway=path/bridleway/cycleway/footway/track + tracktype!=grade4/grade5) | [mixed way query](resources/attributes/bicycle_mixed_way_non_designated.txt) |
 | no_separate | Bicycle infrastructure mapped as its own way, not on the road centerline | - | cycleway/cycleway:left/right/both=separate | [separate cycleway query](resources/attributes/bicycle_no_separate.txt) |
 | no | No rule above matched. | - | | |
+
+**Bicycle roads without car access:** If a bicycle road (`bicycle_road=yes` or `cyclestreet=yes`) is not accessible by car in either direction, it is not classified as `bicycle_road`, but as:
+
+- `bicycle_way` if foot!=yes/designated, or segregated=yes, or sidewalk=yes/separate/opposite/left/right, or sidewalk:both=yes/separate, or sidewalk:left/right=yes/separate/opposite
+- `mixed_way` otherwise, if foot=designated or segregated=no
+- `mixed_way_non_designated` otherwise
 
 ## pedestrian_infrastructure_[tf/ft]
 
@@ -45,31 +53,33 @@ Please refer to the general definition of indicators in [Attributes and Indicato
 | no_separate | sidewalk or cycleway mapped as its own way | - | cycleway/cycleway:left/right/both=separate + foot=yes/designated<br/>sidewalk/sidewalk:left/right/both=separate | [no separate sidewalk query](resources/attributes/pedestrian_no_separate.txt) |
 | no | No rule above matched. | | | |
 
-## designated_route[tf/ft]
+## designated_route_[tf/ft]
 
-**Description:** Designated bicycle routes (in Austria, e.g. Donauradweg). Both directions receive the same value. Only lines tagged `route=bicycle` are used, and only when their geometry contains the segment. The highest matching scope wins.
+**Description:** Designated bicycle routes (in Austria, e.g. Donauradweg). A segment is part of a route if its OSM way is a member of a bicycle route relation (`type=route` + `route=bicycle`). Proposed routes (`state=proposed`) are not regarded. Members with the role `forward` or `backward` are part of the route only in or against the direction of the way - the value is then only assigned to this direction. If a segment is part of several routes, the highest scope (e.g. international) is used (per direction).
 
-| Value<br/>__________________ | Description<br/>_______________________________ | OSM <br/>_________________________________ | Overpass-QL Query<br/>_________________________________ |
-| :--- | :--- | :--- | :--- |
-| international | Designates that a road or path is part of an International Cycling Network route. | route=bicycle + network=icn <br/>route=bicycle + icn=yes | nwr["route"="bicycle"]["network"="icn"]\(area.searchArea\); nwr["route"="bicycle"]["icn"="yes"]\(area.searchArea\); |
-| national | Designates that a road or path is part of a National Cycling Network route. | route=bicycle + network=ncn <br/>route=bicycle + ncn=yes | nwr["route"="bicycle"]["network"="ncn"]\(area.searchArea\); nwr["route"="bicycle"]["ncn"="yes"]\(area.searchArea\); |
-| regional | Designates that a road or path is part of a Regional Cycling Network route. | route=bicycle + network=rcn <br/>route=bicycle + network=regional <br/>route=bicycle + rcn=yes | nwr["route"="bicycle"]["network"="rcn"]\(area.searchArea\); nwr["route"="bicycle"]["network"="regional"]\(area.searchArea\); nwr["route"="bicycle"]["rcn"="yes"]\(area.searchArea\); |
-| local | Designates that a road or path is part of a Local Cycling Network route. | route=bicycle + network=lcn <br/>route=bicycle + lcn=yes | nwr["route"="bicycle"]["network"="lcn"]\(area.searchArea\); nwr["route"="bicycle"]["lcn"="yes"]\(area.searchArea\); |
-| unknown | Bicycle route without one of the network scopes above. | route=bicycle | nwr["route"="bicycle"]\(area.searchArea\); |
-| no | Segment is not contained in a bicycle route. | | |
+| Value<br/>__________________ | Description<br/>_______________________________ | OSM (route relation) <br/>_________________________________ |
+| :--- | :--- | :--- |
+| international | Part of an International Cycling Network route. | network=icn |
+| national | Part of a National Cycling Network route. | network=ncn |
+| regional | Part of a Regional Cycling Network route. | network=rcn <br/>network=regional |
+| local | Part of a Local Cycling Network route. | network=lcn |
+| unknown | Bicycle route without one of the network scopes above. | any other or missing `network` value |
+| no | Segment is not part of a bicycle route. | |
+
+[bicycle route query](resources/attributes/designated_route.txt)
 
 ## road_category
 
-**Description:** Defines one road category per segment.
+**Description:** Defines one road category per segment. Rules are applied in the order of the table, except for bicycle roads: `bicycle_road=yes` or `cyclestreet=yes` on highway=residential/unclassified/tertiary/tertiary_link/service/living_street is tested after `secondary` and results in `calmed` (or `no_mit` if the road is not accessible by car in either direction).
 
 | Value<br/>__________________ | Description<br/>_______________________________ | Example <br/>_________________________________ | OSM<br/>_________________________________ | Overpass-QL Query<br/>_________________________________ |
 | :--- | :--- | :--- | :--- | :--- |
-| primary | highway linking large towns | ![primary road in urban area](https://wiki.openstreetmap.org/w/images/thumb/c/c5/Dscf0172_600.jpg/360px-Dscf0172_600.jpg) ![primary road in rural area](https://wiki.openstreetmap.org/w/images/thumb/c/c3/Primary-photo.jpg/200px-Primary-photo.jpg) | highway=primary/primary_link/motorway/motorway_link | nwr[highway~"^\(primary\|primary_link\|motorway\|motorway_link\)$"]\(area.searchArea\); |
+| primary | highway linking large towns | ![primary road in urban area](https://wiki.openstreetmap.org/w/images/thumb/c/c5/Dscf0172_600.jpg/360px-Dscf0172_600.jpg) ![primary road in rural area](https://wiki.openstreetmap.org/w/images/thumb/c/c3/Primary-photo.jpg/200px-Primary-photo.jpg) | highway=primary/primary_link/trunk/trunk_link/motorway/motorway_link | nwr[highway~"^\(primary\|primary_link\|trunk\|trunk_link\|motorway\|motorway_link\)$"]\(area.searchArea\); |
 | secondary | highways which are not part of major routes, but nevertheless form a link in the national route network;  cross-regional connecting roads between bigger locations | ![secondary road in an urban area](https://wiki.openstreetmap.org/w/images/thumb/3/3d/Highway_Tram01.jpg/360px-Highway_Tram01.jpg)![secondary road in a rural area](https://wiki.openstreetmap.org/w/images/thumb/7/7b/Highway_secondary-photo.jpg/360px-Highway_secondary-photo.jpg) | highway=secondary/secondary_link <br/>maxspeed=100/90/80/70 + motor_vehicle!=no | nwr[highway~"^\(secondary\|secondary_link\)$"]\(area.searchArea\); nwr["maxspeed"~"^\(100\|90\|80\|70\)$"]["motor_vehicle"!="no"]\(area.searchArea\); |
 | residential | road in residential area, with negligible transit traffic and Minor roads, connecting local centers of a large town or city or smaller settlements | ![residential road in urban area](https://wiki.openstreetmap.org/w/images/thumb/1/12/Dscf0181_600.jpg/360px-Dscf0181_600.jpg) ![residential road in rural area](https://wiki.openstreetmap.org/w/images/thumb/f/f8/Brake-K200-Schmalenfleth1.JPG/360px-Brake-K200-Schmalenfleth1.JPG) | highway=residential/tertiary/tertiary_link + motor_vehicle!=no <br/>highway=unclassified + motor_vehicle!=no <br/>maxspeed=50/40 + motor_vehicle=yes/designated/"" | nwr[highway~"^\(residential\|tertiary\|tertiary_link\)$"]["motor_vehicle"!="no"]\(area.searchArea\); nwr["highway"="unclassified"]["motor_vehicle"!="no"]\(area.searchArea\); nwr["maxspeed"~"^\(50\|40\)$"]["motor_vehicle"~"^\(yes\|designated\)$"]\(area.searchArea\); nwr["maxspeed"~"^\(50\|40\)$"][!"motor_vehicle"]\(area.searchArea\); |
 | service | road, whose main purpose is access to a building, service station, beach, business park etc. | ![service road](https://upload.wikimedia.org/wikipedia/commons/e/e6/Alley_leading_from_the_High_Street_to_Green_Lane_Shopping_Centre_-_geograph.org.uk_-_942796.jpg) | highway=service + motor_vehicle!=no + (bicycle or foot = yes/designated/official, or bicycle/foot missing) | [service road query](resources/attributes/service.txt) |
-| calmed | Road with very low speed limits and other pedestrian friendly traffic rules. | | highway=living_street <br/>maxspeed=30/20/15/10/7/5/5.4/4 + bicycle=yes + foot=yes + (motor_vehicle=yes/designated or motor_vehicle="" + access present and not no) | [calmed road query](resources/attributes/calmed.txt) |
-| no_mit | generic or multi-purpose path, not used by motorised vehicles | ![example of a way classified no_mit](https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Wien_-_Graben_%281%29.JPG/500px-Wien_-_Graben_%281%29.JPG) | highway=footway/cycleway/pedestrian<br/>highway=service + motor_vehicle=no<br/>highway=bridleway + bicycle/foot=designated<br/>highway=path + surface=paved/asphalt/chipseal/concrete/paving_stones/brick/bricks/compacted<br/>highway=path + bicycle=designated/official<br/>highway=track + tracktype=grade1/grade2 + (width>=1.5 or width missing) | [no_mit query](resources/attributes/no_mit.txt) |
+| calmed | Road with very low speed limits and other pedestrian friendly traffic rules. | | bicycle_road/cyclestreet=yes + highway=residential/unclassified/tertiary/tertiary_link/service/living_street (with car access) <br/>highway=living_street <br/>maxspeed=30/20/15/10/7/5/5.4/4 + bicycle=yes + foot=yes + (motor_vehicle=yes/designated or motor_vehicle="" + access present and not no) | [calmed road query](resources/attributes/calmed.txt) |
+| no_mit | generic or multi-purpose path, not used by motorised vehicles | ![example of a way classified no_mit](https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Wien_-_Graben_%281%29.JPG/500px-Wien_-_Graben_%281%29.JPG) | bicycle_road/cyclestreet=yes + highway=residential/unclassified/tertiary/tertiary_link/service/living_street (without car access)<br/>highway=footway/cycleway/pedestrian<br/>highway=service + motor_vehicle=no<br/>highway=residential/tertiary/tertiary_link + motor_vehicle=no + (surface=paved/asphalt/chipseal/concrete/paving_stones/brick/bricks/compacted or surface missing)<br/>highway=unclassified + motor_vehicle=no + surface=paved/asphalt/chipseal/concrete/paving_stones/brick/bricks/compacted<br/>highway=bridleway + bicycle/foot=designated<br/>highway=path + surface=paved/asphalt/chipseal/concrete/paving_stones/brick/bricks/compacted<br/>highway=path + bicycle=designated/official<br/>highway=track + tracktype=grade1/grade2 + (width>=1.5 or width missing) | [no_mit query](resources/attributes/no_mit.txt) |
 | track | generic or multi-purpose path, not used by motorised vehicles and with worse conditions than no_mit | ![example of a path](https://wiki.openstreetmap.org/w/images/thumb/4/49/GuideFootPathCycleYes.jpg/200px-GuideFootPathCycleYes.jpg) | highway=path + surface!=paved/asphalt/chipseal/concrete/paving_stones/brick/bricks/compacted<br/>highway=track + motor_vehicle=no/"" + tracktype set, not grade1/grade2<br/>highway=steps/platform<br/>highway=bridleway/path/track/service/residential/unclassified, except when bicycle=no and foot=no | [track query](resources/attributes/track.txt) |
 
 ## pavement
@@ -85,37 +95,42 @@ Please refer to the general definition of indicators in [Attributes and Indicato
 
 ## number_lanes_[tf/ft]
 
-**Description:** Number of lanes in each direction. Only integer tags with one or two digits are used.
+**Description:** Number of lanes in each direction. Only integer tags with one or two digits are used. One-way roads are detected from `oneway` as for access (`yes`/`true`/`1`: in the direction of the way, `-1`/`reverse`: against it). Without `oneway` tag, roundabouts (`junction=roundabout/circular`) and motorways are treated as one-way in the direction of the way.
 
 | Direction | OSM |
 | :--- | :--- |
-| ft | `lanes:forward`; otherwise `lanes` when `oneway=yes`; otherwise half of `lanes` |
-| tf | `lanes:backward`; otherwise `0` when `oneway=yes`; otherwise half of `lanes` |
+| ft | `lanes:forward`; otherwise all `lanes` for one-way roads in the direction of the way, `0` for one-way roads against it; otherwise half of `lanes` |
+| tf | `lanes:backward`; otherwise all `lanes` for one-way roads against the direction of the way, `0` for one-way roads in its direction; otherwise half of `lanes` |
+
+Without `lanes` tag (and without `lanes:forward` / `lanes:backward`), the value is NULL.
+
+## width
+
+**Description:** Width of the road or path in meters, from the `width` tag. Accepted are numbers with `.` or `,` as decimal separator, optionally followed by `m` or `meter` (e.g. `3.5`, `3,5`, `4 m`). Other values (e.g. `m`, `5 ft`) are ignored.
 
 ## max_speed_[tf/ft]
 
-**Description:** Speed limit for motorized vehicles, in km/h. `max_speed_ft`, `max_speed_tf` and `max_speed_greatest` all receive this value, capped at 130. Rules are applied from top to bottom.
+**Description:** Speed limit for motorized vehicles, in km/h. `max_speed_ft`, `max_speed_tf` and `max_speed_greatest` all receive this value, capped at 130. Rules are applied from top to bottom. *Motor vehicle access* refers to the most specific access tag given: `motorcar`, then `motor_vehicle`, then `vehicle`, then `access`.
 
 | Value | OSM |
 | :--- | :--- |
 | tag value | `maxspeed` is an integer with 1–3 digits |
-| 50 | highway=residential/living_street/tertiary + access=designated/destination/yes/"" |
-| 0 | highway=cycleway/footway/tertiary, or bicycle=yes/designated, or foot=yes/designated/official/permissive, or highway=track/path/unclassified + bicycle!=no + foot!=no + motorcar!=yes + tracktype=grade3/grade4/grade5 |
+| 0 | highway=cycleway/footway/path/pedestrian/bridleway/steps, or motor vehicle access = no |
+| 20 | highway=residential/tertiary/tertiary_link/service + motor vehicle access = private |
+| 50 | highway=residential/tertiary/tertiary_link |
+| 0 | highway=track + bicycle!=no + foot!=no + motorcar!=yes + tracktype=grade3/grade4/grade5 |
 | 130 | highway=motorway |
-| 100 | highway=motorway_link |
-| 80 | highway=primary_link |
-| 0 | access=no, or motorcar=no, or highway=steps |
-| 10 | motorcar=agricultural, or highway=path, or highway=track + access!=no |
-| 20 | highway=living_street, or highway=service/residential + access=private, or highway=construction + tracktype set |
+| 100 | highway=motorway_link/trunk |
+| 80 | highway=primary_link/trunk_link |
+| 10 | motorcar=agricultural, or highway=track |
+| 20 | highway=living_street, or highway=construction + tracktype set |
 | 30 | highway=service |
-| 5 | highway=raceway |
 | 50 | highway=unclassified, or highway=construction + ref="" |
-| 70 | highway=construction + ref=B304 |
-| 100 | highway=primary/secondary |
+| 100 | highway=primary/secondary/secondary_link |
 
 ## facility_ratio
 
-**Description:** Number of facility POIs per 100 m of segment length within 30 meters. Counted are points and polygons whose `amenity` or `tourism` value is in the facility list in `core/import_step.py`.
+**Description:** Number of facility POIs per hectare of the search area: a 30 meter buffer around the segment (incl. round ends). Counted are points and polygons whose `amenity` or `tourism` value is in the facility list in `core/import_step.py`.
 
 ## greenness_ratio
 
@@ -123,26 +138,47 @@ Please refer to the general definition of indicators in [Attributes and Indicato
 
 ## water_ratio
 
-**Description:** Water score from `0` to `100` in a 30 meter buffer. Of the polygon area share and the boundary length inside the buffer (boundary length / segment length × 100), the larger value is used. Streams (`waterway` or `natural=water`, excluding tunnels) then add their overlapping length / segment length × 100, and only when that overlap is between 80% and 160% of the segment length. The sum is capped at 100.
+**Description:** Water score from `0` to `100` in a 30 meter buffer. Of the polygon area share and the boundary length inside the buffer (boundary length / segment length × 100), the larger value is used. Water lines (`waterway` or `natural=water`, excluding tunnels) running along the segment then add their length within the buffer / segment length × 100 - only the parts outside water polygons are counted. A line is only regarded if its length within the buffer is between 80% and 160% of the segment length. The sum is capped at 100.
 
 [water query](resources/attributes/water.txt)
 
 ## parking
 
-**Description:** Car parking along a segment: `allowed`, `implicit`, `forbidden`. The first match is used. `allowed` is a parking key (`parking`, `parking:left`, `parking:right`, `parking:both`) of `surface`, `street_side`, `lane`, `layby`, `on_kerb`, `half_on_kerb`, `shoulder` or `yes`, or a `parking:lane` key (`parking:lane`, `parking:lane:left`, `parking:lane:right`, `parking:lane:both`) of `both`, `left`, `right`, `parallel`, `perpendicular`, `marked`, `diagonal` or `yes`. A parking area (`amenity=parking`) is `allowed` unless it is underground, multi-storey, or `level=-1`. `implicit` is `motor_vehicle` of `yes`, `designated`, `private`, `destination`, `customers` or `delivery`. Otherwise it is `highway` of `residential`, `unclassified`, `tertiary`, `secondary`, `primary`, `primary_link`, `secondary_link` or `motorway_junction`, with `access` of `designated`, `destination`, `yes`, `private`, `customers`, `delivery` or missing, and at least one parking key missing. `forbidden` requires `access` of `designated`, `destination`, `yes` or missing, and either `highway` of `cycleway`, `pedestrian`, `bridleway` or `footway`, or at least one parking key missing or `no` while `motor_vehicle` is `no`, `discouraged` or missing. A parking line is taken from a 1.75 meter buffer, keeping the line with the greatest overlap. A parking area overrides that line when the overlapping area divided by the segment length is greater than 0.33.
+**Description:** Car parking along a segment: `allowed`, `implicit`, `forbidden`. Parking is evaluated per side of the road: for the left side, the first given key of `parking:left`, `parking:both`, `parking`, `parking:lane:left`, `parking:lane:both`, `parking:lane` is used (and accordingly for the right side). The first matching rule applies:
+
+| Value | OSM |
+| :--- | :--- |
+| allowed | parking on at least one side: lane, street_side, on_kerb, half_on_kerb, shoulder, layby, surface, separate, yes, parallel, diagonal, perpendicular, marked, both, left, right <br/>service=parking_aisle |
+| forbidden | no parking on both sides: no, no_parking, no_stopping, fire_lane |
+| implicit | highway=primary/primary_link/secondary/secondary_link/tertiary/tertiary_link/unclassified/residential/service/road + motor vehicle access missing or yes/designated/permissive/destination/customers + service!=driveway/drive-through/emergency_access |
+| forbidden | all other ways: no motorized traffic, restricted motor vehicle access (e.g. private, agricultural, forestry), motorways and trunk roads (parking legally prohibited), living streets (parking only in marked spots), and service roads of type driveway, drive-through or emergency_access |
+
+*Motor vehicle access* refers to the most specific access tag given: `motorcar`, then `motor_vehicle`, then `vehicle`, then `access`.
+
+A parking area (`amenity=parking`) is `allowed` unless it is underground, multi-storey, or `level=-1`.
+
+The value of a segment is taken from the parking lines within a 1.75 meter buffer, keeping the line with the greatest overlap. In case of equal overlap, the value is chosen by priority: `allowed`, `implicit`, `forbidden`. A parking area overrides that line when the overlapping area divided by the segment length is greater than 0.33.
 
 [parking query](resources/attributes/parking.txt)
 
 ## sights
 
-**Description:** Number of sights per 100 m of segment length within a 30 meter buffer. Sights are points with `historic` other than `no`, or `tourism` of `attraction`, `museum`, `artwork`, `viewpoint`, `picnic_site`, `zoo`, `theme_park` or `gallery`.
+**Description:** Number of sights per hectare of the search area: a 30 meter buffer around the segment (incl. round ends). Sights are points with `historic` other than `no`, or `tourism` of `attraction`, `museum`, `artwork`, `viewpoint`, `picnic_site`, `zoo`, `theme_park` or `gallery`.
 
 [sights query](resources/attributes/sights.txt)
 
 ## crossing_ratio
 
-**Description:** Number of `highway=crossing` points, lines or areas per 100 m of segment length within 10 meters.
+**Description:** Number of `highway=crossing` points, lines or areas per hectare of the search area: a 10 meter buffer around the segment (incl. round ends).
 
 ## building_ratio
 
 **Description:** Share of building area in a 20 meter buffer along the segment, from `0` to `100`. Overlapping buildings are unioned, and the result is capped at 100.
+
+## access_[car/bicycle/pedestrian]_[tf/ft]
+
+**Description:** Legal access per mode and direction (`true`, `false`), derived from the OSM access tags (`access`, `vehicle`, `motor_vehicle`, `motorcar`, `bicycle`, `foot`, direction-specific tags such as `:forward` / `:backward`) and one-way restrictions. See the functions `sql/functions/osm_calculate_access_*.sql`.
+
+- `highway=steps` is regarded to never be accessible by car or bicycle, even with explicit permissions (e.g. `bicycle=yes`).
+- One-way tags (`oneway`, `oneway:vehicle`, `oneway:motor_vehicle`, `oneway:bicycle`): `no`, `false`, `0`, `reversible` and `alternating` allow both directions (reversible and alternating ways are usable in both directions at different times); `-1` and `reverse` (and `opposite` for bicycles) refer to the opposite direction; all other values (e.g. `yes`, `true`, `1`) to the direction of the way.
+- Pedestrians: `foot=yes` allows and `foot=no` restricts access. A sidewalk on the way itself (`sidewalk=yes/both/left/right`, `sidewalk:both/left/right=yes`, or a `footway` value other than `no`/`none`/`separate`) allows pedestrian access, also if `foot` is `no`, `discouraged`, `use_sidewalk` or `use_sidepath`. Sidewalks mapped as separate ways are not regarded here (see `pedestrian_infrastructure`).
