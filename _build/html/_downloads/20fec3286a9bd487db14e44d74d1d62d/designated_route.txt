@@ -1,0 +1,11 @@
+[out:json][timeout:90];
+
+// bicycle route relations (except proposed routes) - the member ways are part of the route
+// scope by tag "network": icn = international, ncn = national, rcn / regional = regional, lcn = local, other = unknown
+// members with role "forward" / "backward" are part of the route only in / against the direction of the way
+(
+  relation["type"="route"]["route"="bicycle"]["state"!="proposed"]({{bbox}});
+);
+
+(._;>;);
+out geom;

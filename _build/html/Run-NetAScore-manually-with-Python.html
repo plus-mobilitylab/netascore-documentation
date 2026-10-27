@@ -27,22 +27,22 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Run-NetAScore-manually-with-Python';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="_static/NetAScore_Logo_Light.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -111,7 +118,51 @@
 </aside>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -188,6 +239,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
+
 
 </ul>
 </details></li>
@@ -390,12 +442,20 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-dependencies">Software dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-installation-conda-environment">Recommended installation: conda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-system-packages-and-pip">Alternative: system packages and pip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-netascore">Run NetAScore</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-commandline-parameters">Additional commandline parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-shooting-and-resolving-common-issues">Trouble shooting and resolving common issues</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-with-the-installation-of-packages-and-dependencies">Issues with the installation of packages and dependencies</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netascore-is-stuck-on-the-attribute-step">NetAScore is stuck on the attribute step</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-with-the-gradient-calculations-without-the-use-of-a-dem">Error with the gradient calculations without the use of a DEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unexpected-gradient-values-without-the-use-of-a-dem">Unexpected gradient values without the use of a DEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osm-download-fails">OSM download fails</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-changed-after-updating-to-version-2-0">Results changed after updating to version 2.0</a></li>
 </ul>
 </li>
 </ul>
@@ -415,70 +475,84 @@
 <p>In order to run NetAScore, you need to prepare a <strong><code class="docutils literal notranslate"><span class="pre">data</span></code> directory</strong> that contains at least the <strong>settings file</strong> and <strong>mode profile files</strong> for <em>bike</em> and <em>walk</em> profiles. You find <strong>example files</strong> in the <code class="docutils literal notranslate"><span class="pre">examples</span></code> subdirectory of the NetAScore repository. If available, also copy the input data sets and optional data sets to the <code class="docutils literal notranslate"><span class="pre">data</span></code> subdirectory in your repository root.</p>
 <p>As a next step, make sure that you have a (local) <strong>PostgreSQL</strong> database running and that you specified the correct database connection details in the settings file.</p>
 <p>Please find more information on possible options available in the <strong>settings file</strong> and their meaning in the <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">configuration guide</span></a>.</p>
-<p>Make sure you have installed these <strong>software dependencies</strong>:</p>
+<section id="software-dependencies">
+<h2>Software dependencies<a class="headerlink" href="#software-dependencies" title="Link to this heading">#</a></h2>
+<p>NetAScore uses the following software:</p>
 <ul class="simple">
-<li><p>Python 3.13</p></li>
-<li><p>recent PostgreSQL with PostGIS extension (make sure to enable all GDAL drivers if prompted; this should include psql, raster2pgsql and ogr2ogr)</p></li>
-<li><p>osm2pgsql (<a class="reference external" href="https://osm2pgsql.org/doc/install.html">osm2pgsql.org</a>) (Please use version 2. NetAScore uses the pgsql output, which this version still provides.)</p></li>
+<li><p>Python 3.9 or newer (tested with 3.13) and several Python libraries (see <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>)</p></li>
+<li><p>PostgreSQL with PostGIS extension (database)</p></li>
+<li><p>osm2pgsql (version 1.9 or newer, for the flex output) and osmium - for OSM imports</p></li>
+<li><p>GDAL tools (<code class="docutils literal notranslate"><span class="pre">ogr2ogr</span></code>, <code class="docutils literal notranslate"><span class="pre">gdal_translate</span></code>) incl. the PostgreSQL driver</p></li>
+<li><p>psql (PostgreSQL client)</p></li>
+<li><p>raster2pgsql (part of PostGIS) - only for importing a DEM (optional dataset <code class="docutils literal notranslate"><span class="pre">dem</span></code>)</p></li>
+<li><p>git (optional) - to record the code state of NetAScore in the output metadata</p></li>
 </ul>
-<p>After installation of PostgreSQL, please make sure that its subfolder containing the binaries (e.g. <code class="docutils literal notranslate"><span class="pre">Program</span> <span class="pre">Files/PostgreSQL/&lt;version&gt;/bin</span></code>) is added to the PATH environment variable.</p>
-<p>Then, install the <strong>Python dependencies</strong> for this project - with pip:</p>
+<section id="recommended-installation-conda-environment">
+<h3>Recommended installation: conda environment<a class="headerlink" href="#recommended-installation-conda-environment" title="Link to this heading">#</a></h3>
+<p><em>If you don’t have conda installed yet, we recommend the <code class="docutils literal notranslate"><span class="pre">miniconda</span></code> installation - see: https://www.anaconda.com/download/success?reg=skipped-miniconda</em></p>
+<p>The conda environment file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> in the NetAScore repository includes all of the requirements stated above except the database and <code class="docutils literal notranslate"><span class="pre">raster2pgsql</span></code> (included: Python 3.13, GDAL incl. its PostgreSQL driver, geopandas, geopy, osm2pgsql, osmium-tool, psycopg2, pyyaml and jinjasql2):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+conda<span class="w"> </span>activate<span class="w"> </span>netascore
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">raster2pgsql</span></code> is only needed for DEM imports. On Linux and macOS you can add it to the environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>netascore<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>postgis
+</pre></div>
+</div>
+<p>On Windows (where PostGIS is not available via conda), use <code class="docutils literal notranslate"><span class="pre">raster2pgsql</span></code> of your PostGIS installation (e.g. installed with the Stack Builder of PostgreSQL). Make sure that its subfolder containing the binaries (e.g. <code class="docutils literal notranslate"><span class="pre">Program</span> <span class="pre">Files/PostgreSQL/&lt;version&gt;/bin</span></code>) is added to the PATH environment variable. NetAScore runs <code class="docutils literal notranslate"><span class="pre">raster2pgsql</span></code> from outside the conda environment without loading the GDAL plugins of the environment, which prevents version conflicts.</p>
+<p><em>Important: always execute NetAScore within the activated conda environment, as this ensures that the Python version and tools of the environment are used, rather than the system default.</em></p>
+</section>
+<section id="alternative-system-packages-and-pip">
+<h3>Alternative: system packages and pip<a class="headerlink" href="#alternative-system-packages-and-pip" title="Link to this heading">#</a></h3>
+<p>Install osm2pgsql, osmium, GDAL (incl. Python bindings), and the PostgreSQL / PostGIS client tools with the package manager of your system or using graphical installers. Then install the <strong>Python dependencies</strong> with pip:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
-<p><em>If you run into issues with the installation via pip, you can also try using Conda for the installation, the necessary steps are outlined below.</em></p>
+<p>This is how the Docker image is built. Note: the Python package <code class="docutils literal notranslate"><span class="pre">gdal</span></code> needs to match the GDAL version installed on your system (e.g. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">gdal==$(gdal-config</span> <span class="pre">--version)</span></code>).</p>
+</section>
+</section>
+<section id="run-netascore">
+<h2>Run NetAScore<a class="headerlink" href="#run-netascore" title="Link to this heading">#</a></h2>
 <p>Now you can <strong>run NetAScore</strong> by providing the filename of the settings file as commandline parameter to the Python script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_index.py<span class="w"> </span>your-settings-file.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_index.py<span class="w"> </span>data/your-settings-file.yml
 </pre></div>
 </div>
+<p>Mode profile files are looked up in the directory of the settings file. The settings file may also be located outside the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Input files referenced in the settings are always read from the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory, and results are written there.</p>
 <p>The processing can take several minutes up to several hours - depending on the size of the geodata and the hardware used. Therefore, we recommend to <strong>start with a small example</strong> first.</p>
-<p>You can also use Conda to create a virtual environment with the following Python dependencies:</p>
-<ul class="simple">
-<li><p>python 3.13</p></li>
-<li><p>gdal</p></li>
-<li><p>geopandas</p></li>
-<li><p>geopy</p></li>
-<li><p>psycopg2</p></li>
-<li><p>pyyaml</p></li>
-<li><p>requests</p></li>
-<li><p>jinjasql2*</p></li>
-<li><p>osm2geojson*</p></li>
-</ul>
-<p>* jinjasql2 and osm2geojson need to be installed afterwards by using pip.</p>
-<p>You can also import the environment file provided by running:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
-</pre></div>
-</div>
-<p>Afterwards activate the environment netascore:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>netascore
-</pre></div>
-</div>
-<p>You can now run NetAScore, using the prompt described above.
-<em>An important thing to note here, is to execute the command within conda, as this ensures that the python version within the environment is used, rather than the system default.</em></p>
-<p>If you want to manually install the requirements using conda, install the packages in the order given in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
+<p>At the start, NetAScore prints its version and code state (Git branch and commit). At the end of a run, a summary is printed.</p>
+</section>
 <section id="additional-commandline-parameters">
 <h2>Additional commandline parameters<a class="headerlink" href="#additional-commandline-parameters" title="Link to this heading">#</a></h2>
-<p>If you want to re-run the pipeline, but <strong>skip certain steps</strong>, use the <strong><code class="docutils literal notranslate"><span class="pre">--skip</span></code></strong> flag with a list of steps you want to skip:  <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code>, <code class="docutils literal notranslate"><span class="pre">attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">optional</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">export</span></code> (the steps are explained in detail in this readme file). In the following example, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">attributes</span></code> are skipped. <code class="docutils literal notranslate"><span class="pre">optional</span></code> (if that section is present in the settings file), <code class="docutils literal notranslate"><span class="pre">index</span></code> and <code class="docutils literal notranslate"><span class="pre">export</span></code> still run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_index.py<span class="w"> </span>your-settings-file.yml<span class="w"> </span>--skip<span class="w"> </span>import<span class="w"> </span>network<span class="w"> </span>attributes
+<p>If you want to re-run the pipeline, but <strong>skip certain steps</strong>, use the <strong><code class="docutils literal notranslate"><span class="pre">--skip</span></code></strong> flag with a list of steps you want to skip. The steps are executed in this order: <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code>, <code class="docutils literal notranslate"><span class="pre">optional</span></code>, <code class="docutils literal notranslate"><span class="pre">attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">export</span></code> (the steps are explained in detail in <a class="reference internal" href="The-workflow.html"><span class="doc std std-doc">The Workflow</span></a>). In the following example, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">network</span></code> and <code class="docutils literal notranslate"><span class="pre">optional</span></code> are skipped. <code class="docutils literal notranslate"><span class="pre">attributes</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code> and <code class="docutils literal notranslate"><span class="pre">export</span></code> still run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>generate_index.py<span class="w"> </span>data/your-settings-file.yml<span class="w"> </span>--skip<span class="w"> </span>import<span class="w"> </span>network<span class="w"> </span>optional
 </pre></div>
 </div>
+<p>If you change <code class="docutils literal notranslate"><span class="pre">buffer</span></code> or <code class="docutils literal notranslate"><span class="pre">clip</span></code> and skip the import step, NetAScore reports an error if the imported OSM data does not cover the new clip area. In that case, run the import step again.</p>
 <p>If you want to get more (or less) detailed <strong>log outputs</strong>, set the <strong><code class="docutils literal notranslate"><span class="pre">--loglevel</span></code></strong> flag to one of the following levels:
-<code class="docutils literal notranslate"><span class="pre">1</span></code> = MajorInfo, <code class="docutils literal notranslate"><span class="pre">2</span></code> = Info (default), <code class="docutils literal notranslate"><span class="pre">3</span></code> = Detailed, <code class="docutils literal notranslate"><span class="pre">4</span></code> = Debug</p>
+<code class="docutils literal notranslate"><span class="pre">1</span></code> = MajorInfo, <code class="docutils literal notranslate"><span class="pre">2</span></code> = Info (default), <code class="docutils literal notranslate"><span class="pre">3</span></code> = Detailed, <code class="docutils literal notranslate"><span class="pre">4</span></code> = Debug. Warnings and errors are always shown. Internal messages and the Python traceback of errors are only shown at log level <code class="docutils literal notranslate"><span class="pre">3</span></code> or <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
 </section>
 <section id="trouble-shooting-and-resolving-common-issues">
 <h2>Trouble shooting and resolving common issues<a class="headerlink" href="#trouble-shooting-and-resolving-common-issues" title="Link to this heading">#</a></h2>
 <section id="issues-with-the-installation-of-packages-and-dependencies">
 <h3>Issues with the installation of packages and dependencies<a class="headerlink" href="#issues-with-the-installation-of-packages-and-dependencies" title="Link to this heading">#</a></h3>
-<p>If you have issues with the execution after installation or with installing any of the packages directly, make sure to check  versions of the packages installed in your environment and that you installed them in the right order. If the order of installation was changed, it may be that some of the versions specified were overwritten by the installation of another package.</p>
+<p>If you have issues with the execution after installation or with installing any of the packages directly, make sure to check versions of the packages installed in your environment. We recommend the conda environment (<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>), as it contains matching versions of GDAL, osm2pgsql and osmium.</p>
 <p>If you are executing the program from the command line, make sure you have the virtual environment activated and the are using the right python version. Otherwise you may encounter some conflicts, as NetAScore may default to use the system-wide installation of Python, rather than the one specified within the virtual environment.</p>
 </section>
 <section id="netascore-is-stuck-on-the-attribute-step">
 <h3>NetAScore is stuck on the attribute step<a class="headerlink" href="#netascore-is-stuck-on-the-attribute-step" title="Link to this heading">#</a></h3>
 <p>If you encounter the calculations to be much slower than expected (for reference: Salzburg state rougly takes 10-15 minutes, the entirety of austria takes 1-2 hours), make sure that you put in a valid metric coordinate system for the <code class="docutils literal notranslate"><span class="pre">target_srid</span></code> in the <code class="docutils literal notranslate"><span class="pre">settings-file</span></code>. If an invalid or unfit coordinate system is provided, this error may occur.</p>
 </section>
-<section id="error-with-the-gradient-calculations-without-the-use-of-a-dem">
-<h3>Error with the gradient calculations without the use of a DEM<a class="headerlink" href="#error-with-the-gradient-calculations-without-the-use-of-a-dem" title="Link to this heading">#</a></h3>
-<p>If you ran NetAScore with a local database, make sure there is no other DEM for a different area of interest in the database, that may be used unknowingly. Either specify another DEM you want to use for your area of interest or specify to not include one in the <a class="reference internal" href="Mode-profiles.html"><span class="doc std std-doc">mode-profiles</span></a>.</p>
+<section id="unexpected-gradient-values-without-the-use-of-a-dem">
+<h3>Unexpected gradient values without the use of a DEM<a class="headerlink" href="#unexpected-gradient-values-without-the-use-of-a-dem" title="Link to this heading">#</a></h3>
+<p>Datasets imported into the shared data schema of the database (e.g. a DEM imported for another case) are used by all cases, if they cover the network. If you ran NetAScore with a local database, check the layer <code class="docutils literal notranslate"><span class="pre">meta_datasets</span></code> of the output GeoPackage: it lists the input datasets used and their origin. Either specify another DEM you want to use for your area of interest or specify to not include the gradient in the <a class="reference internal" href="Mode-profiles.html"><span class="doc std std-doc">mode-profiles</span></a>.</p>
+</section>
+<section id="osm-download-fails">
+<h3>OSM download fails<a class="headerlink" href="#osm-download-fails" title="Link to this heading">#</a></h3>
+<p>If the Overpass API servers are overloaded, OSM downloads may fail. NetAScore tries several servers and reports the errors. Areas larger than 1500 km² should not be downloaded via the Overpass API (setting <code class="docutils literal notranslate"><span class="pre">max_download_area</span></code>). In both cases, download an OSM extract (e.g. from <a class="reference external" href="https://download.geofabrik.de">Geofabrik</a>), save it to the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory and provide it as <code class="docutils literal notranslate"><span class="pre">filename</span></code> in the <code class="docutils literal notranslate"><span class="pre">import</span></code> section. Keep <code class="docutils literal notranslate"><span class="pre">place_name</span></code>, <code class="docutils literal notranslate"><span class="pre">bbox</span></code> or <code class="docutils literal notranslate"><span class="pre">aoi_filename</span></code> to clip the extract to your area of interest.</p>
+</section>
+<section id="results-changed-after-updating-to-version-2-0">
+<h3>Results changed after updating to version 2.0<a class="headerlink" href="#results-changed-after-updating-to-version-2-0" title="Link to this heading">#</a></h3>
+<p>NetAScore 2.0 imports OSM data with the flex output of osm2pgsql. After updating, run the import step again for existing OSM data. Also, mode profiles and settings files from version 1.x need to be updated (<code class="docutils literal notranslate"><span class="pre">version:</span> <span class="pre">2.0</span></code>, gradient classes, new parking values). See the <a class="reference external" href="https://github.com/plus-mobilitylab/netascore/blob/main/CHANGELOG.md">changelog</a> for all changes.</p>
 </section>
 </section>
 </section>
@@ -548,12 +622,20 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-dependencies">Software dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-installation-conda-environment">Recommended installation: conda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-system-packages-and-pip">Alternative: system packages and pip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-netascore">Run NetAScore</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-commandline-parameters">Additional commandline parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trouble-shooting-and-resolving-common-issues">Trouble shooting and resolving common issues</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-with-the-installation-of-packages-and-dependencies">Issues with the installation of packages and dependencies</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#netascore-is-stuck-on-the-attribute-step">NetAScore is stuck on the attribute step</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-with-the-gradient-calculations-without-the-use-of-a-dem">Error with the gradient calculations without the use of a DEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unexpected-gradient-values-without-the-use-of-a-dem">Unexpected gradient values without the use of a DEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osm-download-fails">OSM download fails</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-changed-after-updating-to-version-2-0">Results changed after updating to version 2.0</a></li>
 </ul>
 </li>
 </ul>
@@ -604,8 +686,8 @@ By Mobility Lab Research Group, Department of Geoinformatics, University of Salz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,22 +27,22 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'How-to-contribute';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="_static/NetAScore_Logo_Light.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -111,7 +118,51 @@
 </aside>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -188,6 +239,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-OSM.html">Attribute derivation from OSM</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Attribute-derivation-from-GIP.html">Attribute derivation from GIP</a></li>
+
 
 </ul>
 </details></li>
@@ -390,7 +442,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-overview">System Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interplay-of-python-and-sql">Interplay of Python and SQL</a></li>
 </ul>
@@ -405,6 +457,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netascore-source-code-file-structure">NetAScore Source Code File Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-state-and-releases">Code state and releases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresconnection-class-db-helper">PostgresConnection class (db helper)</a></li>
 </ul>
             </nav>
@@ -419,7 +472,7 @@
                   
   <section id="how-to-contribute">
 <h1>How to contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">#</a></h1>
-<p>We are happy about contributions, feedback and ideas that help developing NetAScore further. We also appreciate initiatives for integrating NetAScore and its output into other tools. If you encounter any issues or bugs within the toolbox, feel free to open an issue and if you want to further develop NetAScore or have any contributions, please fork the repository and make a pull request if you want to add to or modify the existing code.</p>
+<p>We welcome contributions, feedback, and ideas that help develop NetAScore further. We also appreciate initiatives for integrating NetAScore and its output into other tools - please cite NetAScore as outlined on github. If you encounter any issues or bugs within the toolbox, feel free to open an issue on github and if you want to contribute to NetAScore development, please fork the repository and make a pull request after completing your edits.</p>
 <p>If you want to work with the source code of NetAScore, you can start exploring it from the entrypoint of execution in <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. This script parses all arguments and settings and verifies their correctness and that all mandatory information is given. Then it runs all processing steps in order and calls the respective handlers for each step.</p>
 <p>Below you find an overview over the general structure and main components of NetAScore. Detailed instructions on how to run NetAScore are available on the <a class="reference internal" href="How-to-run-the-project.html"><span class="doc std std-doc">respective wiki page</span></a>.</p>
 <section id="system-overview">
@@ -433,24 +486,24 @@
 <li><p>A PostgreSQL database that stores all data and performs (spatial) computations to generate the results.</p></li>
 <li><p>The data directory that provides input data, mode profiles, and settings files to control the workflow. Results of the workflow are also added to this directory.</p></li>
 </ol>
-<p>To ease the use of NetAScore, we provide a Docker-compose setup that contains NetAScore, a PostgreSQL database, as well as all required tools and packages. Detailed instructions for how to run NetAScore in Docker are provided !— TODO: link to explanation [here]
-!— TODO: add gfx of docker vs. stand-alone Python approach</p>
+<p>To ease the use of NetAScore, we provide a Docker-compose setup that contains NetAScore, a PostgreSQL database, as well as all required tools and packages. Detailed instructions for how to run NetAScore in Docker are provided on the <a class="reference internal" href="How-to-run-the-project-in-a-Docker-environment.html"><span class="doc std std-doc">respective wiki page</span></a></p>
+<!--- TODO: add gfx of docker vs. stand-alone Python approach-->
 </section>
 </section>
 <section id="system-components-and-workflow">
 <h2>System Components and Workflow<a class="headerlink" href="#system-components-and-workflow" title="Link to this heading">#</a></h2>
-<p><img alt="continued overview over the system workflow" src="_images/system_overview2.png" />
+<p><img alt="annotated overview over the system workflow" src="_images/system_overview2.png" />
 NetAScore reads all settings, model parameters (mode profiles) and input files from the data directory. It then handles workflow automation with Python scripts that run external command line utilities where needed. As the main processing steps take place in a PostgreSQL database, the Python code also handles code execution in the database through SQL statements.</p>
 <!-- add slide 82 graphic -->
-<p>All steps of the workflow are controlled from the main Python file <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory.</p>
+<p>All steps of the workflow are controlled from the main Python file <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. It reads the settings file and accepts additional command-line parameters (e.g. to show more detailed debug output or to skip certain processing steps). Individual classes for each processing step take care of the respective tasks such as data handling and (geo-) processing in the database. With completion of the export step, the outputs are stored to a geopackage file inside the data directory. Since Version 2.0 the output file includes additional metadata tables that describe the settings, mode profiles, data sets used, and run metrics.</p>
 <section id="data-directory">
 <h3>Data Directory<a class="headerlink" href="#data-directory" title="Link to this heading">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> directory contains all external data NetAScore needs to access (settings file, mode profile files and all input datasets) as well as the output data sets generated by NetAScore.
-Users can specify their tasks for NetAScore in settings filess (e.g. <code class="docutils literal notranslate"><span class="pre">settings.yml</span></code>). The <em>mode profile</em> files are designed for editing, documenting, and sharing the definitions of model parameters for each transport mode.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> directory stores all external data NetAScore needs to access (settings file, mode profile files and all input datasets) as well as the output data sets generated by NetAScore.
+Users can specify their tasks for NetAScore in settings files (e.g. <code class="docutils literal notranslate"><span class="pre">settings.yml</span></code>). The <em>mode profile</em> files are designed for editing, documenting, and sharing the definitions of model parameters for each transport mode.</p>
 <section id="input-file-s-outputs">
 <h4>Input file(s) + outputs<a class="headerlink" href="#input-file-s-outputs" title="Link to this heading">#</a></h4>
-<p>The input file(s) and the output are located within the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Typical input files are network datasets (OSM PBF File or GIP OGD export) and optionally a DEM (digital elevation model) or noise data (Noise Zones).</p>
-<p>The Output datasets will be exported as PostgreSQL tables (<code class="docutils literal notranslate"><span class="pre">export_edge</span></code> with attributes, indicators, indices &amp; <code class="docutils literal notranslate"><span class="pre">export_node</span></code> with elevation values) and as a GeoPackage file with the following layers: <code class="docutils literal notranslate"><span class="pre">edge</span></code> (with attributes, indicators &amp; indices) and <code class="docutils literal notranslate"><span class="pre">node</span></code> (with elevation values).</p>
+<p>The input file(s) and the output are located within the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Typical input files are network datasets (OSM PBF / XML File or GIP OGD export) and optionally a DEM (digital elevation model) or noise data (noise polygons).</p>
+<p>The Output datasets are exported to PostgreSQL tables (<code class="docutils literal notranslate"><span class="pre">export_edge</span></code> with attributes, indicators, indices &amp; <code class="docutils literal notranslate"><span class="pre">export_node</span></code> with elevation values) and as a GeoPackage file with the following layers: <code class="docutils literal notranslate"><span class="pre">edge</span></code> (with attributes, indicators &amp; indices), <code class="docutils literal notranslate"><span class="pre">node</span></code> (with elevation values), and the metadata layers <code class="docutils literal notranslate"><span class="pre">meta_run</span></code>, <code class="docutils literal notranslate"><span class="pre">meta_steps</span></code>, <code class="docutils literal notranslate"><span class="pre">meta_datasets</span></code>, <code class="docutils literal notranslate"><span class="pre">meta_profiles</span></code> and <code class="docutils literal notranslate"><span class="pre">meta_areas</span></code> (see <a class="reference internal" href="The-workflow.html"><span class="doc std std-doc">The Workflow</span></a>). Default QGIS layer styles are included in the GeoPackage since NetAScore version 2.0.</p>
 </section>
 <section id="settings-file">
 <h4>Settings file<a class="headerlink" href="#settings-file" title="Link to this heading">#</a></h4>
@@ -461,13 +514,13 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
 <span class="w">  </span><span class="nt">dbname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore</span>
-<span class="w">  </span><span class="nt">on_existing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abort</span>
 </pre></div>
 </div>
 <p>… references to the input file and optional datasets</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">import</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">osm</span>
 <span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">austria-latest.osm.pbf</span>
+<span class="w">  </span><span class="nt">bbox</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">47.7957</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">13.0117</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">47.8410</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">13.0748</span><span class="p p-Indicator">]</span>
 <span class="nt">optional</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">dem</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">austria.tif</span><span class="w"> </span><span class="c1"># GeoTIFF</span>
@@ -492,7 +545,7 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
 <span class="w">  </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">netascore_output.gpkg</span>
 </pre></div>
 </div>
-<p>You find more information on the settings file on <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">on the settings page</span></a></p>
+<p>You find more information on the settings file at <a class="reference internal" href="Configuration-of-the-settings.html"><span class="doc std std-doc">configuration of the settings</span></a>.</p>
 </section>
 <section id="mode-profile-files">
 <h4>Mode profile files<a class="headerlink" href="#mode-profile-files" title="Link to this heading">#</a></h4>
@@ -503,16 +556,37 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
 </section>
 <section id="netascore-source-code-file-structure">
 <h2>NetAScore Source Code File Structure<a class="headerlink" href="#netascore-source-code-file-structure" title="Link to this heading">#</a></h2>
-<p>This section gives an overview of the source code structure of NetAScore. If you only want to use the software and adjust model parameters, you do not need to dive into this. However, if you are interested in developing NetAScore further, we want to give you some hints on how the software is structured.</p>
+<p>This section gives an overview of the source code structure of NetAScore. If you only want to use the software and adjust model parameters, you do not need to dive into this. However, if you are interested in supporting NetAScore code development, we want to give you some hints on how the software is structured.</p>
 <!--- add images -> CW: suggest to use slide 79 for now to give an overview -->
 <p>The Main class and recommended starting point for working with the source code is the file <code class="docutils literal notranslate"><span class="pre">generate_index.py</span></code>. It contains the main sequential logic of NetAScore, reads the parameters and settings provided and triggers the individual processing steps.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">sql</span></code> folder contains two subdirectories: <code class="docutils literal notranslate"><span class="pre">functions</span></code> and <code class="docutils literal notranslate"><span class="pre">templates</span></code>. Here the core logic of (geo-) processing within the PostgreSQL database is contained. Generic SQL-functions as well as <code class="docutils literal notranslate"><span class="pre">JinjaSQL</span></code> templates are used for automating the workflow with Postgres.</p>
-<p>The folder <code class="docutils literal notranslate"><span class="pre">toolbox</span></code> contains genereic helper classes. Currently those are a database helper (PostgresConnection) <code class="docutils literal notranslate"><span class="pre">dbhelper.py</span></code> and a class for logging and general tasks <code class="docutils literal notranslate"><span class="pre">helper.py</span></code>.</p>
-<p>Within <code class="docutils literal notranslate"><span class="pre">core</span></code>, classes that handle the main processing steps of NetAScore are contained (<a class="reference internal" href="The-workflow.html"><span class="doc std std-doc">more information on the workflow can be found in the wiki</span></a>). The class <code class="docutils literal notranslate"><span class="pre">DbStep</span></code> in <code class="docutils literal notranslate"><span class="pre">db_step.py</span></code> defines the general interface for processing steps.</p>
+<p>The folder <code class="docutils literal notranslate"><span class="pre">toolbox</span></code> contains generic helper classes. Currently those are a database helper (PostgresConnection) <code class="docutils literal notranslate"><span class="pre">dbhelper.py</span></code> and a class for logging and general tasks <code class="docutils literal notranslate"><span class="pre">helper.py</span></code>.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">core</span></code>, classes that handle the main processing steps of NetAScore are contained (<a class="reference internal" href="The-workflow.html"><span class="doc std std-doc">more information on the workflow</span></a>). The class <code class="docutils literal notranslate"><span class="pre">DbStep</span></code> in <code class="docutils literal notranslate"><span class="pre">db_step.py</span></code> defines the general interface for processing steps. Further modules in <code class="docutils literal notranslate"><span class="pre">core</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset_registry.py</span></code>: registry of the datasets in the shared data schema (source file, import settings, coordinate system, covered area) - decides whether existing data can be reused (setting <code class="docutils literal notranslate"><span class="pre">on_existing</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metadata.py</span></code>: metadata of a run (stored in the case schema and exported to the GeoPackage as <code class="docutils literal notranslate"><span class="pre">meta_*</span></code> layers)</p></li>
+</ul>
+<p>The file <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> contains global settings (e.g. the NetAScore version, Overpass API endpoints) and the list of known keys of the settings file, which is used to report unknown keys.</p>
+<p>The folder <code class="docutils literal notranslate"><span class="pre">resources</span></code> contains the osm2pgsql flex configuration <code class="docutils literal notranslate"><span class="pre">osm2pgsql_flex.lua</span></code> for the OSM import and the default layer styles (<code class="docutils literal notranslate"><span class="pre">styles</span></code>) that are added to the output GeoPackage.</p>
+</section>
+<section id="code-state-and-releases">
+<h2>Code state and releases<a class="headerlink" href="#code-state-and-releases" title="Link to this heading">#</a></h2>
+<p>NetAScore records the code state it runs with (Git branch and commit, with the suffix <code class="docutils literal notranslate"><span class="pre">-dirty</span></code> for uncommitted changes) in the console output and in the metadata (<code class="docutils literal notranslate"><span class="pre">netascore_commit</span></code> in <code class="docutils literal notranslate"><span class="pre">meta_run</span></code> and <code class="docutils literal notranslate"><span class="pre">meta_steps</span></code>). Docker images have no Git history: here, the code state is taken from the build argument <code class="docutils literal notranslate"><span class="pre">NETASCORE_COMMIT</span></code>.</p>
+<p>The script <code class="docutils literal notranslate"><span class="pre">scripts/build_docker_image.py</span></code> builds the Docker image and sets this build argument. It runs on macOS, Linux and Windows (requires Python 3.9+, Git and Docker):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># local build for the platform of this machine -&gt; netascore:&lt;version&gt; and netascore:latest</span>
+python<span class="w"> </span>scripts/build_docker_image.py
+
+<span class="c1"># release build for linux/amd64 and linux/arm64, pushed to Docker Hub (requires 'docker login' and Docker Buildx;</span>
+<span class="c1"># only for a committed state with the release tag v&lt;version&gt;)</span>
+python<span class="w"> </span>scripts/build_docker_image.py<span class="w"> </span>--push<span class="w"> </span><span class="o">[</span>--latest<span class="o">]</span>
+</pre></div>
+</div>
+<p>Further options: <code class="docutils literal notranslate"><span class="pre">--image</span></code> (image name), <code class="docutils literal notranslate"><span class="pre">--platforms</span></code>, <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> (only show the Docker commands), <code class="docutils literal notranslate"><span class="pre">--allow-dirty</span></code> and <code class="docutils literal notranslate"><span class="pre">--allow-untagged</span></code> (not recommended for releases).</p>
+<p>The GitHub workflows of the repository test the Docker image (<code class="docutils literal notranslate"><span class="pre">docker-test.yml</span></code>) and publish releases (<code class="docutils literal notranslate"><span class="pre">release.yml</span></code>). The release workflow can also publish the Docker image of a new release to Docker Hub (enabled with the repository variable <code class="docutils literal notranslate"><span class="pre">DOCKER_PUBLISH</span></code>).</p>
 </section>
 <section id="postgresconnection-class-db-helper">
 <h2>PostgresConnection class (db helper)<a class="headerlink" href="#postgresconnection-class-db-helper" title="Link to this heading">#</a></h2>
-<p>The PostgresCnnection class is located at <code class="docutils literal notranslate"><span class="pre">/toolbox/dbhelper.py</span></code> and abstracts several commonly used functionalities regarding interaction with the Postgres database and PostGIS extension. It handles automatically (re-) establishing database connections and provides Python functions for common tasks such as setting the working schema, querying data, checking whether a table exists, handling name conflicts and parsing / executing JinjaSQL templates.</p>
+<p>The PostgresConnection class is located at <code class="docutils literal notranslate"><span class="pre">/toolbox/dbhelper.py</span></code> and abstracts several commonly used functionalities regarding interaction with the Postgres database and PostGIS extension. It handles automatically (re-) establishing database connections and provides Python functions for common tasks such as setting the working schema, querying data, checking whether a table exists, handling name conflicts and parsing / executing JinjaSQL templates.</p>
 </section>
 </section>
 
@@ -581,7 +655,7 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-overview">System Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interplay-of-python-and-sql">Interplay of Python and SQL</a></li>
 </ul>
@@ -596,6 +670,7 @@ Users can specify their tasks for NetAScore in settings filess (e.g. <code class
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netascore-source-code-file-structure">NetAScore Source Code File Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-state-and-releases">Code state and releases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postgresconnection-class-db-helper">PostgresConnection class (db helper)</a></li>
 </ul>
   </nav></div>
@@ -645,8 +720,8 @@ By Mobility Lab Research Group, Department of Geoinformatics, University of Salz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
