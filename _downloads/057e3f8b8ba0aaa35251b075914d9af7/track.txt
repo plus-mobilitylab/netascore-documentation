@@ -1,0 +1,12 @@
+[out:json][timeout:90];
+
+(
+  way["highway"="path"]["surface"!~"^(paved|asphalt|chipseal|concrete|paving_stones|brick|bricks|compacted)$"]({{bbox}});
+  way["highway"="track"]["motor_vehicle"="no"]["tracktype"]["tracktype"!~"^(grade1|grade2)$"]({{bbox}});
+  way["highway"="track"][!"motor_vehicle"]["tracktype"]["tracktype"!~"^(grade1|grade2)$"]({{bbox}});
+  way["highway"~"^(steps|platform)$"]({{bbox}});
+  way["highway"~"^(bridleway|path|track|service|residential|unclassified)$"]["bicycle"!="no"]({{bbox}});
+  way["highway"~"^(bridleway|path|track|service|residential|unclassified)$"]["foot"!="no"]({{bbox}});
+);
+
+out geom;

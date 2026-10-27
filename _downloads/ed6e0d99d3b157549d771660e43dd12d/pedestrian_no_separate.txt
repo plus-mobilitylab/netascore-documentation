@@ -1,0 +1,15 @@
+[out:json][timeout:90];
+
+(
+  way["cycleway"="separate"]["foot"~"^(yes|designated)$"]({{bbox}});
+  way["cycleway:left"="separate"]["foot"~"^(yes|designated)$"]({{bbox}});
+  way["cycleway:right"="separate"]["foot"~"^(yes|designated)$"]({{bbox}});
+  way["cycleway:both"="separate"]["foot"~"^(yes|designated)$"]({{bbox}});
+
+  way["sidewalk"="separate"]({{bbox}});
+  way["sidewalk:left"="separate"]({{bbox}});
+  way["sidewalk:right"="separate"]({{bbox}});
+  way["sidewalk:both"="separate"]({{bbox}});
+);
+
+out geom;

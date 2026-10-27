@@ -1,0 +1,10 @@
+[out:json][timeout:90];
+
+(
+  way["cycleway"~"^(share_busway|opposite_share_busway)$"]({{bbox}});
+  way["cycleway:left"~"^(share_busway|opposite_share_busway)$"]({{bbox}});
+  way["cycleway:right"~"^(share_busway|opposite_share_busway)$"]({{bbox}});
+  way["cycleway:both"~"^(share_busway|opposite_share_busway)$"]({{bbox}});
+);
+
+out geom;

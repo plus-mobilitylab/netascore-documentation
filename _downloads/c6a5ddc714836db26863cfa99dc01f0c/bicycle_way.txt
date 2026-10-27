@@ -1,0 +1,15 @@
+[out:json][timeout:90];
+
+(
+  way["highway"="cycleway"]["foot"!~"^(yes|designated|permissive)$"]({{bbox}});
+
+  way["cycleway"~"^(track|opposite_track|segregated|yes)$"]["foot"!~"^(yes|designated)$"]({{bbox}});
+  way["cycleway:left"~"^(track|opposite_track|segregated|yes)$"]["foot"!~"^(yes|designated)$"]({{bbox}});
+  way["cycleway:right"~"^(track|opposite_track|segregated|yes)$"]["foot"!~"^(yes|designated)$"]({{bbox}});
+  way["cycleway:both"~"^(track|opposite_track|segregated|yes)$"]["foot"!~"^(yes|designated)$"]({{bbox}});
+
+  way["bicycle"~"^(yes|designated|official)$"]["foot"!~"^(yes|designated)$"]["segregated"="yes"]["motor_vehicle"="no"]({{bbox}});
+  way["bicycle"~"^(yes|designated|official)$"]["foot"!~"^(yes|designated)$"]["segregated"="yes"][!"motor_vehicle"]({{bbox}});
+);
+
+out geom;

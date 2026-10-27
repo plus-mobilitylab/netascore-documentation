@@ -1,0 +1,8 @@
+[out:json][timeout:90];
+
+(
+  node["historic"]["historic"!="no"]({{bbox}});
+  node["tourism"~"^(attraction|museum|artwork|viewpoint|picnic_site|zoo|theme_park|gallery)$"]({{bbox}});
+);
+
+out geom;
