@@ -1,0 +1,51 @@
+[out:json][timeout:90];
+
+// Parking values are derived per side: for each side the side-specific key is used first, then the key for both sides
+// and the general key: parking:left/right -> parking:both -> parking -> parking:lane:left/right -> parking:lane:both -> parking:lane
+// The queries below show the ways and areas per value. They do not resolve the precedence of keys per side.
+
+// ---------------------------------------------------------------------------------------------------------------------
+// allowed: parking on at least one side, parking aisles, and parking areas (unless underground, multi-storey or level=-1)
+// ---------------------------------------------------------------------------------------------------------------------
+(
+  way["highway"]["parking"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:left"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:right"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:both"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:lane"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:lane:left"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:lane:right"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["parking:lane:both"~"^(lane|street_side|on_kerb|half_on_kerb|shoulder|layby|surface|separate|yes|parallel|diagonal|perpendicular|marked|both|left|right)$"]({{bbox}});
+  way["highway"]["service"="parking_aisle"]({{bbox}});
+
+  wr["amenity"="parking"]["parking"!~"^(underground|multi-storey)$"]["level"!="-1"]({{bbox}});
+);
+out geom;
+
+// ---------------------------------------------------------------------------------------------------------------------
+// forbidden (mapped): no parking on both sides (values no, no_parking, no_stopping, fire_lane)
+// ---------------------------------------------------------------------------------------------------------------------
+(
+  way["highway"]["parking:both"~"^(no|no_parking|no_stopping|fire_lane)$"]({{bbox}});
+  way["highway"]["parking"~"^(no|no_parking|no_stopping|fire_lane)$"]({{bbox}});
+  way["highway"]["parking:left"~"^(no|no_parking|no_stopping|fire_lane)$"]["parking:right"~"^(no|no_parking|no_stopping|fire_lane)$"]({{bbox}});
+);
+out geom;
+
+// ---------------------------------------------------------------------------------------------------------------------
+// implicit: roads open to motor traffic without parking information
+// motor vehicle access: the most specific tag decides (motorcar -> motor_vehicle -> vehicle -> access);
+// shown here for ways without any of these tags (the rule also applies to yes, designated, permissive, destination, customers)
+// ---------------------------------------------------------------------------------------------------------------------
+(
+  way["highway"~"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|road)$"]
+     [!"motorcar"][!"motor_vehicle"][!"vehicle"][!"access"]
+     ["service"!~"^(driveway|drive-through|emergency_access)$"]
+     [!"parking"][!"parking:left"][!"parking:right"][!"parking:both"]
+     [!"parking:lane"][!"parking:lane:left"][!"parking:lane:right"][!"parking:lane:both"]({{bbox}});
+);
+out geom;
+
+// all other ways are forbidden: no motorized traffic, restricted motor vehicle access (e.g. private, agricultural,
+// forestry), motorways and trunk roads, living streets (parking only in marked spots), and service roads of type
+// driveway, drive-through or emergency_access

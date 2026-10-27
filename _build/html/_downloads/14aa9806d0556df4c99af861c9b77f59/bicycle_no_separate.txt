@@ -1,0 +1,10 @@
+[out:json][timeout:90];
+
+(
+  way["cycleway"="separate"]({{bbox}});
+  way["cycleway:left"="separate"]({{bbox}});
+  way["cycleway:right"="separate"]({{bbox}});
+  way["cycleway:both"="separate"]({{bbox}});
+);
+
+out geom;

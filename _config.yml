@@ -15,10 +15,6 @@ latex:
   latex_documents:
     targetname: book.tex
 
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
-
 # Information about where the book exists on the web
 repository:
   url: https://github.com/plus-mobilitylab/netascore  # Online location of your book
@@ -32,7 +28,7 @@ html:
   use_repository_button: true
   #home_page_in_navbar: false  # Whether to include your home page in the left Navigation Bar
   favicon: resources/img/NetAScore_Logo_Light.png
-  announcement: "The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v1.1.1'>1.1</a> of NetAScore"
+  announcement: "The Documentation relates to Version <a href='https://github.com/plus-mobilitylab/netascore/tree/v2.0.0'>2.0</a> of NetAScore"
 
 
 parse:
@@ -40,3 +36,6 @@ parse:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default! See here: https://jupyterbook.org/en/stable/customize/config.html
     - html_image
+sphinx:
+  config:
+    myst_heading_anchors: 3

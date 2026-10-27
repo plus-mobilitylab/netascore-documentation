@@ -1,0 +1,10 @@
+[out:json][timeout:90];
+
+(
+  way["cycleway"="shared_lane"]({{bbox}});
+  way["cycleway:left"="shared_lane"]({{bbox}});
+  way["cycleway:right"="shared_lane"]({{bbox}});
+  way["cycleway:both"="shared_lane"]({{bbox}});
+);
+
+out geom;

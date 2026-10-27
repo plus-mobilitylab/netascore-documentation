@@ -1,76 +1,88 @@
 # Run NetAScore manually with Python
+
 This sections describes how to run the project directly on your machine without Docker. For information on how to run it in a Docker environment see [docker-guide](How-to-run-the-project-in-a-Docker-environment). However, for a **quick start**, we recommend to use the **ready-made Docker image** as outlined in the section "How to get started" or the [Quickstart-Guide](Quickstart).
 
 In order to run NetAScore, you need to prepare a **`data` directory** that contains at least the **settings file** and **mode profile files** for *bike* and *walk* profiles. You find **example files** in the `examples` subdirectory of the NetAScore repository. If available, also copy the input data sets and optional data sets to the `data` subdirectory in your repository root.
 
-As a next step, make sure that you have a (local) **PostgreSQL** database running and that you specified the correct database connection details in the settings file. 
+As a next step, make sure that you have a (local) **PostgreSQL** database running and that you specified the correct database connection details in the settings file.
 
 Please find more information on possible options available in the **settings file** and their meaning in the [configuration guide](Configuration-of-the-settings).
 
-Make sure you have installed these **software dependencies**:
+## Software dependencies
 
-- Python 3.x
-- recent PostgreSQL with PostGIS extension (make sure to enable all GDAL drivers if prompted; this should include psql, raster2pgsql and ogr2ogr)
-- osm2pgsql ([osm2pgsql.org](https://osm2pgsql.org/doc/install.html)) (Please use a Version > 2.0, since the newer version has breaking changes that cause conflicts within NetAScore)
+NetAScore uses the following software:
 
-After installation of PostgreSQL, please make sure that its subfolder containing the binaries (e.g. `Program Files/PostgreSQL/<version>/bin`) is added to the PATH environment variable.
+- Python 3.9 or newer (tested with 3.13) and several Python libraries (see `requirements.txt`)
+- PostgreSQL with PostGIS extension (database)
+- osm2pgsql (version 1.9 or newer, for the flex output) and osmium - for OSM imports
+- GDAL tools (`ogr2ogr`, `gdal_translate`) incl. the PostgreSQL driver
+- psql (PostgreSQL client)
+- raster2pgsql (part of PostGIS) - only for importing a DEM (optional dataset `dem`)
+- git (optional) - to record the code state of NetAScore in the output metadata
 
-Then, install the **Python dependencies** for this project - with pip:
+### Recommended installation: conda environment
 
-    RUN pip install -r requirements.txt
+*If you don't have conda installed yet, we recommend the `miniconda` installation - see: https://www.anaconda.com/download/success?reg=skipped-miniconda*
 
-_If you run into issues with the installation via pip, you can also try using Anaconda for the installation, the necessary steps are outlined below._
+The conda environment file `environment.yml` in the NetAScore repository includes all of the requirements stated above except the database and `raster2pgsql` (included: Python 3.13, GDAL incl. its PostgreSQL driver, geopandas, geopy, osm2pgsql, osmium-tool, psycopg2, pyyaml and jinjasql2):
+
+```bash
+conda env create -f environment.yml
+conda activate netascore
+```
+
+`raster2pgsql` is only needed for DEM imports. On Linux and macOS you can add it to the environment with:
+
+```bash
+conda install -n netascore -c conda-forge postgis
+```
+
+On Windows (where PostGIS is not available via conda), use `raster2pgsql` of your PostGIS installation (e.g. installed with the Stack Builder of PostgreSQL). Make sure that its subfolder containing the binaries (e.g. `Program Files/PostgreSQL/<version>/bin`) is added to the PATH environment variable. NetAScore runs `raster2pgsql` from outside the conda environment without loading the GDAL plugins of the environment, which prevents version conflicts.
+
+*Important: always execute NetAScore within the activated conda environment, as this ensures that the Python version and tools of the environment are used, rather than the system default.*
+
+### Alternative: system packages and pip
+
+Install osm2pgsql, osmium, GDAL (incl. Python bindings), and the PostgreSQL / PostGIS client tools with the package manager of your system or using graphical installers. Then install the **Python dependencies** with pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+This is how the Docker image is built. Note: the Python package `gdal` needs to match the GDAL version installed on your system (e.g. `pip install gdal==$(gdal-config --version)`).
+
+## Run NetAScore
 
 Now you can **run NetAScore** by providing the filename of the settings file as commandline parameter to the Python script:
 
-    python generate_index.py your-settings-file.yml
+```bash
+python generate_index.py data/your-settings-file.yml
+```
+
+Mode profile files are looked up in the directory of the settings file. The settings file may also be located outside the `data` directory. Input files referenced in the settings are always read from the `data` directory, and results are written there.
 
 The processing can take several minutes up to several hours - depending on the size of the geodata and the hardware used. Therefore, we recommend to **start with a small example** first.
 
-You can also use Anaconda to create a virtual environment with the following Python dependencies:
-
-_We tested the installation using miniconda3 on Windows 10 (64-bit) and using the Anaconda powershell prompt on Windows 11 (64-Bit)._
-
-- gdal (Version 3.6.2)
-- igraph (Version 0.10.4)
-- pandas (Version 1.5.1)
-- Flask (Version 2.2.3)
-- psycopg2 (Version 2.9.7)
-- Jinja2 (Version 3.0.3)
-- JinjaSql (Version 0.1.8)
-- requests (Version 2.28.2)
-- osm2geojson (Version 0.2.5)*
-- PyYaml (Version 6.0)
-
-*osm2geojson needs to be installed afterwards by using pip.
-
-You can also import the environment file provided by running:
-
-```
-conda env create -f netascoreenvironment.yml
-```
-Afterwards activate the environment netascore3.9:
-```
-conda activate netascore3.9
-```
-You can now run NetAScore, using the prompt described above. 
-_An important thing to note here, is to execute the command within miniconda or anaconda, as this ensures that the python version within the environment is used, rather than the system default._
-
-If you want to manually install the requirements using conda, make sure to install the packages in the order given witihin the requirements.txt files, as some of the required versions may become overwritten otherwise, leading to conflicts.
+At the start, NetAScore prints its version and code state (Git branch and commit). At the end of a run, a summary is printed.
 
 ## Additional commandline parameters
 
-If you want to re-run the pipeline, but **skip certain steps**, use the **`--skip`** flag with a list of steps you want to skip:  `import`, `network`, `attributes`, `optional`, `index`, `export` (the steps are explained in detail in this readme file). In the following example, `import`, `network` and `attributes` steps will be skipped and only the `export` step is re-executed:
+If you want to re-run the pipeline, but **skip certain steps**, use the **`--skip`** flag with a list of steps you want to skip. The steps are executed in this order: `import`, `network`, `optional`, `attributes`, `index`, `export` (the steps are explained in detail in [The Workflow](The-workflow)). In the following example, `import`, `network` and `optional` are skipped. `attributes`, `index` and `export` still run:
 
-    python generate_index.py your-settings-file.yml --skip import network attributes
+```bash
+python generate_index.py data/your-settings-file.yml --skip import network optional
+```
 
-If you want to get more (or less) detailed **log outputs**, set the **`--loglevel`** flag to one of the following levels: 
-`1` = MajorInfo, `2` = Info (default), `3` = Detailed, `4` = Debug
+If you change `buffer` or `clip` and skip the import step, NetAScore reports an error if the imported OSM data does not cover the new clip area. In that case, run the import step again.
+
+If you want to get more (or less) detailed **log outputs**, set the **`--loglevel`** flag to one of the following levels:
+`1` = MajorInfo, `2` = Info (default), `3` = Detailed, `4` = Debug. Warnings and errors are always shown. Internal messages and the Python traceback of errors are only shown at log level `3` or `4`.
 
 ## Trouble shooting and resolving common issues
 
 ### Issues with the installation of packages and dependencies
-If you have issues with the execution after installation or with installing any of the packages directly, make sure to check  versions of the packages installed in your environment and that you installed them in the right order. If the order of installation was changed, it may be that some of the versions specified were overwritten by the installation of another package.
+
+If you have issues with the execution after installation or with installing any of the packages directly, make sure to check versions of the packages installed in your environment. We recommend the conda environment (`environment.yml`), as it contains matching versions of GDAL, osm2pgsql and osmium.
 
 If you are executing the program from the command line, make sure you have the virtual environment activated and the are using the right python version. Otherwise you may encounter some conflicts, as NetAScore may default to use the system-wide installation of Python, rather than the one specified within the virtual environment.
 
@@ -78,7 +90,14 @@ If you are executing the program from the command line, make sure you have the v
 
 If you encounter the calculations to be much slower than expected (for reference: Salzburg state rougly takes 10-15 minutes, the entirety of austria takes 1-2 hours), make sure that you put in a valid metric coordinate system for the `target_srid` in the `settings-file`. If an invalid or unfit coordinate system is provided, this error may occur.
 
-### Error with the gradient calculations without the use of a DEM
+### Unexpected gradient values without the use of a DEM
 
-If you ran NetAScore with a local database, make sure there is no other DEM for a different area of interest in the database, that may be used unknowingly. Either specify another DEM you want to use for your area of interest or specify to not include one in the [mode-profiles](Mode-profiles).
+Datasets imported into the shared data schema of the database (e.g. a DEM imported for another case) are used by all cases, if they cover the network. If you ran NetAScore with a local database, check the layer `meta_datasets` of the output GeoPackage: it lists the input datasets used and their origin. Either specify another DEM you want to use for your area of interest or specify to not include the gradient in the [mode-profiles](Mode-profiles).
 
+### OSM download fails
+
+If the Overpass API servers are overloaded, OSM downloads may fail. NetAScore tries several servers and reports the errors. Areas larger than 1500 km² should not be downloaded via the Overpass API (setting `max_download_area`). In both cases, download an OSM extract (e.g. from [Geofabrik](https://download.geofabrik.de)), save it to the `data` directory and provide it as `filename` in the `import` section. Keep `place_name`, `bbox` or `aoi_filename` to clip the extract to your area of interest.
+
+### Results changed after updating to version 2.0
+
+NetAScore 2.0 imports OSM data with the flex output of osm2pgsql. After updating, run the import step again for existing OSM data. Also, mode profiles and settings files from version 1.x need to be updated (`version: 2.0`, gradient classes, new parking values). See the [changelog](https://github.com/plus-mobilitylab/netascore/blob/main/CHANGELOG.md) for all changes.

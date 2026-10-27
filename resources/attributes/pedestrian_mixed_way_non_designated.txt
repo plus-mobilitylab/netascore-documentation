@@ -1,0 +1,29 @@
+[out:json][timeout:90];
+
+(
+  way["highway"="cycleway"]["foot"="yes"]({{bbox}});
+  way["highway"="footway"]["bicycle"="yes"]({{bbox}});
+  way["highway"="pedestrian"]["bicycle"="yes"]({{bbox}});
+
+  way["cycleway"~"^(track|opposite_track|segregated|yes|opposite)$"]["foot"="yes"]({{bbox}});
+  way["cycleway:left"~"^(track|opposite_track|segregated|yes)$"]["foot"="yes"]({{bbox}});
+  way["cycleway:right"~"^(track|opposite_track|segregated|yes)$"]["foot"="yes"]({{bbox}});
+  way["cycleway:both"~"^(track|opposite_track|segregated|yes)$"]["foot"="yes"]({{bbox}});
+
+  way["bicycle_road"="yes"]["foot"="yes"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
+  way["bicycle_road"="yes"]["foot"="yes"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
+  way["bicycle_road"="yes"]["segregated"="no"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
+  way["bicycle_road"="yes"]["segregated"="no"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
+
+  way["cyclestreet"="yes"]["foot"="yes"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
+  way["cyclestreet"="yes"]["foot"="yes"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
+  way["cyclestreet"="yes"]["segregated"="no"]["motor_vehicle"="no"][!"maxspeed"]({{bbox}});
+  way["cyclestreet"="yes"]["segregated"="no"][!"motor_vehicle"][!"maxspeed"]({{bbox}});
+
+  way["bicycle"~"^(yes|designated)$"]["foot"~"^(yes|designated)$"]["motor_vehicle"~"^(no|destination)$"]({{bbox}});
+  way["bicycle"~"^(yes|designated)$"]["foot"~"^(yes|designated)$"][!"motor_vehicle"]({{bbox}});
+  way["bicycle"~"^(yes|designated)$"]["foot"~"^(yes|designated)$"]["access"="no"]({{bbox}});
+  way["bicycle"~"^(yes|designated)$"]["foot"~"^(yes|designated)$"]["highway"~"^(path|bridleway|cycleway|footway|track)$"]["tracktype"!~"^(grade4|grade5)$"]({{bbox}});
+);
+
+out geom;

@@ -1,5 +1,3 @@
-
-
 # What is NetAScore?
 
 NetAScore
@@ -13,7 +11,7 @@ NetAScore
 
 ## How does it work?
 
-NetAScore uses network data such as from OpenStreetMap as the main input. It combines this input with information on spatial context, and derives several indicators relevant to segment-based *bikeability* and *walkability*. In a next step, the software combines indicator values to derive a single suitability index per road segment. The automated processing makes use of a PostGIS spatial database, while relying on Python code for automation. 
+NetAScore uses network data such as from OpenStreetMap as the main input. It combines this input with information on spatial context, and derives several indicators relevant to segment-based *bikeability* and *walkability*. In a next step, the software combines indicator values to derive a single suitability index per road segment. The automated processing makes use of a PostGIS spatial database, while relying on Python code for automation.
 
 If you want to learn more about the steps that NetAScore applies to compute bikeability and walkability metrics, check [The workflow](The-workflow).
 
@@ -34,6 +32,3 @@ We **do not** want to:
 This is an exemplary visualization of *bikeability* for Salzburg, Austria:
 
 ![Bikeability result for Salzburg, Austria](resources/img/NetAScore_Example.png)
-
-
-

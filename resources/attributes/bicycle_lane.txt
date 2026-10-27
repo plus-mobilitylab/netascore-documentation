@@ -1,0 +1,20 @@
+[out:json][timeout:90];
+
+(
+  way["cycleway"="lane"]({{bbox}});
+  way["cycleway:both"="lane"]({{bbox}});
+  way["cycleway:left"="lane"]({{bbox}});
+  way["cycleway:right"="lane"]({{bbox}});
+
+  way["cycleway"="opposite_lane"]({{bbox}});
+  way["cycleway:both"="opposite_lane"]({{bbox}});
+  way["cycleway:left"="opposite_lane"]({{bbox}});
+  way["cycleway:right"="opposite_lane"]({{bbox}});
+
+  way["cycleway:both:lane"="advisory"]({{bbox}});
+  way["cycleway:lane"="exclusive"]({{bbox}});
+  way["cycleway:lane"="advisory"]({{bbox}});
+  way["cycleway:lane"="pictogram"]({{bbox}});
+);
+
+out geom;
