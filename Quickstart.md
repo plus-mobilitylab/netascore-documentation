@@ -28,9 +28,26 @@ The easiest way to get started is running the ready-made Docker image. All you n
 
 ![command 'docker compose run netascore' shown in terminal](resources/img/run_netascore_docker.png)
 
-- running the docker image might take a while, as NetAScore first loads an area of interest by place name, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. You can tell the run was completed successfully once the Database connection is closed, which looks like this:
+- running the docker image might take a while, as NetAScore first loads an area of interest by place name, then downloads the respective OpenStreetMap data and afterwards imports, processes and exports the final dataset. You can tell the run was completed successfully once the run summary is printed - it looks similar to this:
 
-![completed successful run](resources/img/cmd_complete.png)
+```
+15:20:59 - NetAScore run summary:
+  case: salzburg (EPSG:32633)
+  output: netascore_salzburg.gpkg
+  input datasets:
+    building   used      osm_download_salzburg.xml (imported now)
+    crossing   used      osm_download_salzburg.xml (imported now)
+    facility   used      osm_download_salzburg.xml (imported now)
+    greenness  used      osm_download_salzburg.xml (imported now)
+    parking    used      osm_download_salzburg.xml (imported now)
+    sights     used      osm_download_salzburg.xml (imported now)
+    water      used      osm_download_salzburg.xml (imported now)
+  profiles: bike, walk
+15:20:59 - Thank you for using NetAScore!
+15:20:59 - Program terminating after 0:02:51 (hr:min:sec) at 15:20:59.
+```
+
+If an error occurs, NetAScore stops with a line beginning with `ERROR:` that describes the problem.
 
 - A new subdirectory named `data` will be present after successful execution. Within this folder, the assessed network is stored in `netascore_salzburg.gpkg`. It includes a layer `edge` with *bikeability* in columns `index_bike_ft` and `index_bike_tf` and *walkability* in `index_walk_ft` and `index_walk_tf`. The extensions `ft` and `tf` refer to the mapping direction of an edge: *from-to* or *to-from* node. Index values represent the assessed suitability of a segment for cycling (*bikeability*) and walking (*walkability*).
 
