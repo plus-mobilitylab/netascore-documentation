@@ -38,7 +38,7 @@ In this step a network dataset is imported. Currently `osm` (OpenStreetMap), `gi
 `osm`
 
 - The area of interest is determined from a place name, a bounding box or an AOI file (if given). If no reference system is specified, the UTM zone of the area of interest (or of the imported OSM data) is used.
-- OSM data is either downloaded via the Overpass API for the area of interest, or read from a PBF or XML file, as defined in the settings file. If an area of interest is given, only the relevant part of the OSM file is imported (clipped with osmium).
+- OSM data is either downloaded via the Overpass API for the area of interest, or read from a PBF or XML file, as defined in the settings file. If an area of interest is given, only the relevant part of the OSM file is imported (clipped with osmium). In both cases, a margin of 200 m around the clip area (area of interest + `buffer`) is included, so that features surrounding edges at the boundary of the network (e.g. buildings, facilities) are regarded. Downloads contain features crossing the boundary of the download area completely (e.g. water bodies).
 - The OSM data is imported with osm2pgsql (flex output, `resources/osm2pgsql_flex.lua`). Besides points, lines and polygons, the member ways of bicycle route relations are imported (table `osm_bicycle_route`). The geometry is not transformed - this is done in the network_step.
 - Additionally, the optional datasets `building`, `crossing`, `facility`, `greenness`, `water`, `parking` and `sights` are derived as database tables (except that these datasets are given explicitly in the `optional` section). The geometry is transformed.
 

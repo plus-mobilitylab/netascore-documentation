@@ -76,7 +76,7 @@ python generate_index.py data/your-settings-file.yml --skip import network optio
 If you change `buffer` or `clip` and skip the import step, NetAScore reports an error if the imported OSM data does not cover the new clip area. In that case, run the import step again.
 
 If you want to get more (or less) detailed **log outputs**, set the **`--loglevel`** flag to one of the following levels:
-`1` = MajorInfo, `2` = Info (default), `3` = Detailed, `4` = Debug. Warnings and errors are always shown. Internal messages are only shown at log level `3` or `4`.
+`1` = MajorInfo, `2` = Info (default), `3` = Detailed, `4` = Debug. Warnings and errors are always shown. Internal messages and the Python traceback of errors are only shown at log level `3` or `4`.
 
 ## Trouble shooting and resolving common issues
 

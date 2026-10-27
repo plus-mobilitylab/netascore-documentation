@@ -15,7 +15,7 @@ The easiest way to get started is running the ready-made Docker image. All you n
 
 ![example of docker running](resources/img/docker_running.png)
 
-- download the [`docker-compose.yml`](https://github.com/plus-mobilitylab/netascore/blob/main/examples/docker-compose.yml) raw-file from the `examples` directory and save it to an empty directory on your machine. In this Tutorial the directory is called `NetAScore`
+- download the [`docker-compose.yml`](https://github.com/plus-mobilitylab/netascore/blob/main/examples/docker-compose.yml) file from the `examples` directory (use the button "Download raw file" on the GitHub page) and save it to an empty directory on your machine. In this Tutorial the directory is called `NetAScore`
 
 - in order to proceed, please open your terminal. On Windows, search for `cmd` in your search bar. For Mac, search `terminal`). Open your system's terminal app and navigate to your previously created empty directory. This can be done by either manually typing `cd ` followed by the directory`s file path or by dragging and dropping the folder into the command line app, similar to the example below:
 

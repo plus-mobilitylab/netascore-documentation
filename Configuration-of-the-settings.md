@@ -258,6 +258,8 @@ The following layers can be supplied if OpenStreetMap data is not used or if you
 - **parking** (GeoPackage: LineString, Polygon)
 - **sights** (GeoPackage: Point, Polygon)
 
+Instead of a GeoPackage, vector data can also be provided in other formats readable by GDAL (e.g. Shapefile, GeoJSON).
+
 Optional datasets are imported after the network step. By default, only the part of each dataset within the extent of the network (plus a margin of 50 m) is imported.
 
 ```{note}
